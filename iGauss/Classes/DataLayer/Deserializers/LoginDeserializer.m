@@ -14,7 +14,7 @@
 - (DataContainer *)deserialize:(id)json {
     
     LoginModel *model = [[LoginModel alloc] init];
-    model.token = [json valueForKeyPath:@"data.token"];
+    model.token = [json valueForKeyPath:@"auth_token"];
     
     return model;
 }

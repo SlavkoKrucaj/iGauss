@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Model.h"
 
-@interface LoginParams : NSObject
+@interface LoginParams : Model
 
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;

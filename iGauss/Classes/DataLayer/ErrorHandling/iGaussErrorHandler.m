@@ -12,15 +12,16 @@
 
 - (NSError *)processErrorsFromResponse:(id)response {
     //if response is an array then it sure isn't error
-    if ([response isKindOfClass:[NSArray class]]) return NO;
-    
-    NSAssert([response isKindOfClass:[NSDictionary class]], @"response should be a dictionary if it's not array");
-    
-    if (![[response objectForKey:@"success"] boolValue]) {
-        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-        [errorDetail setValue:[response objectForKey:@"errormsg"] forKey:NSLocalizedDescriptionKey];
-        return [NSError errorWithDomain:@"api-domain" code:100 userInfo:errorDetail];
-    }
+#warning maybe implement some error handler
+//    if ([response isKindOfClass:[NSArray class]]) return NO;
+//    
+//    NSAssert([response isKindOfClass:[NSDictionary class]], @"response should be a dictionary if it's not array");
+//    
+//    if (![[response objectForKey:@"success"] boolValue]) {
+//        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+//        [errorDetail setValue:[response objectForKey:@"errormsg"] forKey:NSLocalizedDescriptionKey];
+//        return [NSError errorWithDomain:@"api-domain" code:100 userInfo:errorDetail];
+//    }
     
     return nil;
 }

@@ -18,7 +18,7 @@
 + (Source *)createLoginSource {
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/login.json"];
+    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/login?email=:email&password=:password"];
     source.errorHandler = [[iGaussErrorHandler alloc] init];
     source.deserializer = [[LoginDeserializer alloc] init];
     

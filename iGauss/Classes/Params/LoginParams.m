@@ -8,6 +8,21 @@
 
 #import "LoginParams.h"
 
+NSString *const GaussSignUpUsername     = @"email";
+NSString *const GaussSignUpPassword     = @"password";
+
 @implementation LoginParams
+
+- (NSDictionary *)toUrlParams {
+    
+    if (!self.username) self.username = @"";
+    if (!self.password) self.password = @"";
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            self.username,     GaussSignUpUsername,
+            self.password,     GaussSignUpPassword,
+            nil];
+}
+
 
 @end

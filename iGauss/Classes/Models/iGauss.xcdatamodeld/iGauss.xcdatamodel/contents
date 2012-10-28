@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="projectFullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="projectSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectSession" inverseName="project" inverseEntity="ProjectSession" syncable="YES"/>
+    </entity>
+    <entity name="ProjectSession" representedClassName="ProjectSession" syncable="YES">
+        <attribute name="cellHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="noteHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sessionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sessionId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sessionNote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Project" inverseName="projectSessions" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="150"/>
+    </elements>
+</model>

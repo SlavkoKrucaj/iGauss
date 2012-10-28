@@ -52,11 +52,9 @@
 
         [self.delegate customAlertViewDiscarded:self];
 
-    } else {
-    
-        [self dismiss];
-    
     }
+    
+    [self dismiss];
     
 }
 
@@ -68,6 +66,8 @@
         [self.delegate customAlertViewConfirmed:self];
         
     }
+    
+    [self dismiss];
 }
 
 @end

@@ -11,12 +11,12 @@
 
 @implementation LoginDeserializer
 
-- (DataContainer *)deserialize:(id)json {
+- (void)deserialize:(id)json withBlock:(DeserializerBlock)completion {
     
     LoginModel *model = [[LoginModel alloc] init];
     model.token = [json valueForKeyPath:@"auth_token"];
     
-    return model;
+    completion(model);
 }
 
 @end

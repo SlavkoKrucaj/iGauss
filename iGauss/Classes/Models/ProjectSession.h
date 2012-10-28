@@ -1,0 +1,24 @@
+//
+//  ProjectSession.h
+//  iGauss
+//
+//  Created by Slavko Krucaj on 28.10.2012..
+//  Copyright (c) 2012. slavko.krucaj. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+@class Project;
+
+@interface ProjectSession : NSManagedObject
+
+@property (nonatomic, retain) NSDate * sessionDate;
+@property (nonatomic, retain) NSNumber * sessionId;
+@property (nonatomic, retain) NSString * sessionNote;
+@property (nonatomic, retain) NSNumber * sessionTime;
+@property (nonatomic, retain) NSNumber * cellHeight;
+@property (nonatomic, retain) NSNumber * noteHeight;
+@property (nonatomic, retain) Project *project;
+
+@end

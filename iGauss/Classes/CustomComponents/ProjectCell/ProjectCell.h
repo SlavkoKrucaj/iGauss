@@ -10,7 +10,6 @@
 
 @interface ProjectCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger projectId;
 @property (nonatomic, weak) IBOutlet UILabel *projectName;
 @property (nonatomic, weak) IBOutlet UIImageView *disclousureImageView;
 

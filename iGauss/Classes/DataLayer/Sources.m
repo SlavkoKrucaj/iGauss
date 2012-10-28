@@ -11,7 +11,7 @@
 #import "iGaussErrorHandler.h"
 #import "LoginDeserializer.h"
 #import "ProjectsDeserializer.h"
-#import "WorkDeserializer.h"
+#import "ProjectSessionsDeserializer.h"
 
 @implementation Sources
 
@@ -29,7 +29,7 @@
     
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/projects.json"];
+    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/projects?auth_token=:auth_token"];
     source.errorHandler = [[iGaussErrorHandler alloc] init];
     source.deserializer = [[ProjectsDeserializer alloc] init];
     
@@ -37,13 +37,13 @@
     
 }
 
-+ (Source *)createWorkingHoursSource {
++ (Source *)createProjectSessionsSource {
     
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/working_hours.json"];
+    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/project_sessions?auth_token=:auth_token"];
     source.errorHandler = [[iGaussErrorHandler alloc] init];
-    source.deserializer = [[WorkDeserializer alloc] init];
+    source.deserializer = [[ProjectSessionsDeserializer alloc] init];
     
     return source;
     

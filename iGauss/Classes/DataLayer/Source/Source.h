@@ -24,6 +24,9 @@ extern NSString *const SourceTypePost;
 - (void)source:(Source *)source didLoadObject:(DataContainer *)dataContainer;
 - (void)source:(Source *)source didFailToLoadWithErrors:(NSError *)error;
 
+@optional
+- (void)intermediateSource:(Source *)source didLoadObject:(DataContainer *)dataContainer;
+
 @end
 
 @interface Source : NSObject {
@@ -33,10 +36,14 @@ extern NSString *const SourceTypePost;
 @property (nonatomic, strong) Model              *params;
 @property (nonatomic, strong) NSURL              *url;
 @property (nonatomic, strong) NSURL              *baseUrl;
-@property (nonatomic, strong) id<Deserializer>   deserializer;
+@property (nonatomic, strong) Deserializer       *deserializer;
 @property (nonatomic, strong) id<ErrorHandler>   errorHandler;
 @property (nonatomic, weak)   id<SourceDelegate> delegate;
 @property (nonatomic, assign) Class              responseModelClass;
+@property (nonatomic, strong) Source             *nextSource;
+@property (nonatomic, assign) BOOL               retainResponseModel;
+@property (nonatomic, strong) Model              *model;
+@property (nonatomic, assign) BOOL               debugMode;
 
 //public methods on source
 - (id)initSourceInMode:(NSString *)sourceType;

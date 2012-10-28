@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Source.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate, SourceDelegate>
+@interface GaussViewController : UIViewController <UITextFieldDelegate, SourceDelegate>
 
 @end

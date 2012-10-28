@@ -14,3 +14,7 @@
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>
 #endif
+
+#import "App.h"
+
+#define LOG(s,...) if (self.debugMode) NSLog(s,##__VA_ARGS__);

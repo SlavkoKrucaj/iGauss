@@ -53,12 +53,10 @@ NSString *const SourceTypePost = @"POST";
 
 - (void)makeGetRequest {
     
-#ifdef DEBUG
     //debug just to warn us if we haven't set model
     if (!self.params) {
-        NSLog(@"There is no model set");
+        LOG(@"There is no model set");
     }
-#endif
     
     if (self.params) {
         NSDictionary *params = [self.params toUrlParams];
@@ -81,32 +79,37 @@ NSString *const SourceTypePost = @"POST";
     }
     
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+    __block Source *blockSource = self;
     
     self.networkOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 
-#ifdef DEBUG
-        NSLog(@"%@ operation hasAcceptableStatusCode: %d", self.url.absoluteString, response.statusCode);
-        NSLog(@"response string: %@ ", JSON);
-#endif
+        LOG(@"%@ operation hasAcceptableStatusCode: %d", self.url.absoluteString, response.statusCode);
+        LOG(@"response string: %@ ", JSON);
+
         
         //check for api specific errors
         NSError *error = nil;
         if ((error = [self.errorHandler processErrorsFromResponse:JSON])) {
-#ifdef DEBUG
-            NSLog(@"There are custom errors");
-#endif
+
+            LOG(@"There are custom errors");
+
             [self.delegate source:self didFailToLoadWithErrors:error];
             return;
         }
         
-        //process response
-        [self.delegate source:self didLoadObject:[self.deserializer deserialize:JSON]];
-        
+        [blockSource.deserializer deserialize:JSON withBlock:^(DataContainer *data){
+            if (blockSource.nextSource) {
+                [blockSource.delegate intermediateSource:blockSource didLoadObject:data];
+                [blockSource.nextSource loadAsync];
+            } else {
+                [blockSource.delegate source:blockSource didLoadObject:data];
+            }
+        }];
+
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 
-#ifdef DEBUG
-        NSLog(@"%@ has errors: %@", self.url.absoluteString, JSON);
-#endif
+        LOG(@"%@ has errors: %@", self.url.absoluteString, JSON);
+
         [self.delegate source:self didFailToLoadWithErrors:error];
 
     }];
@@ -116,12 +119,9 @@ NSString *const SourceTypePost = @"POST";
 
 - (void)makePostRequest {
     
-#ifdef DEBUG
-    //debug just to warn us if we haven't set model
     if (!self.params) {
-        NSLog(@"There is no model set");
+        LOG(@"There is no model set");
     }
-#endif
     
     NSAssert(self.baseUrl, @"There should be a base url when doing post request");
     __block Source *blockSource = self;
@@ -139,29 +139,32 @@ NSString *const SourceTypePost = @"POST";
      
         id JSON = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
 
-#ifdef DEBUG
-        NSLog(@"%@ operation hasAcceptableStatusCode: %d", blockSource.url.absoluteString, operation.response.statusCode);
-        NSLog(@"response string: %@ ", JSON);
-#endif
+        LOG(@"%@ operation hasAcceptableStatusCode: %d", blockSource.url.absoluteString, operation.response.statusCode);
+        LOG(@"response string: %@ ", JSON);
         
         //check for api specific errors
         NSError *error = nil;
         if ((error = [blockSource.errorHandler processErrorsFromResponse:JSON])) {
-#ifdef DEBUG
-            NSLog(@"There are custom errors");
-#endif
+            
             [blockSource.delegate source:blockSource didFailToLoadWithErrors:error];
+        
             return;
         }
         
         //process response
-        [blockSource.delegate source:blockSource didLoadObject:[blockSource.deserializer deserialize:JSON]];
+        [blockSource.deserializer deserialize:JSON withBlock:^(DataContainer *data){
+            if (blockSource.nextSource) {
+                [blockSource.delegate intermediateSource:blockSource didLoadObject:data];
+                [blockSource.nextSource loadAsync];
+            } else {
+                [blockSource.delegate source:blockSource didLoadObject:data];
+            }
+        }];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-#ifdef DEBUG
-        NSLog(@"%@ has errors: %@", blockSource.url.absoluteString, error.localizedDescription);
-#endif
+        LOG(@"%@ has errors: %@", blockSource.url.absoluteString, error.localizedDescription);
+        
         [self.delegate source:blockSource didFailToLoadWithErrors:error];
     }];
 

@@ -2,16 +2,17 @@
 //  Deserializer.h
 //  iGauss
 //
-//  Created by Slavko Krucaj on 23.10.2012..
+//  Created by Slavko Krucaj on 28.10.2012..
 //  Copyright (c) 2012. slavko.krucaj. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "DataContainer.h"
 
-@protocol Deserializer <NSObject>
+typedef void (^ DeserializerBlock)(DataContainer *);
 
-@required
-- (DataContainer *)deserialize:(id)json;
+@interface Deserializer : NSObject
+
+- (void)deserialize:(id)json withBlock:(DeserializerBlock)completion;
 
 @end

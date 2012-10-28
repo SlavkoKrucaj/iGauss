@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Deserializer.h"
 
-@interface ProjectsDeserializer : NSObject <Deserializer>
+@interface ProjectsDeserializer : Deserializer
 
 @end

@@ -6,13 +6,17 @@
 //  Copyright (c) 2012. slavko.krucaj. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GaussViewController.h"
 #import "SKBindingManager.h"
 #import "LoginParams.h"
 #import "CustomAlertView.h"
 #import "Sources.h"
+#import "LoginModel.h"
+#import "ProjectSessionParams.h"
+#import "UIImageView+GaussAnimated.h"
+#import "CustomAlertView.h"
 
-@interface ViewController ()
+@interface GaussViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *gaussLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *gaussTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *gaussSubtitle;
@@ -26,10 +30,9 @@
 @property (nonatomic, strong) LoginParams *loginParams;
 
 @property (nonatomic, strong) Source *loginSource;
-@property (nonatomic, strong) Source *workingHoursSource;
 @end
 
-@implementation ViewController
+@implementation GaussViewController
 
 #pragma mark - view initialization
 
@@ -39,46 +42,11 @@
     
     self.bindingManager = [[SKBindingManager alloc] init];
     self.loginParams = [[LoginParams alloc] init];
-    
-    //create binding options dictionary which contains all properties needed for binding
-    NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
-    
-	//set binding id for this connection
-    [bindingOptions setObject:@"loginBindingUsername" forKey:BindingId];
-    
-    //set object and property - to
-    [bindingOptions setObject:self.userNameTextField forKey:BindingFrom];
-    [bindingOptions setObject:BindingPropertyTextField forKey:BindingFromKeyPath];
 
-    //set object and propety - from
-    [bindingOptions setObject:self.loginParams forKey:BindingTo];
-    [bindingOptions setObject:@"username" forKey:BindingToKeyPath];
-
-    //specify if you want two-way or one-way binding
-    [bindingOptions setObject:[NSNumber numberWithBool:NO] forKey:BindingTwoWayBinding];
+    [self bind];
     
-    //add binding
-    [self.bindingManager bind:bindingOptions];
-    
-    bindingOptions = [NSMutableDictionary dictionary];
-    
-	//set binding id for this connection
-    [bindingOptions setObject:@"loginBindingPassword" forKey:BindingId];
-    
-    //set object and property - to
-    [bindingOptions setObject:self.passwordTextField forKey:BindingFrom];
-    [bindingOptions setObject:BindingPropertyTextField forKey:BindingFromKeyPath];
-    
-    //set object and propety - from
-    [bindingOptions setObject:self.loginParams forKey:BindingTo];
-    [bindingOptions setObject:@"password" forKey:BindingToKeyPath];
-    
-    //specify if you want two-way or one-way binding
-    [bindingOptions setObject:[NSNumber numberWithBool:NO] forKey:BindingTwoWayBinding];
-    
-    //add binding
-    [self.bindingManager bind:bindingOptions];
-
+//    self.loginParams.username = @"slavko@infinum.hr";
+//    self.loginParams.password = @"slavko";
 
 }
 
@@ -112,6 +80,33 @@
                                                   object:nil];
     
     [self.bindingManager deactivateAllBindings];
+}
+
+#pragma mark - Binding
+
+- (void)bind {
+
+    NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+    
+    [bindingOptions setObject:@"loginBindingUsername"   forKey:BindingId];
+    [bindingOptions setObject:self.userNameTextField    forKey:BindingFrom];
+    [bindingOptions setObject:BindingPropertyTextField  forKey:BindingFromKeyPath];
+    [bindingOptions setObject:self.loginParams          forKey:BindingTo];
+    [bindingOptions setObject:@"username"               forKey:BindingToKeyPath];
+    [bindingOptions setObject:@NO                      forKey:BindingTwoWayBinding];
+    
+    [self.bindingManager bind:bindingOptions];
+    
+    bindingOptions = [NSMutableDictionary dictionary];
+    
+    [bindingOptions setObject:@"loginBindingPassword"   forKey:BindingId];
+    [bindingOptions setObject:self.passwordTextField    forKey:BindingFrom];
+    [bindingOptions setObject:BindingPropertyTextField  forKey:BindingFromKeyPath];
+    [bindingOptions setObject:self.loginParams          forKey:BindingTo];
+    [bindingOptions setObject:@"password"               forKey:BindingToKeyPath];
+    [bindingOptions setObject:@NO                      forKey:BindingTwoWayBinding];
+    
+    [self.bindingManager bind:bindingOptions];
 }
 
 #pragma mark - Keyboard opening and closing handling (animations)
@@ -153,15 +148,12 @@
         self.loginButton.transform = CGAffineTransformIdentity;
         
     } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:duration animations:^{
+
+        [UIView animateWithDuration:duration/2 animations:^{
 
             self.gaussLogo.alpha = 1.;
 
         }];
-        
-        //keyboard will resign only when we try to login
-        [self login];
         
     }];
 }
@@ -177,6 +169,8 @@
     
         [self.passwordTextField resignFirstResponder];
         self.view.userInteractionEnabled = NO;
+        
+        [self login];
     
     }
     return NO;
@@ -186,51 +180,70 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
     
+    
     if (self.userNameTextField.isFirstResponder)
         [self.userNameTextField resignFirstResponder];
     
     else if (self.passwordTextField.isFirstResponder)
         [self.passwordTextField resignFirstResponder];
     
-    else {
-        self.view.userInteractionEnabled = NO;
-        [self login];
+    if (self.loginParams.username.length == 0 || self.loginParams.password.length == 0) {
+        CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Error" subtitle:@"Molimo popunite oba polja." discard:@"" confirm:@"Ok"];
+        [alertView show];
         return;
     }
 
+    [self.gaussLogo animateLogo];
     self.view.userInteractionEnabled = NO;
+    
+    [self login];
+
 }
 
 #pragma mark - Login action
 
 - (void)login {
     
-    NSLog(@"Username: %@ & password: %@", self.loginParams.username, self.loginParams.password);
+    Source *projectsSource = [Sources createProjectsSource];
+    projectsSource.delegate = self;
+
     self.loginSource = [Sources createLoginSource];
     self.loginSource.params = self.loginParams;
     self.loginSource.delegate = self;
+    self.loginSource.nextSource = projectsSource;
     [self.loginSource loadAsync];
+    
     
 }
 
 #pragma mark - Source delegate
 
 - (void)source:(Source *)source didLoadObject:(DataContainer *)dataContainer {
-    if ([source isEqual:self.loginSource]) {
+    
+    self.view.userInteractionEnabled = YES;
+    [self.gaussLogo stopAnimatingLogo];
+    
+    [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
 
-        self.workingHoursSource = [Sources createWorkingHoursSource];
-        self.workingHoursSource.delegate = self;
-        [self.workingHoursSource loadAsync];
-        
-    } else if ([source isEqual:self.workingHoursSource]) {
-        self.view.userInteractionEnabled = YES;
-        [self performSegueWithIdentifier:@"loginSeque" sender:self];
-    }
+}
+
+- (void)intermediateSource:(Source *)source didLoadObject:(DataContainer *)dataContainer {
+    LoginModel *model = (LoginModel *)dataContainer;
+    [[NSUserDefaults standardUserDefaults] setObject:model.token forKey:GaussAuthToken];
+    
+    ProjectSessionParams *params = [[ProjectSessionParams alloc] init];
+    params.authToken = model.token;
+    
+    source.nextSource.params = params;
 }
 
 - (void)source:(Source *)source didFailToLoadWithErrors:(NSError *)error {
+    [self.gaussLogo stopAnimatingLogo];
     self.view.userInteractionEnabled = YES;
-    NSLog(@"Error %@", error.localizedDescription);
+    
+    CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Error" subtitle:error.localizedDescription discard:@"" confirm:@"Ok"];
+    [alertView show];
+    
 }
 
 @end

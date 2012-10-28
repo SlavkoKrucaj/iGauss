@@ -12,7 +12,7 @@
 @interface Sources : NSObject
 
 + (Source *)createLoginSource;
-+ (Source *)createWorkingHoursSource;
++ (Source *)createProjectSessionsSource;
 + (Source *)createProjectsSource;
 
 @end

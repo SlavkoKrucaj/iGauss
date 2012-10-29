@@ -38,7 +38,6 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken]) {
         [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
@@ -46,7 +45,7 @@
     
         self.bindingManager = [[SKBindingManager alloc] init];
         self.loginParams = [[LoginParams alloc] init];
-
+        
         [self bind];
     }
     
@@ -57,6 +56,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.userNameTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
+    self.passwordTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
+    
+    if (!self.bindingManager) {
+        self.bindingManager = [[SKBindingManager alloc] init];
+        self.loginParams = [[LoginParams alloc] init];
+        
+        [self bind];
+    }
     
     //register for notifications from UIKeyboard
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -98,7 +107,8 @@
     [bindingOptions setObject:BindingPropertyTextField  forKey:BindingFromKeyPath];
     [bindingOptions setObject:self.loginParams          forKey:BindingTo];
     [bindingOptions setObject:@"username"               forKey:BindingToKeyPath];
-    [bindingOptions setObject:@NO                      forKey:BindingTwoWayBinding];
+    [bindingOptions setObject:@YES                      forKey:BindingTwoWayBinding];
+    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValueTo];
     
     [self.bindingManager bind:bindingOptions];
     
@@ -109,7 +119,8 @@
     [bindingOptions setObject:BindingPropertyTextField  forKey:BindingFromKeyPath];
     [bindingOptions setObject:self.loginParams          forKey:BindingTo];
     [bindingOptions setObject:@"password"               forKey:BindingToKeyPath];
-    [bindingOptions setObject:@NO                      forKey:BindingTwoWayBinding];
+    [bindingOptions setObject:@YES                      forKey:BindingTwoWayBinding];
+    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValueTo];
     
     [self.bindingManager bind:bindingOptions];
 }
@@ -185,6 +196,7 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
     
+    NSLog(@"Username: %@, Password: %@", self.loginParams.username, self.loginParams.password);
     
     if (self.userNameTextField.isFirstResponder)
         [self.userNameTextField resignFirstResponder];

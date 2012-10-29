@@ -100,6 +100,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
     }
     
+    cell.projectName.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_normal_background.png"]];
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_selected_background.png"]];
     

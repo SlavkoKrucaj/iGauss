@@ -27,7 +27,6 @@
 		9F15D6221637126900965D36 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F15D6211637126900965D36 /* Model.m */; };
 		9F15D6251637127900965D36 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F15D6241637127900965D36 /* Store.m */; };
 		9F15D63916371EC200965D36 /* Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F15D63816371EBD00965D36 /* Sources.m */; };
-		9F15D64E1637376700965D36 /* SKBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F15D648163732EE00965D36 /* SKBindingManager.m */; };
 		9F15D6531637475900965D36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F15D6521637475900965D36 /* QuartzCore.framework */; };
 		9F17B6051639BB5800EE61DC /* LoginParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B6041639BB5800EE61DC /* LoginParams.m */; };
 		9F17B60D1639C15100EE61DC /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B60C1639C15100EE61DC /* CustomAlertView.m */; };
@@ -42,6 +41,11 @@
 		9F17B68F163B2F0200EE61DC /* LoginDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B68E163B2F0200EE61DC /* LoginDeserializer.m */; };
 		9F17B692163B32F800EE61DC /* ProjectsDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B691163B32F800EE61DC /* ProjectsDeserializer.m */; };
 		9F17B6A1163B396B00EE61DC /* ProjectSessionsDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B6A0163B396B00EE61DC /* ProjectSessionsDeserializer.m */; };
+		9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E71163F05AF00DEF36D /* SKBindingManager.m */; };
+		9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */; };
+		9F209E9A163F199300DEF36D /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E99163F199300DEF36D /* ProjectSession.m */; };
+		9F209E9F163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */; };
+		9F209EA2163F215800DEF36D /* GothamMediumHR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */; };
 		9F542EE21636F46D005C002F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE11636F46D005C002F /* UIKit.framework */; };
 		9F542EE41636F46D005C002F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE31636F46D005C002F /* Foundation.framework */; };
 		9F542EE61636F46D005C002F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE51636F46D005C002F /* CoreGraphics.framework */; };
@@ -124,7 +128,6 @@
 		9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */; };
 		9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */; };
 		9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD58163D7B220084C478 /* Project+Manipulation.m */; };
-		9FFBC22D163E71AD008DCD01 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBC22C163E71AD008DCD01 /* ProjectSession.m */; };
 		9FFBC230163E71AD008DCD01 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBC22F163E71AD008DCD01 /* Project.m */; };
 /* End PBXBuildFile section */
 
@@ -170,8 +173,6 @@
 		9F15D6241637127900965D36 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		9F15D63716371EBB00965D36 /* Sources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sources.h; sourceTree = "<group>"; };
 		9F15D63816371EBD00965D36 /* Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sources.m; sourceTree = "<group>"; };
-		9F15D647163732EE00965D36 /* SKBindingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBindingManager.h; sourceTree = "<group>"; };
-		9F15D648163732EE00965D36 /* SKBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBindingManager.m; sourceTree = "<group>"; };
 		9F15D6521637475900965D36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9F17B6031639BB5800EE61DC /* LoginParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginParams.h; sourceTree = "<group>"; };
 		9F17B6041639BB5800EE61DC /* LoginParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginParams.m; sourceTree = "<group>"; };
@@ -194,6 +195,14 @@
 		9F17B691163B32F800EE61DC /* ProjectsDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsDeserializer.m; sourceTree = "<group>"; };
 		9F17B69F163B396A00EE61DC /* ProjectSessionsDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSessionsDeserializer.h; sourceTree = "<group>"; };
 		9F17B6A0163B396B00EE61DC /* ProjectSessionsDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSessionsDeserializer.m; sourceTree = "<group>"; };
+		9F209E70163F05AF00DEF36D /* SKBindingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBindingManager.h; sourceTree = "<group>"; };
+		9F209E71163F05AF00DEF36D /* SKBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBindingManager.m; sourceTree = "<group>"; };
+		9F209E73163F080F00DEF36D /* ProjectEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectEditorViewController.h; sourceTree = "<group>"; };
+		9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectEditorViewController.m; sourceTree = "<group>"; };
+		9F209E98163F199300DEF36D /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
+		9F209E99163F199300DEF36D /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
+		9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFAgoraSerifPro-Bold.ttf"; sourceTree = "<group>"; };
+		9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamMediumHR.ttf; sourceTree = "<group>"; };
 		9F542EDD1636F46D005C002F /* iGauss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGauss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F542EE11636F46D005C002F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F542EE31636F46D005C002F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -293,8 +302,6 @@
 		9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProjectSession+Create.m"; sourceTree = "<group>"; };
 		9FD5DD57163D7B220084C478 /* Project+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Manipulation.h"; sourceTree = "<group>"; };
 		9FD5DD58163D7B220084C478 /* Project+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Manipulation.m"; sourceTree = "<group>"; };
-		9FFBC22B163E71AD008DCD01 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
-		9FFBC22C163E71AD008DCD01 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9FFBC22E163E71AD008DCD01 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		9FFBC22F163E71AD008DCD01 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -404,6 +411,7 @@
 		9F15D53E1636F8BD00965D36 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F209E9B163F1AAF00DEF36D /* customFonts */,
 				9F577C00163DE03E00DFD6F9 /* icon_splash */,
 				9F70BB23163C2A5700C24A63 /* backgrounds */,
 				9F70BB32163C2A5700C24A63 /* buttons */,
@@ -485,9 +493,9 @@
 			children = (
 				9F17B689163B2E6300EE61DC /* LoginModel.h */,
 				9F17B68A163B2E6300EE61DC /* LoginModel.m */,
+				9F209E98163F199300DEF36D /* ProjectSession.h */,
+				9F209E99163F199300DEF36D /* ProjectSession.m */,
 				9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */,
-				9FFBC22B163E71AD008DCD01 /* ProjectSession.h */,
-				9FFBC22C163E71AD008DCD01 /* ProjectSession.m */,
 				9FFBC22E163E71AD008DCD01 /* Project.h */,
 				9FFBC22F163E71AD008DCD01 /* Project.m */,
 				9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */,
@@ -520,12 +528,12 @@
 				9FBB98D6163D4D1F00B34FF8 /* CoreDataTableView.m */,
 				9FBB9906163D560C00B34FF8 /* ODRefreshControl.h */,
 				9FBB9907163D560C00B34FF8 /* ODRefreshControl.m */,
+				9F209E70163F05AF00DEF36D /* SKBindingManager.h */,
+				9F209E71163F05AF00DEF36D /* SKBindingManager.m */,
 				9FBB98C0163D38A400B34FF8 /* GaussLogo */,
 				9F17B6561639EBBD00EE61DC /* Calendar */,
 				9F17B62D1639DF4300EE61DC /* ProjectCell */,
 				9F17B60A1639C13C00EE61DC /* CustomAlertView */,
-				9F15D647163732EE00965D36 /* SKBindingManager.h */,
-				9F15D648163732EE00965D36 /* SKBindingManager.m */,
 				9F577BE1163DBF1100DFD6F9 /* UIView+Frame.h */,
 				9F577BE2163DBF1100DFD6F9 /* UIView+Frame.m */,
 			);
@@ -572,6 +580,15 @@
 				9F17B65D1639EBBD00EE61DC /* right_arrow@2x.png */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		9F209E9B163F1AAF00DEF36D /* customFonts */ = {
+			isa = PBXGroup;
+			children = (
+				9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */,
+				9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */,
+			);
+			path = customFonts;
 			sourceTree = "<group>";
 		};
 		9F542ED21636F46D005C002F = {
@@ -738,6 +755,8 @@
 				9FBB98D3163D4C4C00B34FF8 /* ProjectsViewController.m */,
 				9FD5DD48163D62C20084C478 /* ProjectSessionsViewController.h */,
 				9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */,
+				9F209E73163F080F00DEF36D /* ProjectEditorViewController.h */,
+				9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -861,6 +880,8 @@
 				9F577BFB163DD7B400DFD6F9 /* Default.png in Resources */,
 				9F577BFD163DD7B600DFD6F9 /* Default@2x.png in Resources */,
 				9F577BFF163DD7B900DFD6F9 /* Default-568h@2x.png in Resources */,
+				9F209E9F163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf in Resources */,
+				9F209EA2163F215800DEF36D /* GothamMediumHR.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,7 +904,6 @@
 				9F15D5511636F8BD00965D36 /* UIImageView+AFNetworking.m in Sources */,
 				9F15D5591636F8BD00965D36 /* main.m in Sources */,
 				9F15D59D1636FB9700965D36 /* Source.m in Sources */,
-				9F15D64E1637376700965D36 /* SKBindingManager.m in Sources */,
 				9F15D5F71637067A00965D36 /* iGaussErrorHandler.m in Sources */,
 				9F15D61C16370D5600965D36 /* DataContainer.m in Sources */,
 				9F15D6221637126900965D36 /* Model.m in Sources */,
@@ -913,8 +933,10 @@
 				9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */,
 				9F577BD9163DA8B900DFD6F9 /* ProjectSessionCell.m in Sources */,
 				9F577BE3163DBF1100DFD6F9 /* UIView+Frame.m in Sources */,
-				9FFBC22D163E71AD008DCD01 /* ProjectSession.m in Sources */,
 				9FFBC230163E71AD008DCD01 /* Project.m in Sources */,
+				9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */,
+				9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */,
+				9F209E9A163F199300DEF36D /* ProjectSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

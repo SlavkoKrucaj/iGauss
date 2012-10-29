@@ -52,7 +52,7 @@
 }
 
 - (IBAction)addNewProjectSession:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"testProjects" sender:self];
+    [self performSegueWithIdentifier:@"addNewProjectSession" sender:self];
 }
 
 #pragma mark - Fetched results controller
@@ -154,7 +154,15 @@
     
     cell.noteText.text = session.sessionNote;
     cell.sessionTitleLabel.text = session.project.projectFullName;
-    cell.sessionTimeLabel.text = session.sessionTime.stringValue;
+    cell.sessionTimeLabel.text = session.sessionTime;
+    
+    cell.noteText.font = CELL_NOTE_FONT;
+    cell.sessionTimeLabel.font = CELL_TIME_FONT;
+    cell.sessionTitleLabel.font = CELL_TITLE_FONT;
+    
+//    cell.noteText.layer.borderWidth = 3;
+//    cell.sessionTitleLabel.layer.borderWidth = 3;
+//    cell.sessionTimeLabel.layer.borderWidth = 3;
     
     cell.cellBackground.layer.cornerRadius = 5;
     
@@ -166,7 +174,7 @@
     [cell.sessionTimeLabel setHeight:session.timeHeight.floatValue];
     
     //postavi novi frame za note
-    [cell.noteText setY:CGRectGetMaxY(cell.sessionTimeLabel.frame)];
+    [cell.noteText setY:CGRectGetMaxY(cell.sessionTimeLabel.frame) + CELL_NOTE_MARGIN];
     [cell.noteText setHeight:session.noteHeight.floatValue];
     
     //postavi novi frame za buttone

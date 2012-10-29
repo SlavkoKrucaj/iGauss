@@ -18,9 +18,9 @@
 @property (nonatomic, retain) NSDate * sessionDate;
 @property (nonatomic, retain) NSNumber * sessionId;
 @property (nonatomic, retain) NSString * sessionNote;
-@property (nonatomic, retain) NSNumber * sessionTime;
-@property (nonatomic, retain) NSNumber * titleHeight;
+@property (nonatomic, retain) NSString * sessionTime;
 @property (nonatomic, retain) NSNumber * timeHeight;
+@property (nonatomic, retain) NSNumber * titleHeight;
 @property (nonatomic, retain) Project *project;
 
 @end

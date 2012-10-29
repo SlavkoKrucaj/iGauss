@@ -18,8 +18,8 @@
 @dynamic sessionId;
 @dynamic sessionNote;
 @dynamic sessionTime;
-@dynamic titleHeight;
 @dynamic timeHeight;
+@dynamic titleHeight;
 @dynamic project;
 
 @end

@@ -15,6 +15,8 @@
 #define CELL_NOTE_MARGIN 10
 #define CELL_ACTION_BUTTONS_HEIGHT 45
 #define CELL_NOTE_FONT ([UIFont systemFontOfSize:15])
+#define CELL_TITLE_FONT ([UIFont boldSystemFontOfSize:17])
+#define CELL_TIME_FONT ([UIFont systemFontOfSize:16])
 
 @interface ProjectSession (Create)
 

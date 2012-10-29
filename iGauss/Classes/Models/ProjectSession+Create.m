@@ -39,38 +39,56 @@
         session.sessionDate = [dateFormatter dateFromString:[data objectForKey:@"date"]];
         session.sessionTime = [data objectForKey:@"time"];
 
+        session.project = [Project projectForId:[data objectForKey:@"project_id"] inContext:context];
         
-        CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote];
-        CGFloat cellHeight = noteHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
+        CGFloat titleHeight = [self calculateNoteHeight:session.project.projectFullName withFont:CELL_TITLE_FONT];
+        CGFloat timeHeight = [self calculateNoteHeight:session.sessionTime.stringValue withFont:CELL_TIME_FONT];
+        CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote withFont:CELL_NOTE_FONT];
+
+        CGFloat cellHeight = noteHeight + titleHeight + timeHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
         session.cellHeight = @(cellHeight);
         session.noteHeight = @(noteHeight);
+        session.timeHeight = @(timeHeight);
+        session.titleHeight = @(titleHeight);
         
-        session.project = [Project projectForId:[data objectForKey:@"project_id"] inContext:context];
         
     } else {
         
         session = [matches lastObject];
+        
+        CGFloat titleHeight = [self calculateNoteHeight:session.project.projectFullName withFont:CELL_TITLE_FONT];
+        CGFloat timeHeight = [self calculateNoteHeight:session.sessionTime.stringValue withFont:CELL_TIME_FONT];
+        CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote withFont:CELL_NOTE_FONT];
         
         NSString *note = [[data objectForKey:@"note"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
         if (![note isEqualToString:session.sessionNote]) {
 
             session.sessionNote = [[data objectForKey:@"note"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
             
-            CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote];
-            CGFloat cellHeight = noteHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
+            CGFloat cellHeight = noteHeight + titleHeight + timeHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
             session.cellHeight = @(cellHeight);
             session.noteHeight = @(noteHeight);
+            session.timeHeight = @(timeHeight);
+            session.titleHeight = @(titleHeight);
         
+        }
+        
+        NSNumber *time = [data objectForKey:@"time"];
+        if (time.intValue != session.sessionTime.intValue) {
+            
+            session.sessionTime = [data objectForKey:@"time"];
+            
+            CGFloat cellHeight = noteHeight + titleHeight + timeHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
+            session.cellHeight = @(cellHeight);
+            session.noteHeight = @(noteHeight);
+            session.timeHeight = @(timeHeight);
+            session.titleHeight = @(titleHeight);
+            
         }
         
         NSDate *date = [dateFormatter dateFromString:[data objectForKey:@"date"]];
         if ([date compare:session.sessionDate] != NSOrderedSame) {
             session.sessionDate = date;
-        }
-        
-        NSNumber *time = [data objectForKey:@"time"];
-        if (time.intValue != session.sessionTime.intValue) {
-            session.sessionTime = time;
         }
         
         NSNumber *projectId = [data objectForKey:@"project_id"];
@@ -85,10 +103,10 @@
     
 }
 
-+ (CGFloat)calculateNoteHeight:(NSString *)string {
++ (CGFloat)calculateNoteHeight:(NSString *)string withFont:(UIFont *)font {
     CGSize constraint = CGSizeMake(WIDTH - (CELL_MARGIN * 2), MAXFLOAT);
     
-    CGSize size = [string sizeWithFont:CELL_NOTE_FONT constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [string sizeWithFont:font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = MAX(size.height, CELL_NOTE_MIN_HEIGHT);
     

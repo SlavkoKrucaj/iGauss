@@ -38,12 +38,17 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     
-    self.bindingManager = [[SKBindingManager alloc] init];
-    self.loginParams = [[LoginParams alloc] init];
+    [super viewDidLoad];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken]) {
+        [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
+    } else {
+    
+        self.bindingManager = [[SKBindingManager alloc] init];
+        self.loginParams = [[LoginParams alloc] init];
 
-    [self bind];
+        [self bind];
+    }
     
 //    self.loginParams.username = @"slavko@infinum.hr";
 //    self.loginParams.password = @"slavko";

@@ -95,8 +95,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *reuseIdentifier = @"ProjectCell";
     
-    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
-                                                            forIndexPath:indexPath];
+    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
+    }
     
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_normal_background.png"]];
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_selected_background.png"]];

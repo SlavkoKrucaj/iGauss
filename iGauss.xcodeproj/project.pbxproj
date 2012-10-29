@@ -46,12 +46,16 @@
 		9F542EE41636F46D005C002F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE31636F46D005C002F /* Foundation.framework */; };
 		9F542EE61636F46D005C002F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE51636F46D005C002F /* CoreGraphics.framework */; };
 		9F577BD9163DA8B900DFD6F9 /* ProjectSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F577BD8163DA8B900DFD6F9 /* ProjectSessionCell.m */; };
-		9F577BE0163DBDBA00DFD6F9 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F577BDF163DBDBA00DFD6F9 /* ProjectSession.m */; };
 		9F577BE3163DBF1100DFD6F9 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F577BE2163DBF1100DFD6F9 /* UIView+Frame.m */; };
 		9F577BE8163DCD0F00DFD6F9 /* project_normal_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BE4163DCD0F00DFD6F9 /* project_normal_background.png */; };
 		9F577BE9163DCD0F00DFD6F9 /* project_normal_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BE5163DCD0F00DFD6F9 /* project_normal_background@2x.png */; };
 		9F577BEA163DCD0F00DFD6F9 /* project_selected_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BE6163DCD0F00DFD6F9 /* project_selected_background.png */; };
 		9F577BEB163DCD0F00DFD6F9 /* project_selected_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BE7163DCD0F00DFD6F9 /* project_selected_background@2x.png */; };
+		9F577BF7163DD79F00DFD6F9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BF6163DD79F00DFD6F9 /* Icon.png */; };
+		9F577BF9163DD7A200DFD6F9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BF8163DD7A200DFD6F9 /* Icon@2x.png */; };
+		9F577BFB163DD7B400DFD6F9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BFA163DD7B400DFD6F9 /* Default.png */; };
+		9F577BFD163DD7B600DFD6F9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BFC163DD7B600DFD6F9 /* Default@2x.png */; };
+		9F577BFF163DD7B900DFD6F9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F577BFE163DD7B900DFD6F9 /* Default-568h@2x.png */; };
 		9F70BB5C163C2A5800C24A63 /* alert_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F70BB24163C2A5700C24A63 /* alert_background.png */; };
 		9F70BB5D163C2A5800C24A63 /* alert_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F70BB25163C2A5700C24A63 /* alert_background@2x.png */; };
 		9F70BB5E163C2A5800C24A63 /* alert_buttons_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F70BB26163C2A5700C24A63 /* alert_buttons_background.png */; };
@@ -119,8 +123,9 @@
 		9FBB9908163D560C00B34FF8 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB9907163D560C00B34FF8 /* ODRefreshControl.m */; };
 		9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */; };
 		9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */; };
-		9FD5DD53163D7A590084C478 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD52163D7A590084C478 /* Project.m */; };
 		9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD58163D7B220084C478 /* Project+Manipulation.m */; };
+		9FFBC22D163E71AD008DCD01 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBC22C163E71AD008DCD01 /* ProjectSession.m */; };
+		9FFBC230163E71AD008DCD01 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBC22F163E71AD008DCD01 /* Project.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,20 +199,19 @@
 		9F542EE31636F46D005C002F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9F542EE51636F46D005C002F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9F542F051636F46D005C002F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9F542F0D1636F46D005C002F /* iGaussTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iGaussTests-Info.plist"; sourceTree = "<group>"; };
-		9F542F0F1636F46D005C002F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9F542F111636F46D005C002F /* iGaussTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iGaussTests.h; sourceTree = "<group>"; };
-		9F542F121636F46D005C002F /* iGaussTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iGaussTests.m; sourceTree = "<group>"; };
 		9F577BD7163DA8B900DFD6F9 /* ProjectSessionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSessionCell.h; sourceTree = "<group>"; };
 		9F577BD8163DA8B900DFD6F9 /* ProjectSessionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSessionCell.m; sourceTree = "<group>"; };
-		9F577BDE163DBDBA00DFD6F9 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
-		9F577BDF163DBDBA00DFD6F9 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9F577BE1163DBF1100DFD6F9 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		9F577BE2163DBF1100DFD6F9 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		9F577BE4163DCD0F00DFD6F9 /* project_normal_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project_normal_background.png; sourceTree = "<group>"; };
 		9F577BE5163DCD0F00DFD6F9 /* project_normal_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "project_normal_background@2x.png"; sourceTree = "<group>"; };
 		9F577BE6163DCD0F00DFD6F9 /* project_selected_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project_selected_background.png; sourceTree = "<group>"; };
 		9F577BE7163DCD0F00DFD6F9 /* project_selected_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "project_selected_background@2x.png"; sourceTree = "<group>"; };
+		9F577BF6163DD79F00DFD6F9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../Icon.png; sourceTree = "<group>"; };
+		9F577BF8163DD7A200DFD6F9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../Icon@2x.png"; sourceTree = "<group>"; };
+		9F577BFA163DD7B400DFD6F9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
+		9F577BFC163DD7B600DFD6F9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../Default@2x.png"; sourceTree = "<group>"; };
+		9F577BFE163DD7B900DFD6F9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		9F70BB24163C2A5700C24A63 /* alert_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_background.png; sourceTree = "<group>"; };
 		9F70BB25163C2A5700C24A63 /* alert_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_background@2x.png"; sourceTree = "<group>"; };
 		9F70BB26163C2A5700C24A63 /* alert_buttons_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_buttons_background.png; sourceTree = "<group>"; };
@@ -287,10 +291,12 @@
 		9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSessionsViewController.m; sourceTree = "<group>"; };
 		9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProjectSession+Create.h"; sourceTree = "<group>"; };
 		9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProjectSession+Create.m"; sourceTree = "<group>"; };
-		9FD5DD51163D7A590084C478 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		9FD5DD52163D7A590084C478 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		9FD5DD57163D7B220084C478 /* Project+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Manipulation.h"; sourceTree = "<group>"; };
 		9FD5DD58163D7B220084C478 /* Project+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Manipulation.m"; sourceTree = "<group>"; };
+		9FFBC22B163E71AD008DCD01 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
+		9FFBC22C163E71AD008DCD01 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
+		9FFBC22E163E71AD008DCD01 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		9FFBC22F163E71AD008DCD01 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +404,7 @@
 		9F15D53E1636F8BD00965D36 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F577C00163DE03E00DFD6F9 /* icon_splash */,
 				9F70BB23163C2A5700C24A63 /* backgrounds */,
 				9F70BB32163C2A5700C24A63 /* buttons */,
 				9F70BB45163C2A5700C24A63 /* loader */,
@@ -479,10 +486,10 @@
 				9F17B689163B2E6300EE61DC /* LoginModel.h */,
 				9F17B68A163B2E6300EE61DC /* LoginModel.m */,
 				9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */,
-				9F577BDE163DBDBA00DFD6F9 /* ProjectSession.h */,
-				9F577BDF163DBDBA00DFD6F9 /* ProjectSession.m */,
-				9FD5DD51163D7A590084C478 /* Project.h */,
-				9FD5DD52163D7A590084C478 /* Project.m */,
+				9FFBC22B163E71AD008DCD01 /* ProjectSession.h */,
+				9FFBC22C163E71AD008DCD01 /* ProjectSession.m */,
+				9FFBC22E163E71AD008DCD01 /* Project.h */,
+				9FFBC22F163E71AD008DCD01 /* Project.m */,
 				9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */,
 				9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */,
 				9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */,
@@ -572,7 +579,6 @@
 			children = (
 				9F15D51A1636F8BD00965D36 /* iGauss */,
 				9F15D53E1636F8BD00965D36 /* Resources */,
-				9F542F0B1636F46D005C002F /* iGaussTests */,
 				9F542EE01636F46D005C002F /* Frameworks */,
 				9F542EDE1636F46D005C002F /* Products */,
 			);
@@ -601,23 +607,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9F542F0B1636F46D005C002F /* iGaussTests */ = {
+		9F577C00163DE03E00DFD6F9 /* icon_splash */ = {
 			isa = PBXGroup;
 			children = (
-				9F542F111636F46D005C002F /* iGaussTests.h */,
-				9F542F121636F46D005C002F /* iGaussTests.m */,
-				9F542F0C1636F46D005C002F /* Supporting Files */,
+				9F577BFE163DD7B900DFD6F9 /* Default-568h@2x.png */,
+				9F577BFC163DD7B600DFD6F9 /* Default@2x.png */,
+				9F577BFA163DD7B400DFD6F9 /* Default.png */,
+				9F577BF8163DD7A200DFD6F9 /* Icon@2x.png */,
+				9F577BF6163DD79F00DFD6F9 /* Icon.png */,
 			);
-			path = iGaussTests;
-			sourceTree = "<group>";
-		};
-		9F542F0C1636F46D005C002F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9F542F0D1636F46D005C002F /* iGaussTests-Info.plist */,
-				9F542F0E1636F46D005C002F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = icon_splash;
 			sourceTree = "<group>";
 		};
 		9F70BB23163C2A5700C24A63 /* backgrounds */ = {
@@ -858,6 +857,11 @@
 				9F577BE9163DCD0F00DFD6F9 /* project_normal_background@2x.png in Resources */,
 				9F577BEA163DCD0F00DFD6F9 /* project_selected_background.png in Resources */,
 				9F577BEB163DCD0F00DFD6F9 /* project_selected_background@2x.png in Resources */,
+				9F577BF7163DD79F00DFD6F9 /* Icon.png in Resources */,
+				9F577BF9163DD7A200DFD6F9 /* Icon@2x.png in Resources */,
+				9F577BFB163DD7B400DFD6F9 /* Default.png in Resources */,
+				9F577BFD163DD7B600DFD6F9 /* Default@2x.png in Resources */,
+				9F577BFF163DD7B900DFD6F9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,11 +911,11 @@
 				9FBB9908163D560C00B34FF8 /* ODRefreshControl.m in Sources */,
 				9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */,
 				9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */,
-				9FD5DD53163D7A590084C478 /* Project.m in Sources */,
 				9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */,
 				9F577BD9163DA8B900DFD6F9 /* ProjectSessionCell.m in Sources */,
-				9F577BE0163DBDBA00DFD6F9 /* ProjectSession.m in Sources */,
 				9F577BE3163DBF1100DFD6F9 /* UIView+Frame.m in Sources */,
+				9FFBC22D163E71AD008DCD01 /* ProjectSession.m in Sources */,
+				9FFBC230163E71AD008DCD01 /* Project.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,14 +926,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9F15D5431636F8BD00965D36 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9F542F0E1636F46D005C002F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F542F0F1636F46D005C002F /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -990,11 +986,14 @@
 		9F542F171636F46D005C002F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iGauss/SupportingFiles/iGauss-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUGG=1";
 				INFOPLIST_FILE = "$(SRCROOT)/iGauss/SupportingFiles/iGauss-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1002,10 +1001,15 @@
 		9F542F181636F46D005C002F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iGauss/SupportingFiles/iGauss-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iGauss/SupportingFiles/iGauss-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

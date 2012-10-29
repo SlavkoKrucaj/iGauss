@@ -10,6 +10,8 @@
 
 @interface ProjectSessionCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *sessionTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sessionTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteText;
 @property (weak, nonatomic) IBOutlet UIView *buttonHolder;
 @property (weak, nonatomic) IBOutlet UIView *cellBackground;

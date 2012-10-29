@@ -17,6 +17,7 @@
 #import "ProjectSessionCell.h"
 #import "ProjectSession+Create.h"
 #import "UIView+Frame.h"
+#import "Project.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ProjectSessionsViewController ()
@@ -72,6 +73,7 @@
         
         self.projectSessionsSource = [Sources createProjectSessionsSource];
         self.projectSessionsSource.params = params;
+        self.projectSessionsSource.delegate = self;
         [self.projectSessionsSource loadAsync];
     }];
     
@@ -143,17 +145,34 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *reuseIdentifier = @"ProjectSessionCell";
     
-    ProjectSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
-                                                            forIndexPath:indexPath];
+    ProjectSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
+    }
     
     ProjectSession *session = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.noteText.text = session.sessionNote;
+    cell.sessionTitleLabel.text = session.project.projectFullName;
+    cell.sessionTimeLabel.text = session.sessionTime.stringValue;
     
     cell.cellBackground.layer.cornerRadius = 5;
     
+    //postavi novi frame za title
+    [cell.sessionTitleLabel setHeight:session.titleHeight.floatValue];
+    
+    //postavi novi frame za time
+    [cell.sessionTimeLabel setY:CGRectGetMaxY(cell.sessionTitleLabel.frame)];
+    [cell.sessionTimeLabel setHeight:session.timeHeight.floatValue];
+    
+    //postavi novi frame za note
+    [cell.noteText setY:CGRectGetMaxY(cell.sessionTimeLabel.frame)];
     [cell.noteText setHeight:session.noteHeight.floatValue];
+    
+    //postavi novi frame za buttone
     [cell.buttonHolder setY:(CGRectGetMaxY(cell.noteText.frame) + CELL_NOTE_MARGIN)];
+    
+    //prosiri background
     [cell.cellBackground setHeight:session.cellHeight.floatValue - 2*CELL_MARGIN];
     
     
@@ -170,7 +189,29 @@
 #pragma mark - Custom alert view delegate
 
 - (void)customAlertViewConfirmed:(CustomAlertView *)alertView {
-    [self.navigationController popViewControllerAnimated:YES];
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        
+        self.tableView.fetchedResultsController = nil;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GaussAuthToken];
+        
+        NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
+        NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];
+
+        for (Project *project in allProjects) {
+            [document.managedObjectContext deleteObject:project];
+        }
+        
+        NSFetchRequest *allProjectSessionsFetch = [[NSFetchRequest alloc] initWithEntityName:@"ProjectSession"];
+        NSArray *allSessions = [document.managedObjectContext executeFetchRequest:allProjectSessionsFetch error:nil];
+
+        for (ProjectSession *session in allSessions) {
+            [document.managedObjectContext deleteObject:session];
+        }
+        
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }];
 }
 
 #pragma mark - Source delegate

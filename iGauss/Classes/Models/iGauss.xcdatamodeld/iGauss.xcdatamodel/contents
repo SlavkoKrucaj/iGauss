@@ -13,10 +13,12 @@
         <attribute name="sessionId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="sessionNote" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Project" inverseName="projectSessions" inverseEntity="Project" syncable="YES"/>
+        <attribute name="timeHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="titleHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectSessions" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
         <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="150"/>
+        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="180"/>
     </elements>
 </model>

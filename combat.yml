@@ -1,0 +1,8 @@
+--- 
+:type: iphone
+:name: iGauss
+:host: vz1.infinum.hr
+:path: /var/www/l/labs.infinum.hr/iphone/iGauss
+:url: http://labs.infinum.hr/iphone/iGauss
+:remote_user: www-data
+:enterprise: true

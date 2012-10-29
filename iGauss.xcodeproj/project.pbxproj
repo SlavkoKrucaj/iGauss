@@ -114,7 +114,7 @@
 		9F70BBB7163C2E0900C24A63 /* ProjectSessionParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F70BBB6163C2E0800C24A63 /* ProjectSessionParams.m */; };
 		9F70BC08163D19DE00C24A63 /* iGauss.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */; };
 		9FBB98BF163D306A00B34FF8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBB98BE163D306A00B34FF8 /* CoreData.framework */; };
-		9FBB98C3163D38F300B34FF8 /* UIImageView+Animated.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C2163D38F300B34FF8 /* UIImageView+Animated.m */; };
+		9FBB98C3163D38F300B34FF8 /* UIImageView+GaussAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */; };
 		9FBB98CA163D3E4D00B34FF8 /* Project+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */; };
 		9FBB98CD163D40FD00B34FF8 /* DocumentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98CC163D40FD00B34FF8 /* DocumentHandler.m */; };
 		9FBB98D0163D4AFC00B34FF8 /* Deserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98CF163D4AFC00B34FF8 /* Deserializer.m */; };
@@ -274,7 +274,7 @@
 		9F70BC07163D19DE00C24A63 /* iGauss.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGauss.xcdatamodel; sourceTree = "<group>"; };
 		9FBB98BE163D306A00B34FF8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9FBB98C1163D38F300B34FF8 /* UIImageView+GaussAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GaussAnimated.h"; sourceTree = "<group>"; };
-		9FBB98C2163D38F300B34FF8 /* UIImageView+Animated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Animated.m"; sourceTree = "<group>"; };
+		9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GaussAnimated.m"; sourceTree = "<group>"; };
 		9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Create.h"; sourceTree = "<group>"; };
 		9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Create.m"; sourceTree = "<group>"; };
 		9FBB98CB163D40FD00B34FF8 /* DocumentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentHandler.h; sourceTree = "<group>"; };
@@ -726,10 +726,9 @@
 			isa = PBXGroup;
 			children = (
 				9FBB98C1163D38F300B34FF8 /* UIImageView+GaussAnimated.h */,
-				9FBB98C2163D38F300B34FF8 /* UIImageView+Animated.m */,
+				9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */,
 			);
-			name = GaussLogo;
-			path = ../../../../../../Desktop/iGauss/iGauss/Classes/CustomComponents/GaussLogo;
+			path = GaussLogo;
 			sourceTree = "<group>";
 		};
 		9FBB98D1163D4C0000B34FF8 /* Projects */ = {
@@ -902,7 +901,7 @@
 				9F70BBB4163C2D0200C24A63 /* App.m in Sources */,
 				9F70BBB7163C2E0900C24A63 /* ProjectSessionParams.m in Sources */,
 				9F70BC08163D19DE00C24A63 /* iGauss.xcdatamodeld in Sources */,
-				9FBB98C3163D38F300B34FF8 /* UIImageView+Animated.m in Sources */,
+				9FBB98C3163D38F300B34FF8 /* UIImageView+GaussAnimated.m in Sources */,
 				9FBB98CA163D3E4D00B34FF8 /* Project+Create.m in Sources */,
 				9FBB98CD163D40FD00B34FF8 /* DocumentHandler.m in Sources */,
 				9FBB98D0163D4AFC00B34FF8 /* Deserializer.m in Sources */,

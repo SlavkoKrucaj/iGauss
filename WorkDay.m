@@ -1,20 +1,18 @@
 //
-//  Project.m
+//  WorkDay.m
 //  iGauss
 //
 //  Created by Slavko Krucaj on 30.10.2012..
 //  Copyright (c) 2012. slavko.krucaj. All rights reserved.
 //
 
-#import "Project.h"
+#import "WorkDay.h"
 #import "ProjectSession.h"
 
 
-@implementation Project
+@implementation WorkDay
 
-@dynamic projectFullName;
-@dynamic projectId;
-@dynamic projectName;
+@dynamic date;
 @dynamic projectSessions;
 
 @end

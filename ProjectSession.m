@@ -13,16 +13,16 @@
 
 @implementation ProjectSession
 
-@dynamic buttonFrame;
-@dynamic contentHeight;
-@dynamic holderFrame;
-@dynamic noteFrame;
-@dynamic sessionDate;
 @dynamic sessionId;
 @dynamic sessionNote;
 @dynamic sessionTime;
-@dynamic timeFrame;
 @dynamic titleFrame;
+@dynamic timeFrame;
+@dynamic noteFrame;
+@dynamic buttonFrame;
+@dynamic holderFrame;
+@dynamic contentHeight;
+@dynamic sessionDate;
 @dynamic project;
 @dynamic workDay;
 

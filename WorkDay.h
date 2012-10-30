@@ -1,5 +1,5 @@
 //
-//  Project.h
+//  WorkDay.h
 //  iGauss
 //
 //  Created by Slavko Krucaj on 30.10.2012..
@@ -11,15 +11,13 @@
 
 @class ProjectSession;
 
-@interface Project : NSManagedObject
+@interface WorkDay : NSManagedObject
 
-@property (nonatomic, retain) NSString * projectFullName;
-@property (nonatomic, retain) NSNumber * projectId;
-@property (nonatomic, retain) NSString * projectName;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSSet *projectSessions;
 @end
 
-@interface Project (CoreDataGeneratedAccessors)
+@interface WorkDay (CoreDataGeneratedAccessors)
 
 - (void)addProjectSessionsObject:(ProjectSession *)value;
 - (void)removeProjectSessionsObject:(ProjectSession *)value;

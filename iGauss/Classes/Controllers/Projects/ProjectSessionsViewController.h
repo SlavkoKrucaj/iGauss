@@ -10,8 +10,9 @@
 #import "CoreDataTableView.h"
 #import "CustomAlertView.h"
 #import "Source.h"
+#import "ProjectSessionCell.h"
 
-@interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate, ProjectSessionCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *screenTitle;
 

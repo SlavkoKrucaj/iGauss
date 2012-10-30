@@ -7,13 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectSession.h"
+
+@protocol ProjectSessionCellDelegate <NSObject>
+
+@required
+- (void)cellWithModelWillEdit:(ProjectSession *)session;
+- (void)cellWithModelWillDelete:(ProjectSession *)session;
+@end
 
 @interface ProjectSessionCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *sessionTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sessionTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *noteText;
-@property (weak, nonatomic) IBOutlet UIView *buttonHolder;
-@property (weak, nonatomic) IBOutlet UIView *cellBackground;
+@property (weak, nonatomic) ProjectSession *session;
+@property (weak, nonatomic) id<ProjectSessionCellDelegate> delegate;
+
+- (void)setupCell:(ProjectSession *)session;
+
+
 
 @end

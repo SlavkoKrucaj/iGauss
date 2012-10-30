@@ -16,6 +16,9 @@
 #import "ProjectsViewController.h"
 #import "Project.h"
 
+#define ALERT_DISCARD 11
+#define ALERT_SAVE 12
+
 typedef enum {
     ProjectEditorModeAdd,
     ProjectEditorModeEdit
@@ -184,28 +187,35 @@ typedef enum {
         
     } else {
         
-        CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"accept_button" title:@"Save" subtitle:@"Your changes have been succesfully saved" discard:@"" confirm:@"Ok"];
-        
-        alertView.delegate = self;
-        [alertView show];
-        
+        [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+            
+            if (self.projectEditorMode == ProjectEditorModeAdd) {
+                self.projectSession = [ProjectSession createLocallyWithData:self.projectSession inContext:document.managedObjectContext];
+            }
+            
+            [ProjectSession updateHeights:self.projectSession];
+            
+            [document.managedObjectContext save:nil];
+            
+            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+
+                CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"accept_button" title:@"Save" subtitle:@"Your changes have been succesfully saved" discard:@"" confirm:@"Ok"];
+                
+                alertView.delegate = self;
+                [alertView show];
+            
+            }];
+        }];
+    
     }
     
 }
 
 - (IBAction)discard:(UIButton *)sender {
     
-    NSLog(@"%@", self.projectSession);
-//    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-//        if (self.projectEditorMode == ProjectEditorModeAdd) {
-//            [document.managedObjectContext deleteObject:self.projectSession];
-//        } else {
-//            [document.managedObjectContext rollback];
-//        }
-//    }];
-    
     CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Discard?" subtitle:@"Do you really want to discard changes?" discard:@"No" confirm:@"Discard"];
     
+    alertView.tag = ALERT_DISCARD;
     alertView.delegate = self;
     [alertView show];
 }
@@ -324,8 +334,22 @@ typedef enum {
 #pragma mark - Custom alert view delegate
 
 - (void)customAlertViewConfirmed:(CustomAlertView *)alertView {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (alertView.tag == ALERT_DISCARD) {
+        [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+            if (self.projectEditorMode == ProjectEditorModeEdit) {
+                [document.managedObjectContext rollback];
+                
+                [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            }
+        }];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];    
+    }
 }
+
 - (void)viewDidUnload {
     [self setCloseButton:nil];
     [self setAccpetButton:nil];

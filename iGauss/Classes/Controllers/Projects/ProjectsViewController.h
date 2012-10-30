@@ -14,5 +14,5 @@
 
 @interface ProjectsViewController : UIViewController <SourceDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) NSMutableDictionary *session;
+@property (nonatomic, weak) id session;
 @end

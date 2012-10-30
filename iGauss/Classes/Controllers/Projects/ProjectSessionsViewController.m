@@ -18,7 +18,7 @@
 #import "ProjectSession+Create.h"
 #import "UIView+Frame.h"
 #import "Project.h"
-#import <QuartzCore/QuartzCore.h>
+#import "ProjectEditorViewController.h"
 
 @interface ProjectSessionsViewController ()
 
@@ -30,6 +30,8 @@
 @end
 
 @implementation ProjectSessionsViewController
+
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -137,8 +139,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProjectSession *session = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
-    
-    return session.cellHeight.floatValue;
+
+    return session.contentHeight.floatValue;
 
 }
 
@@ -152,36 +154,8 @@
     
     ProjectSession *session = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.noteText.text = session.sessionNote;
-    cell.sessionTitleLabel.text = session.project.projectFullName;
-    cell.sessionTimeLabel.text = session.sessionTime;
-    
-    cell.noteText.font = CELL_NOTE_FONT;
-    cell.sessionTimeLabel.font = CELL_TIME_FONT;
-    cell.sessionTitleLabel.font = CELL_TITLE_FONT;
-    
-//    cell.noteText.layer.borderWidth = 3;
-//    cell.sessionTitleLabel.layer.borderWidth = 3;
-//    cell.sessionTimeLabel.layer.borderWidth = 3;
-    
-    cell.cellBackground.layer.cornerRadius = 5;
-    
-    //postavi novi frame za title
-    [cell.sessionTitleLabel setHeight:session.titleHeight.floatValue];
-    
-    //postavi novi frame za time
-    [cell.sessionTimeLabel setY:CGRectGetMaxY(cell.sessionTitleLabel.frame)];
-    [cell.sessionTimeLabel setHeight:session.timeHeight.floatValue];
-    
-    //postavi novi frame za note
-    [cell.noteText setY:CGRectGetMaxY(cell.sessionTimeLabel.frame) + CELL_NOTE_MARGIN];
-    [cell.noteText setHeight:session.noteHeight.floatValue];
-    
-    //postavi novi frame za buttone
-    [cell.buttonHolder setY:(CGRectGetMaxY(cell.noteText.frame) + CELL_NOTE_MARGIN)];
-    
-    //prosiri background
-    [cell.cellBackground setHeight:session.cellHeight.floatValue - 2*CELL_MARGIN];
+    [cell setupCell:session];
+    cell.delegate = self;
     
     
     return cell;
@@ -231,5 +205,31 @@
 
 - (void)source:(Source *)source didLoadObject:(DataContainer *)dataContainer {
     [self.refreshControl endRefreshing];
+}
+
+#pragma mark - Project session cell delegate
+
+- (void)cellWithModelWillEdit:(ProjectSession *)session {
+    NSLog(@"Editiram %@", session.project.projectFullName);
+    
+    [self performSegueWithIdentifier:@"editProject" sender:session];
+}
+
+- (void)cellWithModelWillDelete:(ProjectSession *)session {
+    NSLog(@"Deletam %@", session.project.projectFullName);
+    
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        [document.managedObjectContext deleteObject:session];
+        
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    }];
+}
+
+#pragma mark - Segue preparation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"editProject"]) {
+        [(ProjectEditorViewController *)segue.destinationViewController setProjectSession:sender];
+    }
 }
 @end

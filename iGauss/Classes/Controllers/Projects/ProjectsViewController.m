@@ -111,7 +111,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.session setObject:[((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath] forKey:@"project"];
+    if ([self.session isKindOfClass:[ProjectSession class]]) {
+        ((ProjectSession *)self.session).project = [((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath];
+    } else if ([self.session isKindOfClass:[NSMutableDictionary class]]) {
+        [self.session setObject:[((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath] forKey:@"project"];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

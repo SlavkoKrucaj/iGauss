@@ -43,7 +43,6 @@
 		9F17B6A1163B396B00EE61DC /* ProjectSessionsDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B6A0163B396B00EE61DC /* ProjectSessionsDeserializer.m */; };
 		9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E71163F05AF00DEF36D /* SKBindingManager.m */; };
 		9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */; };
-		9F209E9A163F199300DEF36D /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E99163F199300DEF36D /* ProjectSession.m */; };
 		9F209E9F163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */; };
 		9F209EA2163F215800DEF36D /* GothamMediumHR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */; };
 		9F542EE21636F46D005C002F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE11636F46D005C002F /* UIKit.framework */; };
@@ -119,6 +118,7 @@
 		9F70BC08163D19DE00C24A63 /* iGauss.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */; };
 		9F78EF9C16405D7F009857D8 /* note_holder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9A16405D7F009857D8 /* note_holder.png */; };
 		9F78EF9D16405D7F009857D8 /* note_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9B16405D7F009857D8 /* note_holder@2x.png */; };
+		9FB5FBAF16408D42007E1B13 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBAE16408D42007E1B13 /* ProjectSession.m */; };
 		9FBB98BF163D306A00B34FF8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBB98BE163D306A00B34FF8 /* CoreData.framework */; };
 		9FBB98C3163D38F300B34FF8 /* UIImageView+GaussAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */; };
 		9FBB98CA163D3E4D00B34FF8 /* Project+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */; };
@@ -130,7 +130,8 @@
 		9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */; };
 		9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */; };
 		9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD58163D7B220084C478 /* Project+Manipulation.m */; };
-		9FFBC230163E71AD008DCD01 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBC22F163E71AD008DCD01 /* Project.m */; };
+		9FDCD3F61640882F0005AE9A /* WorkDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDCD3F51640882F0005AE9A /* WorkDay.m */; };
+		9FDCD3F91640882F0005AE9A /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDCD3F81640882F0005AE9A /* Project.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,8 +202,6 @@
 		9F209E71163F05AF00DEF36D /* SKBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBindingManager.m; sourceTree = "<group>"; };
 		9F209E73163F080F00DEF36D /* ProjectEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectEditorViewController.h; sourceTree = "<group>"; };
 		9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectEditorViewController.m; sourceTree = "<group>"; };
-		9F209E98163F199300DEF36D /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
-		9F209E99163F199300DEF36D /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFAgoraSerifPro-Bold.ttf"; sourceTree = "<group>"; };
 		9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamMediumHR.ttf; sourceTree = "<group>"; };
 		9F542EDD1636F46D005C002F /* iGauss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGauss.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +284,8 @@
 		9F70BC07163D19DE00C24A63 /* iGauss.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGauss.xcdatamodel; sourceTree = "<group>"; };
 		9F78EF9A16405D7F009857D8 /* note_holder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_holder.png; sourceTree = "<group>"; };
 		9F78EF9B16405D7F009857D8 /* note_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "note_holder@2x.png"; sourceTree = "<group>"; };
+		9FB5FBAD16408D42007E1B13 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
+		9FB5FBAE16408D42007E1B13 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9FBB98BE163D306A00B34FF8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9FBB98C1163D38F300B34FF8 /* UIImageView+GaussAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GaussAnimated.h"; sourceTree = "<group>"; };
 		9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GaussAnimated.m"; sourceTree = "<group>"; };
@@ -306,8 +307,10 @@
 		9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProjectSession+Create.m"; sourceTree = "<group>"; };
 		9FD5DD57163D7B220084C478 /* Project+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Manipulation.h"; sourceTree = "<group>"; };
 		9FD5DD58163D7B220084C478 /* Project+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Manipulation.m"; sourceTree = "<group>"; };
-		9FFBC22E163E71AD008DCD01 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		9FFBC22F163E71AD008DCD01 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		9FDCD3F41640882F0005AE9A /* WorkDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkDay.h; sourceTree = "<group>"; };
+		9FDCD3F51640882F0005AE9A /* WorkDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkDay.m; sourceTree = "<group>"; };
+		9FDCD3F71640882F0005AE9A /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		9FDCD3F81640882F0005AE9A /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,11 +500,13 @@
 			children = (
 				9F17B689163B2E6300EE61DC /* LoginModel.h */,
 				9F17B68A163B2E6300EE61DC /* LoginModel.m */,
-				9F209E98163F199300DEF36D /* ProjectSession.h */,
-				9F209E99163F199300DEF36D /* ProjectSession.m */,
+				9FB5FBAD16408D42007E1B13 /* ProjectSession.h */,
+				9FB5FBAE16408D42007E1B13 /* ProjectSession.m */,
 				9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */,
-				9FFBC22E163E71AD008DCD01 /* Project.h */,
-				9FFBC22F163E71AD008DCD01 /* Project.m */,
+				9FDCD3F71640882F0005AE9A /* Project.h */,
+				9FDCD3F81640882F0005AE9A /* Project.m */,
+				9FDCD3F41640882F0005AE9A /* WorkDay.h */,
+				9FDCD3F51640882F0005AE9A /* WorkDay.m */,
 				9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */,
 				9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */,
 				9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */,
@@ -941,10 +946,11 @@
 				9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */,
 				9F577BD9163DA8B900DFD6F9 /* ProjectSessionCell.m in Sources */,
 				9F577BE3163DBF1100DFD6F9 /* UIView+Frame.m in Sources */,
-				9FFBC230163E71AD008DCD01 /* Project.m in Sources */,
 				9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */,
 				9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */,
-				9F209E9A163F199300DEF36D /* ProjectSession.m in Sources */,
+				9FDCD3F61640882F0005AE9A /* WorkDay.m in Sources */,
+				9FDCD3F91640882F0005AE9A /* Project.m in Sources */,
+				9FB5FBAF16408D42007E1B13 /* ProjectSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

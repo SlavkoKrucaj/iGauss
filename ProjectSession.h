@@ -13,16 +13,16 @@
 
 @interface ProjectSession : NSManagedObject
 
-@property (nonatomic, retain) NSString * buttonFrame;
-@property (nonatomic, retain) NSNumber * contentHeight;
-@property (nonatomic, retain) NSString * holderFrame;
-@property (nonatomic, retain) NSString * noteFrame;
-@property (nonatomic, retain) NSDate * sessionDate;
 @property (nonatomic, retain) NSNumber * sessionId;
 @property (nonatomic, retain) NSString * sessionNote;
 @property (nonatomic, retain) NSString * sessionTime;
-@property (nonatomic, retain) NSString * timeFrame;
 @property (nonatomic, retain) NSString * titleFrame;
+@property (nonatomic, retain) NSString * timeFrame;
+@property (nonatomic, retain) NSString * noteFrame;
+@property (nonatomic, retain) NSDate * buttonFrame;
+@property (nonatomic, retain) NSString * holderFrame;
+@property (nonatomic, retain) NSNumber * contentHeight;
+@property (nonatomic, retain) UNKNOWN_TYPE sessionDate;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) WorkDay *workDay;
 

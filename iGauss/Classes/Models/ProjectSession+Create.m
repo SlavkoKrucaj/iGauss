@@ -103,6 +103,32 @@
     
 }
 
++ (ProjectSession *)createLocallyWithData:(NSMutableDictionary *)data inContext:(NSManagedObjectContext *)context {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+
+    ProjectSession *session = [NSEntityDescription insertNewObjectForEntityForName:@"ProjectSession" inManagedObjectContext:context];
+    
+    session.sessionNote = [data objectForKey:@"sessionNote"];
+    session.sessionDate = [dateFormatter dateFromString:[data objectForKey:@"sessionDate"]];
+    session.sessionTime = [data objectForKey:@"sessionTime"];
+    
+    session.project = [Project projectForId:((Project *)[data objectForKey:@"project_id"]).projectId inContext:context];
+    
+    CGFloat titleHeight = [self calculateNoteHeight:session.project.projectFullName withFont:CELL_TITLE_FONT];
+    CGFloat timeHeight = [self calculateNoteHeight:session.sessionTime withFont:CELL_TIME_FONT];
+    CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote withFont:CELL_NOTE_FONT] + 2*CELL_NOTE_MARGIN;
+    
+    CGFloat cellHeight = noteHeight + titleHeight + timeHeight + 3*CELL_MARGIN + CELL_ACTION_BUTTONS_HEIGHT;
+    session.cellHeight = @(cellHeight);
+    session.noteHeight = @(noteHeight);
+    session.timeHeight = @(timeHeight);
+    session.titleHeight = @(titleHeight);
+    
+    return session;
+
+}
+
 + (CGFloat)calculateNoteHeight:(NSString *)string withFont:(UIFont *)font {
     CGSize constraint = CGSizeMake(WIDTH - (CELL_MARGIN * 2 + 2*CELL_NOTE_MARGIN), MAXFLOAT);
     

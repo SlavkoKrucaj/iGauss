@@ -111,6 +111,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.session setObject:[((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath] forKey:@"project"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

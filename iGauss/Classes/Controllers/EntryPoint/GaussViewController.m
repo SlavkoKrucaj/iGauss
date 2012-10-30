@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
         [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
     } else {
     
@@ -49,9 +49,6 @@
         [self bind];
     }
     
-//    self.loginParams.username = @"slavko@infinum.hr";
-//    self.loginParams.password = @"slavko";
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {

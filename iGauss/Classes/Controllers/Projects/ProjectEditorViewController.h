@@ -15,6 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *screenTitle;
 
-@property (nonatomic, strong) ProjectSession *projectSession;
+@property (nonatomic, strong) id projectSession;
 
 @end

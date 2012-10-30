@@ -200,7 +200,8 @@
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
         
         self.tableView.fetchedResultsController = nil;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GaussAuthToken];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
         NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];

@@ -10,7 +10,9 @@
 #import "CoreDataTableView.h"
 #import "ODRefreshControl.h"
 #import "Source.h"
+#import "ProjectSession.h"
 
 @interface ProjectsViewController : UIViewController <SourceDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) NSMutableDictionary *session;
 @end

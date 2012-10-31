@@ -224,12 +224,22 @@ typedef enum {
 
 - (IBAction)chooseDate:(UIButton *)sender {
     CKCalendarView *calendar = [[CKCalendarView alloc] initWithFrame:CGRectMake(10, 90, 300, 300)];
-    calendar.alpha = 0;
-    [self.view addSubview:calendar];
     calendar.delegate = self;
     
+    UIView *overlayView = [[UIView alloc] initWithFrame:self.view.frame];
+    overlayView.backgroundColor = [UIColor clearColor];
+    overlayView.alpha = 0;
+    [overlayView addSubview:calendar];
+    [self.view addSubview:overlayView];
+    
+    //add gesture to close calendar
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(closeCalendar:)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [overlayView addGestureRecognizer:tapGestureRecognizer];
+    
     [UIView animateWithDuration:0.3 animations:^{
-        calendar.alpha = 1.;
+        overlayView.alpha = 1.;
     }];
 }
 
@@ -360,13 +370,29 @@ typedef enum {
 #pragma mark - Calendar delegate
 
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+
+    if ([self.projectSession isKindOfClass:[NSMutableDictionary class]]) {
+  
+        [self.projectSession setObject:date forKey:@"sessionDate"];
     
-    [self.projectSession setObject:date forKey:@"sessionDate"];// = date;
+    } else if ([self.projectSession isKindOfClass:[ProjectSession class]]) {
+        
+        ((ProjectSession *)self.projectSession).sessionDate = date;
+    
+    }
     
     [UIView animateWithDuration:0.3 animations:^{
-        calendar.alpha = 0.;
+        calendar.superview.alpha = 0.;
     } completion:^(BOOL finished) {
-        [calendar removeFromSuperview];
+        [calendar.superview removeFromSuperview];
+    }];
+}
+
+- (void)closeCalendar:(UITapGestureRecognizer *)tapGesture {
+    [UIView animateWithDuration:0.3 animations:^{
+        tapGesture.view.alpha = 0.;
+    } completion:^(BOOL finished) {
+        [tapGesture.view removeFromSuperview];
     }];
 }
 

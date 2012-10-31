@@ -119,8 +119,8 @@
 		9F78EF9C16405D7F009857D8 /* note_holder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9A16405D7F009857D8 /* note_holder.png */; };
 		9F78EF9D16405D7F009857D8 /* note_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9B16405D7F009857D8 /* note_holder@2x.png */; };
 		9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE3164109D2007E1B13 /* WorkDay.m */; };
-		9FB5FBE7164109D2007E1B13 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE6164109D2007E1B13 /* ProjectSession.m */; };
 		9FB5FBEA164109D2007E1B13 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE9164109D2007E1B13 /* Project.m */; };
+		9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2716417C56007E1B13 /* ProjectSession.m */; };
 		9FBB98BF163D306A00B34FF8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBB98BE163D306A00B34FF8 /* CoreData.framework */; };
 		9FBB98C3163D38F300B34FF8 /* UIImageView+GaussAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */; };
 		9FBB98CA163D3E4D00B34FF8 /* Project+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */; };
@@ -286,10 +286,10 @@
 		9F78EF9B16405D7F009857D8 /* note_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "note_holder@2x.png"; sourceTree = "<group>"; };
 		9FB5FBE2164109D2007E1B13 /* WorkDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkDay.h; sourceTree = "<group>"; };
 		9FB5FBE3164109D2007E1B13 /* WorkDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkDay.m; sourceTree = "<group>"; };
-		9FB5FBE5164109D2007E1B13 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
-		9FB5FBE6164109D2007E1B13 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9FB5FBE8164109D2007E1B13 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		9FB5FBE9164109D2007E1B13 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		9FB5FC2616417C56007E1B13 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
+		9FB5FC2716417C56007E1B13 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9FBB98BE163D306A00B34FF8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9FBB98C1163D38F300B34FF8 /* UIImageView+GaussAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GaussAnimated.h"; sourceTree = "<group>"; };
 		9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GaussAnimated.m"; sourceTree = "<group>"; };
@@ -501,10 +501,10 @@
 				9F17B689163B2E6300EE61DC /* LoginModel.h */,
 				9F17B68A163B2E6300EE61DC /* LoginModel.m */,
 				9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */,
+				9FB5FC2616417C56007E1B13 /* ProjectSession.h */,
+				9FB5FC2716417C56007E1B13 /* ProjectSession.m */,
 				9FB5FBE8164109D2007E1B13 /* Project.h */,
 				9FB5FBE9164109D2007E1B13 /* Project.m */,
-				9FB5FBE5164109D2007E1B13 /* ProjectSession.h */,
-				9FB5FBE6164109D2007E1B13 /* ProjectSession.m */,
 				9FB5FBE2164109D2007E1B13 /* WorkDay.h */,
 				9FB5FBE3164109D2007E1B13 /* WorkDay.m */,
 				9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */,
@@ -949,8 +949,8 @@
 				9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */,
 				9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */,
 				9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */,
-				9FB5FBE7164109D2007E1B13 /* ProjectSession.m in Sources */,
 				9FB5FBEA164109D2007E1B13 /* Project.m in Sources */,
+				9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

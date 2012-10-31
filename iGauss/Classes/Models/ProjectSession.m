@@ -22,6 +22,7 @@
 @dynamic sessionTime;
 @dynamic timeFrame;
 @dynamic titleFrame;
+@dynamic projectName;
 @dynamic project;
 
 @end

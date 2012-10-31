@@ -27,7 +27,7 @@
     self.session = session;
     
     self.noteText.text = session.sessionNote;
-    self.sessionTitleLabel.text = session.project.projectFullName;
+    self.sessionTitleLabel.text = session.projectName;
     self.sessionTimeLabel.text = session.sessionTime;
     
     self.noteText.font = CELL_NOTE_FONT;

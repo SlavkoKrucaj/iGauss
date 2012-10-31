@@ -23,6 +23,8 @@
     [alertView.discardButton setTitle:discard forState:UIControlStateNormal];
     [alertView.confirmButton setTitle:confirm forState:UIControlStateNormal];
     
+    if ([discard isEqualToString:@""]) alertView.discardButton.userInteractionEnabled = NO;
+    
     alertView.alpha = 0.;
     [owner addSubview:alertView];
     

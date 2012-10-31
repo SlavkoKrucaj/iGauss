@@ -11,6 +11,7 @@
         <attribute name="contentHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="holderFrame" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="noteFrame" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="sessionNote" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="210"/>
+        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="225"/>
         <element name="WorkDay" positionX="601" positionY="192" width="128" height="60"/>
     </elements>
 </model>

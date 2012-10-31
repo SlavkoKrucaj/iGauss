@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSString * sessionTime;
 @property (nonatomic, retain) NSString * timeFrame;
 @property (nonatomic, retain) NSString * titleFrame;
+@property (nonatomic, retain) NSString * projectName;
 @property (nonatomic, retain) Project *project;
 
 @end

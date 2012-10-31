@@ -45,6 +45,7 @@
     session.sessionNote = [[data objectForKey:@"note"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
     session.sessionDate = [dateFormatter dateFromString:[data objectForKey:@"date"]];
     session.sessionTime = [NSString stringWithFormat:@"- %.02d:%02d", time/60, time%60];
+    session.projectName = [data objectForKey:@"name"];
     session.project = [Project projectForId:[data objectForKey:@"project_id"] inContext:context];
 
     [self updateHeights:session];
@@ -62,6 +63,7 @@
     session.sessionTime = [data objectForKey:@"sessionTime"];
     
     session.project = [Project projectForId:((Project *)[data objectForKey:@"project"]).projectId inContext:context];
+    session.projectName = session.project.projectFullName;
     
     [self updateHeights:session];
     
@@ -70,7 +72,7 @@
 }
 
 + (void)updateHeights:(ProjectSession *)session {
-    CGFloat titleHeight = [self calculateNoteHeight:session.project.projectFullName withFont:CELL_TITLE_FONT];
+    CGFloat titleHeight = [self calculateNoteHeight:session.projectName withFont:CELL_TITLE_FONT];
     CGFloat timeHeight = [self calculateNoteHeight:session.sessionTime withFont:CELL_TIME_FONT];
     CGFloat noteHeight = [self calculateNoteHeight:session.sessionNote withFont:CELL_NOTE_FONT];
     

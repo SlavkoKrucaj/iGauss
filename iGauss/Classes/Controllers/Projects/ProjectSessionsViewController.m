@@ -20,6 +20,9 @@
 #import "Project.h"
 #import "ProjectEditorViewController.h"
 
+#define ALERT_LOGOUT 11
+#define ALERT_DELETE 12
+
 @interface ProjectSessionsViewController ()
 
 @property (nonatomic, strong) Source *projectSessionsSource;
@@ -49,6 +52,7 @@
 #warning will be come deprecated when menu comes in
     CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"logout_button" title:@"Log out?" subtitle:@"Are you sure you want to log out?" discard:@"No" confirm:@"Log out"];
     
+    alertView.tag = ALERT_LOGOUT;
     alertView.delegate = self;
     [alertView show];
 }
@@ -176,27 +180,35 @@
 
 - (void)customAlertViewConfirmed:(CustomAlertView *)alertView {
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-        
-        self.tableView.fetchedResultsController = nil;
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
-        NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];
+        if (alertView.tag == ALERT_LOGOUT) {
+            self.tableView.fetchedResultsController = nil;
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
+            NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];
 
-        for (Project *project in allProjects) {
-            [document.managedObjectContext deleteObject:project];
-        }
-        
-        NSFetchRequest *allProjectSessionsFetch = [[NSFetchRequest alloc] initWithEntityName:@"ProjectSession"];
-        NSArray *allSessions = [document.managedObjectContext executeFetchRequest:allProjectSessionsFetch error:nil];
+            for (Project *project in allProjects) {
+                [document.managedObjectContext deleteObject:project];
+            }
+            
+            NSFetchRequest *allProjectSessionsFetch = [[NSFetchRequest alloc] initWithEntityName:@"ProjectSession"];
+            NSArray *allSessions = [document.managedObjectContext executeFetchRequest:allProjectSessionsFetch error:nil];
 
-        for (ProjectSession *session in allSessions) {
-            [document.managedObjectContext deleteObject:session];
+            for (ProjectSession *session in allSessions) {
+                [document.managedObjectContext deleteObject:session];
+            }
+        } else if (alertView.tag = ALERT_DELETE) {
+            
+            [document.managedObjectContext deleteObject:alertView.userDataObject];
+            
+            [document.managedObjectContext save:nil];
         }
         
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-            [self.navigationController popViewControllerAnimated:YES];
+            if (alertView.tag == ALERT_LOGOUT) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }];
     }];
 }
@@ -219,13 +231,12 @@
 
 - (void)cellWithModelWillDelete:(ProjectSession *)session {
     
-    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-        [document.managedObjectContext deleteObject:session];
-        
-        [document.managedObjectContext save:nil];
-        
-        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
-    }];
+    CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"delete_image" title:@"Delete session?" subtitle:@"Are you sure you want to delete session?" discard:@"No" confirm:@"Delete"];
+    alertView.delegate = self;
+    alertView.tag = ALERT_DELETE;
+    alertView.userDataObject = session;
+    
+    [alertView show];
 }
 
 #pragma mark - Segue preparation

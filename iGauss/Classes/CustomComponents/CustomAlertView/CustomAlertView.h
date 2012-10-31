@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 
+@property (strong, nonatomic) id userDataObject;
+
 @property (weak, nonatomic) id<CustomAlertViewDelegate> delegate;
 
 + (CustomAlertView *)createInView:(UIView *)owner withImage:(NSString *)image title:(NSString *)title subtitle:(NSString *)subtitle discard:(NSString *)discard confirm:(NSString *)confirm;

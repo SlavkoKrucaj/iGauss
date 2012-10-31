@@ -18,15 +18,13 @@
         <attribute name="timeFrame" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleFrame" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectSessions" inverseEntity="Project" syncable="YES"/>
-        <relationship name="workDay" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WorkDay" inverseName="projectSessions" inverseEntity="WorkDay" syncable="YES"/>
     </entity>
     <entity name="WorkDay" representedClassName="WorkDay" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="projectSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectSession" inverseName="workDay" inverseEntity="ProjectSession" syncable="YES"/>
     </entity>
     <elements>
         <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="225"/>
-        <element name="WorkDay" positionX="601" positionY="192" width="128" height="75"/>
+        <element name="ProjectSession" positionX="405" positionY="177" width="128" height="210"/>
+        <element name="WorkDay" positionX="601" positionY="192" width="128" height="60"/>
     </elements>
 </model>

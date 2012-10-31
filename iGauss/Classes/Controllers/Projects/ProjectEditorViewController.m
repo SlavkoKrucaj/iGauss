@@ -77,10 +77,6 @@ typedef enum {
                                                object:nil];
 }
 
-- (void)dealloc {
-    [self.bindingManager removeAllBindings];
-}
-
 #pragma mark - keyboard handling
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -334,16 +330,21 @@ typedef enum {
 #pragma mark - Custom alert view delegate
 
 - (void)customAlertViewConfirmed:(CustomAlertView *)alertView {
+    
+    [self.bindingManager deactivateAllBindings];
+    [self.bindingManager removeAllBindings];
+    self.bindingManager = nil;
+    
     if (alertView.tag == ALERT_DISCARD) {
         [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
             if (self.projectEditorMode == ProjectEditorModeEdit) {
                 [document.managedObjectContext rollback];
-                
-                [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-                    
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];
             }
+            
+            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
         }];
     } else {
         [self.navigationController popViewControllerAnimated:YES];    

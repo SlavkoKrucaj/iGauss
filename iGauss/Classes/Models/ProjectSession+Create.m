@@ -54,16 +54,14 @@
 }
 
 + (ProjectSession *)createLocallyWithData:(NSMutableDictionary *)data inContext:(NSManagedObjectContext *)context {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd";
 
     ProjectSession *session = [NSEntityDescription insertNewObjectForEntityForName:@"ProjectSession" inManagedObjectContext:context];
     
     session.sessionNote = [data objectForKey:@"sessionNote"];
-    session.sessionDate = [dateFormatter dateFromString:[data objectForKey:@"sessionDate"]];
+    session.sessionDate = [data objectForKey:@"sessionDate"];
     session.sessionTime = [data objectForKey:@"sessionTime"];
     
-    session.project = [Project projectForId:((Project *)[data objectForKey:@"project_id"]).projectId inContext:context];
+    session.project = [Project projectForId:((Project *)[data objectForKey:@"project"]).projectId inContext:context];
     
     [self updateHeights:session];
     

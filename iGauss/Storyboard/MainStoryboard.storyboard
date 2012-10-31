@@ -215,7 +215,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="126" sectionHeaderHeight="22" sectionFooterHeight="22" id="dcs-0t-O4k" customClass="CoreDataTableView">
                                 <rect key="frame" x="0.0" y="45" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProjectSessionCell" rowHeight="180" id="goh-UI-cbY" customClass="ProjectSessionCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="180"/>
@@ -617,8 +616,6 @@
         <class className="ProjectSessionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionCell.h"/>
             <relationships>
-                <relationship kind="action" name="doDelete:"/>
-                <relationship kind="action" name="doEdit:"/>
                 <relationship kind="outlet" name="buttonHolder" candidateClass="UIView"/>
                 <relationship kind="outlet" name="cellBackground" candidateClass="UIView"/>
                 <relationship kind="outlet" name="noteText" candidateClass="UILabel"/>
@@ -629,8 +626,6 @@
         <class className="ProjectSessionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addNewProjectSession:" candidateClass="UIButton"/>
-                <relationship kind="action" name="logout:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>
@@ -638,6 +633,7 @@
         <class className="ProjectsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="close:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>
         </class>
@@ -648,7 +644,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wpm-nM-4SR"/>
-        <segue reference="GHr-WM-Ou3"/>
+        <segue reference="AVl-De-Uxs"/>
+        <segue reference="IXT-Ae-v2T"/>
     </inferredMetricsTieBreakers>
 </document>

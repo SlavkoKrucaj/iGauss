@@ -210,16 +210,15 @@
 #pragma mark - Project session cell delegate
 
 - (void)cellWithModelWillEdit:(ProjectSession *)session {
-    NSLog(@"Editiram %@", session.project.projectFullName);
-    
     [self performSegueWithIdentifier:@"editProject" sender:session];
 }
 
 - (void)cellWithModelWillDelete:(ProjectSession *)session {
-    NSLog(@"Deletam %@", session.project.projectFullName);
     
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
         [document.managedObjectContext deleteObject:session];
+        
+        [document.managedObjectContext save:nil];
         
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
     }];

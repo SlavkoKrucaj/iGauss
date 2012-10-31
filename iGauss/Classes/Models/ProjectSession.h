@@ -2,14 +2,14 @@
 //  ProjectSession.h
 //  iGauss
 //
-//  Created by Slavko Krucaj on 30.10.2012..
+//  Created by Slavko Krucaj on 31.10.2012..
 //  Copyright (c) 2012. slavko.krucaj. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Project, WorkDay;
+@class Project;
 
 @interface ProjectSession : NSManagedObject
 
@@ -24,6 +24,5 @@
 @property (nonatomic, retain) NSString * timeFrame;
 @property (nonatomic, retain) NSString * titleFrame;
 @property (nonatomic, retain) Project *project;
-@property (nonatomic, retain) WorkDay *workDay;
 
 @end

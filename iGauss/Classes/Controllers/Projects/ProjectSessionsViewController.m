@@ -140,7 +140,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProjectSession *session = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
 
-    return session.contentHeight.floatValue;
+    if (indexPath.row + 1 == [[[((CoreDataTableView *)tableView).fetchedResultsController sections] objectAtIndex:indexPath.section] numberOfObjects] ) {
+        return session.contentHeight.floatValue;
+    }
+    
+    return session.contentHeight.floatValue - CELL_MARGIN;
 
 }
 

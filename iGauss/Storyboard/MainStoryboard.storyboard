@@ -29,7 +29,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" id="NA4-5W-9do">
-                                <rect key="frame" x="25" y="218" width="276.5" height="47"/>
+                                <rect key="frame" x="25" y="220" width="276.5" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="UMD-m0-V5Y">
-                                <rect key="frame" x="25" y="267" width="276" height="47"/>
+                                <rect key="frame" x="25" y="269" width="276" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
@@ -616,6 +616,8 @@
         <class className="ProjectSessionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionCell.h"/>
             <relationships>
+                <relationship kind="action" name="doDelete:"/>
+                <relationship kind="action" name="doEdit:"/>
                 <relationship kind="outlet" name="buttonHolder" candidateClass="UIView"/>
                 <relationship kind="outlet" name="cellBackground" candidateClass="UIView"/>
                 <relationship kind="outlet" name="noteText" candidateClass="UILabel"/>

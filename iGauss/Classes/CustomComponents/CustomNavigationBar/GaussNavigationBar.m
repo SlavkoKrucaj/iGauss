@@ -9,11 +9,6 @@
 #import "GaussNavigationBar.h"
 
 @interface GaussNavigationBar()
-
-@property (nonatomic, strong) UIButton *leftButton;
-@property (nonatomic, strong) UIButton *rightButton;
-@property (nonatomic, strong) UILabel  *titleLabel;
-
 @end
 
 @implementation GaussNavigationBar

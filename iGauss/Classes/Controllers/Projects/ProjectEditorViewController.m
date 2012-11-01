@@ -148,7 +148,7 @@ typedef enum {
         self.projectNameHolder.alpha = 0;
         self.sessionTimeHolder.alpha = 0;
         self.sessionDateHolder.alpha = 0;
-        self.closeButton.alpha = 0;
+        self.navigation.leftButton.alpha = 0;
         
         CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(CGRectGetMinY(self.sessionNoteHolder.frame) - 15 - 45));
         self.sessionNoteHolder.transform = t2;
@@ -169,7 +169,7 @@ typedef enum {
         self.projectNameHolder.alpha = 1;
         self.sessionTimeHolder.alpha = 1;
         self.sessionDateHolder.alpha = 1;
-        self.closeButton.alpha = 1;
+        self.navigation.leftButton.alpha = 1;
         
     } completion:^(BOOL finished) {
     }];
@@ -182,7 +182,7 @@ typedef enum {
         self.projectNameHolder.alpha = 0;
         self.sessionNoteHolder.alpha = 0;
         self.sessionDateHolder.alpha = 0;
-        self.closeButton.alpha = 0;
+        self.navigation.leftButton.alpha = 0;
         
         self.sessionTimeHolder.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(CGRectGetMinY(self.sessionTimeHolder.frame) - 120));
         
@@ -195,7 +195,7 @@ typedef enum {
         
         self.sessionTimeHolder.transform = CGAffineTransformIdentity;
         
-        self.closeButton.alpha = 1;
+        self.navigation.leftButton.alpha = 1;
         self.projectNameHolder.alpha = 1;
         self.sessionNoteHolder.alpha = 1;
         self.sessionDateHolder.alpha = 1;

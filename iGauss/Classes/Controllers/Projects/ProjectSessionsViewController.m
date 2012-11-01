@@ -93,6 +93,9 @@
     NSString *dateString = [[[((CoreDataTableView *)tableView).fetchedResultsController sections] objectAtIndex:section] name];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setLocale:usLocale];
+    
     NSDate *date = [dateFormatter dateFromString:dateString];
 
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 26)];

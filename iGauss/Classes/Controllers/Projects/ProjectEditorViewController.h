@@ -10,8 +10,9 @@
 #import "ProjectSession.h"
 #import "CustomAlertView.h"
 #import "CKCalendarView.h"
+#import "SKBindingManager.h"
 
-@interface ProjectEditorViewController : UIViewController <CustomAlertViewDelegate, CKCalendarDelegate>
+@interface ProjectEditorViewController : UIViewController <CustomAlertViewDelegate, CKCalendarDelegate, SKBindingProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *screenTitle;
 

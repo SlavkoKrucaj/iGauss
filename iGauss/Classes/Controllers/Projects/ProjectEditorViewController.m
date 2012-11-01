@@ -41,6 +41,8 @@ typedef enum {
 @property (nonatomic, strong) SKBindingManager *bindingManager;
 @property (nonatomic, assign) ProjectEditorMode projectEditorMode;
 
+@property (nonatomic, assign) BOOL changeOccured;
+
 @end
 
 @implementation ProjectEditorViewController
@@ -51,6 +53,7 @@ typedef enum {
 {
     [super viewDidLoad];
     self.bindingManager = [[SKBindingManager alloc] init];
+    self.changeOccured = NO;
     
     if (self.projectSession == nil) {
         self.projectEditorMode = ProjectEditorModeAdd;
@@ -213,7 +216,11 @@ typedef enum {
     
     alertView.tag = ALERT_DISCARD;
     alertView.delegate = self;
-    [alertView show];
+    if (self.changeOccured) {
+        [alertView show];
+    } else {
+        [self customAlertViewConfirmed:alertView];
+    }
 }
 
 #pragma mark - form actions
@@ -335,6 +342,8 @@ typedef enum {
     [bindingOptions setObject:@YES                       forKey:BindingTwoWayBinding];
     [self.bindingManager bind:bindingOptions];
     
+    self.bindingManager.delegate = self;
+    
 }
 
 #pragma mark - Custom alert view delegate
@@ -402,6 +411,12 @@ typedef enum {
     if ([segue.identifier isEqualToString:@"openProjects"]) {
         [(ProjectsViewController *)segue.destinationViewController setSession:self.projectSession];
     }
+}
+
+#pragma mark - binding delegate
+
+- (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
+    self.changeOccured = YES;
 }
 
 @end

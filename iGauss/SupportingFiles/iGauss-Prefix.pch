@@ -18,5 +18,7 @@
 #import "App.h"
 
 #define LOG(s,...) if (self.debugMode) NSLog(s,##__VA_ARGS__);
+#define GOTHAM_FONT(s) ([UIFont fontWithName:@"GothamMediumHR" size:s])
+#define AGORA_FONT(size) ([UIFont fontWithName:@"PFAgoraSerifPro-Bold" size:size])
 
 #define IOS6 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)

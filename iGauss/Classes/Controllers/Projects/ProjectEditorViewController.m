@@ -15,6 +15,8 @@
 #import "ProjectSession+Create.h"
 #import "ProjectsViewController.h"
 #import "Project.h"
+#import "UIView+Frame.h"
+#import "UIColor+Create.h"
 
 #define ALERT_DISCARD 11
 #define ALERT_SAVE 12
@@ -66,7 +68,13 @@ typedef enum {
         NSAssert(self.projectSession, @"You should set project session to edit, when in edit mode");
     
     }
+    
+    //bind fields to model
     [self bind];
+    
+    //set inputAccessory view for note
+    self.sessionNoteTextView.inputAccessoryView = [self inputAccessoryViewForNote];
+    
     
     //register for notifications from UIKeyboard
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -120,7 +128,8 @@ typedef enum {
         
         CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(CGRectGetMinY(self.sessionNoteHolder.frame) - 15 - 45));
         self.sessionNoteHolder.transform = t2;
-        
+        [self.sessionNoteTextView setHeight:self.sessionNoteTextView.frame.size.height - self.sessionNoteTextView.inputAccessoryView.frame.size.height];
+        [self.sessionNoteHolder setHeight:self.sessionNoteHolder.frame.size.height - self.sessionNoteTextView.inputAccessoryView.frame.size.height];
     }];
     
 }
@@ -130,6 +139,8 @@ typedef enum {
     [UIView animateWithDuration:duration animations:^{
         
         self.sessionNoteHolder.transform = CGAffineTransformIdentity;
+        [self.sessionNoteTextView setHeight:self.sessionNoteTextView.frame.size.height + self.sessionNoteTextView.inputAccessoryView.frame.size.height];
+        [self.sessionNoteHolder setHeight:self.sessionNoteHolder.frame.size.height + self.sessionNoteTextView.inputAccessoryView.frame.size.height];
         
         self.projectNameHolder.alpha = 1;
         self.sessionTimeHolder.alpha = 1;
@@ -417,6 +428,49 @@ typedef enum {
 
 - (void)bindedObject:(id)object changedKeyPath:(NSString *)keyPath {
     self.changeOccured = YES;
+}
+
+#pragma mark - Input view for note
+
+- (UIView *)inputAccessoryViewForNote {
+    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    inputView.backgroundColor = [UIColor clearColor];
+    
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+    separator.backgroundColor = [UIColor withRed:199 green:199 blue:199 alpha:1];
+    
+    UIButton *buttonStar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 60)];
+    buttonStar.titleLabel.font = GOTHAM_FONT(20);
+    [buttonStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [buttonStar setTitle:@"*" forState:UIControlStateNormal];
+    [buttonStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *buttonDoubleStar = [[UIButton alloc] initWithFrame:CGRectMake(276, 0, 44, 60)];
+    buttonDoubleStar.titleLabel.font = GOTHAM_FONT(20);
+    [buttonDoubleStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [buttonDoubleStar setTitle:@"**" forState:UIControlStateNormal];
+    [buttonDoubleStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [inputView addSubview:separator];
+    [inputView addSubview:buttonStar];
+    [inputView addSubview:buttonDoubleStar];
+    
+    return inputView;
+    
+}
+
+- (void)starTouched:(UIButton *)button {
+    
+    NSString *newString;
+
+    if ([button.titleLabel.text isEqualToString:@"*"]) {
+        newString = [self.sessionNoteTextView.text stringByAppendingString:@"\n*"];
+    } else {
+        newString = [self.sessionNoteTextView.text stringByAppendingString:@"**"];
+    }
+    
+    self.sessionNoteTextView.text = newString;
+    
 }
 
 @end

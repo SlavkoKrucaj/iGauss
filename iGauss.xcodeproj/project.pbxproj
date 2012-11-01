@@ -121,6 +121,7 @@
 		9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE3164109D2007E1B13 /* WorkDay.m */; };
 		9FB5FBEA164109D2007E1B13 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE9164109D2007E1B13 /* Project.m */; };
 		9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2716417C56007E1B13 /* ProjectSession.m */; };
+		9FB5FC2D164288D5007E1B13 /* UIColor+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2C164288D4007E1B13 /* UIColor+Create.m */; };
 		9FBB98BF163D306A00B34FF8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBB98BE163D306A00B34FF8 /* CoreData.framework */; };
 		9FBB98C3163D38F300B34FF8 /* UIImageView+GaussAnimated.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */; };
 		9FBB98CA163D3E4D00B34FF8 /* Project+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */; };
@@ -290,6 +291,8 @@
 		9FB5FBE9164109D2007E1B13 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		9FB5FC2616417C56007E1B13 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
 		9FB5FC2716417C56007E1B13 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
+		9FB5FC2B164288D4007E1B13 /* UIColor+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Create.h"; sourceTree = "<group>"; };
+		9FB5FC2C164288D4007E1B13 /* UIColor+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Create.m"; sourceTree = "<group>"; };
 		9FBB98BE163D306A00B34FF8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9FBB98C1163D38F300B34FF8 /* UIImageView+GaussAnimated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GaussAnimated.h"; sourceTree = "<group>"; };
 		9FBB98C2163D38F300B34FF8 /* UIImageView+GaussAnimated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GaussAnimated.m"; sourceTree = "<group>"; };
@@ -533,6 +536,7 @@
 		9F15D6461637320500965D36 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				9FB5FC2A16428456007E1B13 /* CustomNavigationBar */,
 				9FBB98D5163D4D1F00B34FF8 /* CoreDataTableView.h */,
 				9FBB98D6163D4D1F00B34FF8 /* CoreDataTableView.m */,
 				9FBB9906163D560C00B34FF8 /* ODRefreshControl.h */,
@@ -545,6 +549,8 @@
 				9F17B60A1639C13C00EE61DC /* CustomAlertView */,
 				9F577BE1163DBF1100DFD6F9 /* UIView+Frame.h */,
 				9F577BE2163DBF1100DFD6F9 /* UIView+Frame.m */,
+				9FB5FC2B164288D4007E1B13 /* UIColor+Create.h */,
+				9FB5FC2C164288D4007E1B13 /* UIColor+Create.m */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -750,6 +756,13 @@
 			path = EntryPoint;
 			sourceTree = "<group>";
 		};
+		9FB5FC2A16428456007E1B13 /* CustomNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomNavigationBar;
+			sourceTree = "<group>";
+		};
 		9FBB98C0163D38A400B34FF8 /* GaussLogo */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +964,7 @@
 				9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */,
 				9FB5FBEA164109D2007E1B13 /* Project.m in Sources */,
 				9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */,
+				9FB5FC2D164288D5007E1B13 /* UIColor+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,8 +11,10 @@
 #import "ODRefreshControl.h"
 #import "Source.h"
 #import "ProjectSession.h"
+#import "GaussNavigationBar.h"
 
 @interface ProjectsViewController : UIViewController <SourceDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) IBOutlet GaussNavigationBar *navigation;
 @property (nonatomic, weak) id session;
 @end

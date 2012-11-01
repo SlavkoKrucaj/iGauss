@@ -59,15 +59,21 @@ typedef enum {
     
     if (self.projectSession == nil) {
         self.projectEditorMode = ProjectEditorModeAdd;
-
+        [self.navigation setTitle:@"Add work"];
         self.projectSession = [NSMutableDictionary dictionary];
 
     } else {
-    
+        [self.navigation setTitle:@"Edit work"];
         self.projectEditorMode = ProjectEditorModeEdit;
         NSAssert(self.projectSession, @"You should set project session to edit, when in edit mode");
     
     }
+    
+    [self.navigation setLeftButtonImage:@"cancel_button"];
+    [self.navigation setRightButtonImage:@"accept_button"];
+    
+    [self.navigation setLeftButtonTarget:self action:@selector(discard:)];
+    [self.navigation setRightButtonTarget:self action:@selector(saveChanges:)];
     
     //bind fields to model
     [self bind];

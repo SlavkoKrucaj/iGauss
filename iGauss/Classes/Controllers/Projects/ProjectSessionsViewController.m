@@ -40,6 +40,13 @@
 {
     [super viewDidLoad];
     
+    [self.navigation setTitle:@"Gauss"];
+    [self.navigation setLeftButtonImage:@"logout_button"];
+    [self.navigation setLeftButtonTarget:self action:@selector(logout:)];
+
+    [self.navigation setRightButtonImage:@"add_work_button"];
+    [self.navigation setRightButtonTarget:self action:@selector(addNewProjectSession:)];
+    
     self.refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [self.refreshControl addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventValueChanged];
     

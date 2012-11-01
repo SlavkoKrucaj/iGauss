@@ -31,6 +31,10 @@
 {
     [super viewDidLoad];
     
+    [self.navigation setTitle:@"Projects"];
+    [self.navigation setLeftButtonImage:@"cancel_button"];
+    [self.navigation setLeftButtonTarget:self action:@selector(close:)];
+    
     self.refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [self.refreshControl addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventValueChanged];
     

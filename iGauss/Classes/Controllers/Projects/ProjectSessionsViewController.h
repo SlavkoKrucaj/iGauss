@@ -11,9 +11,10 @@
 #import "CustomAlertView.h"
 #import "Source.h"
 #import "ProjectSessionCell.h"
+#import "GaussNavigationBar.h"
 
 @interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate, ProjectSessionCellDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *screenTitle;
+@property (nonatomic, weak) IBOutlet GaussNavigationBar *navigation;
 
 @end

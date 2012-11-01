@@ -11,10 +11,12 @@
 #import "CustomAlertView.h"
 #import "CKCalendarView.h"
 #import "SKBindingManager.h"
+#import "GaussNavigationBar.h"
 
 @interface ProjectEditorViewController : UIViewController <CustomAlertViewDelegate, CKCalendarDelegate, SKBindingProtocol>
 
-@property (weak, nonatomic) IBOutlet UILabel *screenTitle;
+
+@property (nonatomic, weak) IBOutlet GaussNavigationBar *navigation;
 
 @property (nonatomic, strong) id projectSession;
 

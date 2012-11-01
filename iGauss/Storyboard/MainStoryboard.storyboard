@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7M7-kE-rLp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xhY-fc-RsV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
@@ -320,7 +320,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="efj-5t-Sa5">
-                                        <rect key="frame" x="20" y="0.0" width="52" height="50"/>
+                                        <rect key="frame" x="20" y="0.0" width="52" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -363,7 +363,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JxI-ld-xow">
-                                        <rect key="frame" x="20" y="0.0" width="52" height="50"/>
+                                        <rect key="frame" x="20" y="0.0" width="52" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -483,7 +483,6 @@
         <class className="GaussViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GaussViewController.h"/>
             <relationships>
-                <relationship kind="action" name="loginButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="gaussLogo" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="gaussSubtitle" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="gaussTitle" candidateClass="UIImageView"/>
@@ -531,8 +530,6 @@
         <class className="ProjectSessionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addNewProjectSession:" candidateClass="UIButton"/>
-                <relationship kind="action" name="logout:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>

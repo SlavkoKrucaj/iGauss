@@ -261,20 +261,40 @@ typedef enum {
     CKCalendarView *calendar = [[CKCalendarView alloc] initWithFrame:CGRectMake(10, 90, 300, 300)];
     calendar.delegate = self;
     
-    UIView *overlayView = [[UIView alloc] initWithFrame:self.view.frame];
+    NSDate *selectedDate = nil;
+    if ([self.projectSession isKindOfClass:[NSMutableDictionary class]]) {
+        
+        selectedDate = [self.projectSession objectForKey:@"sessionDate"];
+        
+    } else if ([self.projectSession isKindOfClass:[ProjectSession class]]) {
+        
+        selectedDate = ((ProjectSession *)self.projectSession).sessionDate;
+        
+    }
+    
+    if (selectedDate) calendar.selectedDate = selectedDate;
+    
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.window.frame];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    backgroundView.alpha = 0.8;
+    
+    UIView *overlayView = [[UIView alloc] initWithFrame:self.view.window.frame];
     overlayView.backgroundColor = [UIColor clearColor];
     overlayView.alpha = 0;
+    
+    [overlayView addSubview:backgroundView];
     [overlayView addSubview:calendar];
+    
     [self.view addSubview:overlayView];
     
     //add gesture to close calendar
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                            action:@selector(closeCalendar:)];
     tapGestureRecognizer.cancelsTouchesInView = NO;
-    [overlayView addGestureRecognizer:tapGestureRecognizer];
+    [backgroundView addGestureRecognizer:tapGestureRecognizer];
     
     [UIView animateWithDuration:0.3 animations:^{
-        overlayView.alpha = 1.;
+        overlayView.alpha = 1;
     }];
 }
 
@@ -343,8 +363,6 @@ typedef enum {
         
         NSInteger minutes = time % 100;
         NSInteger hours = time/100;
-        
-        
         
         self.projectTimeTextField.text = [NSString stringWithFormat:@"%02d:%02d",hours,minutes];
         
@@ -429,9 +447,9 @@ typedef enum {
 
 - (void)closeCalendar:(UITapGestureRecognizer *)tapGesture {
     [UIView animateWithDuration:0.3 animations:^{
-        tapGesture.view.alpha = 0.;
+        tapGesture.view.superview.alpha = 0.;
     } completion:^(BOOL finished) {
-        [tapGesture.view removeFromSuperview];
+        [tapGesture.view.superview removeFromSuperview];
     }];
 }
 

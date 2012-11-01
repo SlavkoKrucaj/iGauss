@@ -26,7 +26,7 @@
     
     self.leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
     self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(275, 0, 45, 45)];
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, 230, 45)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, 230, 50)];
     self.titleLabel.font = AGORA_FONT(20);
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;

@@ -37,6 +37,9 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UITextField *projectTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *projectDateLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *accpetButton;
 
@@ -81,6 +84,9 @@ typedef enum {
     //set inputAccessory view for note
     self.sessionNoteTextView.inputAccessoryView = [self inputAccessoryViewForNote];
     
+    //set font
+    self.timeLabel.font = GOTHAM_FONT(17);
+    self.dateLabel.font = GOTHAM_FONT(17);
     
     //register for notifications from UIKeyboard
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -395,6 +401,8 @@ typedef enum {
 - (void)viewDidUnload {
     [self setCloseButton:nil];
     [self setAccpetButton:nil];
+    [self setTimeLabel:nil];
+    [self setDateLabel:nil];
     [super viewDidUnload];
 }
 

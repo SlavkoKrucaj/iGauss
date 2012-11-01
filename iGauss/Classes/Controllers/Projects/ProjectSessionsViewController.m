@@ -114,14 +114,16 @@
     dateFormatter.dateFormat = @"dd.MM.yyyy.";
     dateString = [dateFormatter stringFromDate:date];
     
-    UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 140, 26)];
+    UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 140, 30)];
     dayLabel.text = dayName;
+    dayLabel.font = GOTHAM_FONT(15);
     dayLabel.textAlignment = NSTextAlignmentLeft;
     dayLabel.textColor = [UIColor whiteColor];
     dayLabel.backgroundColor = [UIColor clearColor];
     
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 140, 26)];
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 140, 30)];
     dateLabel.text = dateString;
+    dateLabel.font = GOTHAM_FONT(15);
     dateLabel.textAlignment = NSTextAlignmentRight;
     dateLabel.textColor = [UIColor whiteColor];
     dateLabel.backgroundColor = [UIColor clearColor];

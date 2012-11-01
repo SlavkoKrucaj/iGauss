@@ -54,8 +54,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.userNameTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
-    self.passwordTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
+//    self.userNameTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
+//    self.passwordTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
     
     if (!self.bindingManager) {
         self.bindingManager = [[SKBindingManager alloc] init];

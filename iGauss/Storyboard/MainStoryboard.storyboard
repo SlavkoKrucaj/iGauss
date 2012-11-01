@@ -31,7 +31,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" id="NA4-5W-9do">
                                 <rect key="frame" x="25" y="220" width="276.5" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="EQE-nA-3GH" id="gxy-35-yXT"/>
@@ -40,7 +40,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="UMD-m0-V5Y">
                                 <rect key="frame" x="25" y="269" width="276" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="EQE-nA-3GH" id="lUW-IZ-rmt"/>
@@ -329,7 +329,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00:00" textAlignment="right" minimumFontSize="17" id="h5q-jz-UCS">
                                         <rect key="frame" x="112" y="0.0" width="123" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="xhY-fc-RsV" id="VLR-Ho-PG7"/>
@@ -373,7 +373,7 @@
                                         <rect key="frame" x="112" y="0.0" width="123" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yLz-JV-XJg">
@@ -423,6 +423,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CDU-Fm-XgO"/>
                     <connections>
+                        <outlet property="dateLabel" destination="JxI-ld-xow" id="sna-Nk-r5h"/>
                         <outlet property="navigation" destination="IUa-UH-SYK" id="bGz-qM-9Yc"/>
                         <outlet property="projectDateLabel" destination="ncm-vB-Fyp" id="6lB-Hs-oMW"/>
                         <outlet property="projectNameHolder" destination="4N5-nJ-P03" id="0Fp-32-zyg"/>
@@ -432,6 +433,7 @@
                         <outlet property="sessionNoteHolder" destination="hMe-3N-T5g" id="Spu-Xl-vXl"/>
                         <outlet property="sessionNoteTextView" destination="4w8-TT-bIJ" id="H2k-E4-80a"/>
                         <outlet property="sessionTimeHolder" destination="Or4-cR-CqK" id="CyY-rO-y2l"/>
+                        <outlet property="timeLabel" destination="efj-5t-Sa5" id="aOb-xE-HU0"/>
                         <segue destination="DQF-hN-OZS" kind="push" identifier="openProjects" id="GHr-WM-Ou3"/>
                     </connections>
                 </viewController>
@@ -501,13 +503,9 @@
         <class className="ProjectEditorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectEditorViewController.h"/>
             <relationships>
-                <relationship kind="action" name="chooseDate:" candidateClass="UIButton"/>
-                <relationship kind="action" name="chooseProject:" candidateClass="UIButton"/>
-                <relationship kind="action" name="chooseTime:" candidateClass="UIButton"/>
-                <relationship kind="action" name="discard:" candidateClass="UIButton"/>
-                <relationship kind="action" name="saveChanges:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="accpetButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="projectDateLabel" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="projectNameHolder" candidateClass="UIView"/>
@@ -517,6 +515,7 @@
                 <relationship kind="outlet" name="sessionNoteHolder" candidateClass="UIView"/>
                 <relationship kind="outlet" name="sessionNoteTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="sessionTimeHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ProjectSessionCell" superclassName="UITableViewCell">
@@ -532,6 +531,8 @@
         <class className="ProjectSessionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addNewProjectSession:" candidateClass="UIButton"/>
+                <relationship kind="action" name="logout:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>
@@ -539,6 +540,7 @@
         <class className="ProjectsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="close:"/>
                 <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>

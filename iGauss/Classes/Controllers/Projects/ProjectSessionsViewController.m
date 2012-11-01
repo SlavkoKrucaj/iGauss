@@ -19,6 +19,9 @@
 #import "UIView+Frame.h"
 #import "Project.h"
 #import "ProjectEditorViewController.h"
+#import "PaperFoldView.h"
+#import "UIView+Shadow.h"
+#import "MenuTableView.h"
 
 #define ALERT_LOGOUT 11
 #define ALERT_DELETE 12
@@ -26,6 +29,7 @@
 @interface ProjectSessionsViewController ()
 
 @property (nonatomic, strong) Source *projectSessionsSource;
+@property (nonatomic, strong) PaperFoldView *foldContainer;
 
 @property (weak, nonatomic) IBOutlet CoreDataTableView *tableView;
 @property (weak, nonatomic) ODRefreshControl *refreshControl;
@@ -40,9 +44,11 @@
 {
     [super viewDidLoad];
     
+    [self setupFoldView];
+    
     [self.navigation setTitle:@"Gauss"];
-    [self.navigation setLeftButtonImage:@"logout_button"];
-    [self.navigation setLeftButtonTarget:self action:@selector(logout:)];
+    [self.navigation setLeftButtonImage:@"menu_button"];
+    [self.navigation setLeftButtonTarget:self action:@selector(openMenu:)];
 
     [self.navigation setRightButtonImage:@"add_work_button"];
     [self.navigation setRightButtonTarget:self action:@selector(addNewProjectSession:)];
@@ -53,12 +59,42 @@
     [self setupFetchedResultsController];
 }
 
+#pragma mark - Setuping fold view 
+
+- (void)setupFoldView {
+
+    self.foldContainer = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 460)];
+
+    MenuTableView *menuView = [[MenuTableView alloc] initWithFrame:CGRectMake(0, 0, 258, 460)];
+    [menuView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    menuView.menuDelegate = self;
+    
+    [self.view addShadow];
+    [self.view setY:0];
+    
+    [self.foldContainer setLeftFoldContentView:menuView];
+    [self.foldContainer setCenterContentView:self.view];
+    
+    // Add the PaperFold as subview
+    self.view = self.foldContainer;
+
+}
+
 #pragma mark - Button actions
 
-- (IBAction)logout:(UIButton *)sender {
-#warning will be come deprecated when menu comes in
+- (IBAction)openMenu:(UIButton *)sender {
+
+    if (self.foldContainer.state == PaperFoldStateLeftUnfolded) {
+        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
+    } else {
+        [self.foldContainer setPaperFoldState:PaperFoldStateLeftUnfolded];
+    }
+
+}
+
+- (void)logout {
     CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"logout_button" title:@"Log out?" subtitle:@"Are you sure you want to log out?" discard:@"No" confirm:@"Log out"];
-    
+
     alertView.tag = ALERT_LOGOUT;
     alertView.delegate = self;
     [alertView show];
@@ -195,6 +231,7 @@
         if (alertView.tag == ALERT_LOGOUT) {
             self.tableView.fetchedResultsController = nil;
             [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
+            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussUsername];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
@@ -256,6 +293,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"editProject"]) {
         [(ProjectEditorViewController *)segue.destinationViewController setProjectSession:sender];
+    }
+}
+
+#pragma mark - Menu delegate
+
+- (void)menuChangedSelectionTo:(NSString *)selectionName {
+    if ([selectionName isEqualToString:@"logout"]) {
+        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
+        [self logout];
+    } else {
+        CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Not implemented!" subtitle:@"Action is not yet implemented." discard:@"" confirm:@"Ok"];        
+        [alertView show];
     }
 }
 @end

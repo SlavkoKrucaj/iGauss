@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const GaussAuthToken;
+extern NSString *const GaussUsername;
 
 @interface App  : NSObject
 

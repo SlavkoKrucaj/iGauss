@@ -244,6 +244,7 @@
 - (void)intermediateSource:(Source *)source didLoadObject:(DataContainer *)dataContainer {
     LoginModel *model = (LoginModel *)dataContainer;
     [[NSUserDefaults standardUserDefaults] setObject:model.token forKey:GaussAuthToken];
+    [[NSUserDefaults standardUserDefaults] setObject:self.loginParams.username forKey:GaussUsername];
     
     ProjectSessionParams *params = [[ProjectSessionParams alloc] init];
     params.authToken = model.token;

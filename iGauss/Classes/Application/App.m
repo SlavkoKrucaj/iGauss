@@ -9,6 +9,7 @@
 #import "App.h"
 
 NSString *const GaussAuthToken = @"auth_token";
+NSString *const GaussUsername = @"username";
 
 @implementation App
 

@@ -12,8 +12,9 @@
 #import "Source.h"
 #import "ProjectSessionCell.h"
 #import "GaussNavigationBar.h"
+#import "MenuTableView.h"
 
-@interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate, ProjectSessionCellDelegate>
+@interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate, ProjectSessionCellDelegate, SlideOutMenuDelegate>
 
 @property (nonatomic, weak) IBOutlet GaussNavigationBar *navigation;
 

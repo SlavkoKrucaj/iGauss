@@ -187,6 +187,11 @@ typedef enum {
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.projectTimeTextField resignFirstResponder];
+    return NO;
+}
+
 #pragma mark - navigation bar actions
 
 - (IBAction)saveChanges:(UIButton *)sender {

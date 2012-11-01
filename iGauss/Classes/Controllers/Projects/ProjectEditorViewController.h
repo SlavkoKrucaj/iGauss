@@ -13,7 +13,7 @@
 #import "SKBindingManager.h"
 #import "GaussNavigationBar.h"
 
-@interface ProjectEditorViewController : UIViewController <CustomAlertViewDelegate, CKCalendarDelegate, SKBindingProtocol>
+@interface ProjectEditorViewController : UIViewController <CustomAlertViewDelegate, CKCalendarDelegate, SKBindingProtocol, UITextFieldDelegate>
 
 
 @property (nonatomic, weak) IBOutlet GaussNavigationBar *navigation;

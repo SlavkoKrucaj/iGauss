@@ -330,7 +330,10 @@
                                         <rect key="frame" x="112" y="0.0" width="123" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xhY-fc-RsV" id="VLR-Ho-PG7"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V2t-0O-dkZ">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
@@ -468,6 +471,79 @@
         <image name="project_edit_button.png" width="140" height="45"/>
         <image name="work_holder_background.png" width="281" height="50"/>
     </resources>
+    <classes>
+        <class className="CoreDataTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableView.h"/>
+        </class>
+        <class className="GaussNavigationBar" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GaussNavigationBar.h"/>
+        </class>
+        <class className="GaussViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GaussViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="gaussLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gaussSubtitle" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gaussTitle" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textFieldContainer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userNameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ProjectCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="disclousureImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="projectName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ProjectEditorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectEditorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="chooseDate:" candidateClass="UIButton"/>
+                <relationship kind="action" name="chooseProject:" candidateClass="UIButton"/>
+                <relationship kind="action" name="chooseTime:" candidateClass="UIButton"/>
+                <relationship kind="action" name="discard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="saveChanges:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="accpetButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
+                <relationship kind="outlet" name="projectDateLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="projectNameHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="projectNameLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="projectTimeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sessionDateHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sessionNoteHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sessionNoteTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="sessionTimeHolder" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ProjectSessionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="cellBackground" candidateClass="UIView"/>
+                <relationship kind="outlet" name="noteText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sessionTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sessionTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ProjectSessionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
+            </relationships>
+        </class>
+        <class className="ProjectsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

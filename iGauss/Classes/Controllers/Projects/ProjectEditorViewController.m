@@ -102,6 +102,18 @@ typedef enum {
 
 #pragma mark - keyboard handling
 
+- (void)hideKeyoardIfShown {
+    if ([self.sessionNoteTextView isFirstResponder]) {
+        
+        [self.sessionNoteTextView resignFirstResponder];
+        
+    } else if ([self.projectTimeTextField isFirstResponder]) {
+        
+        [self.projectTimeTextField resignFirstResponder];
+        
+    }
+}
+
 - (void)keyboardWillShow:(NSNotification *)notification {
     CGFloat duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
@@ -239,6 +251,8 @@ typedef enum {
 }
 
 - (IBAction)discard:(UIButton *)sender {
+    
+    [self hideKeyoardIfShown];
     
     CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Discard?" subtitle:@"Do you really want to discard changes?" discard:@"No" confirm:@"Discard"];
     
@@ -476,21 +490,21 @@ typedef enum {
     UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
     separator.backgroundColor = [UIColor withRed:199 green:199 blue:199 alpha:1];
     
-    UIButton *buttonStar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 60)];
+    UIButton *buttonStar = [[UIButton alloc] initWithFrame:CGRectMake(276, 0, 44, 60)];
     buttonStar.titleLabel.font = GOTHAM_FONT(20);
     [buttonStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buttonStar setTitle:@"*" forState:UIControlStateNormal];
     [buttonStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *buttonDoubleStar = [[UIButton alloc] initWithFrame:CGRectMake(276, 0, 44, 60)];
-    buttonDoubleStar.titleLabel.font = GOTHAM_FONT(20);
-    [buttonDoubleStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [buttonDoubleStar setTitle:@"**" forState:UIControlStateNormal];
-    [buttonDoubleStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
-    
+//    UIButton *buttonDoubleStar = [[UIButton alloc] initWithFrame:CGRectMake(276, 0, 44, 60)];
+//    buttonDoubleStar.titleLabel.font = GOTHAM_FONT(20);
+//    [buttonDoubleStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [buttonDoubleStar setTitle:@"**" forState:UIControlStateNormal];
+//    [buttonDoubleStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
+//    
     [inputView addSubview:separator];
     [inputView addSubview:buttonStar];
-    [inputView addSubview:buttonDoubleStar];
+//    [inputView addSubview:buttonDoubleStar];
     
     return inputView;
     
@@ -501,9 +515,7 @@ typedef enum {
     NSString *newString;
 
     if ([button.titleLabel.text isEqualToString:@"*"]) {
-        newString = [self.sessionNoteTextView.text stringByAppendingString:@"\n*"];
-    } else {
-        newString = [self.sessionNoteTextView.text stringByAppendingString:@"**"];
+        newString = [self.sessionNoteTextView.text stringByAppendingString:@"* "];
     }
     
     self.sessionNoteTextView.text = newString;

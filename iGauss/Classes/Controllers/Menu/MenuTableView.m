@@ -9,6 +9,7 @@
 #import "MenuTableView.h"
 #import "UIColor+Create.h"
 #import "MenuCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MenuItem : NSObject
 @property (nonatomic, strong) NSString *itemName;
@@ -43,11 +44,18 @@
     
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 58)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 58)];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    NSURL *avatarUrl = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:GaussAvatar]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar-placeholder"]];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width, 58)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     label.font = GOTHAM_FONT(20);
-    label.textAlignment = NSTextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentLeft;
     label.text = [[NSUserDefaults standardUserDefaults] objectForKey:GaussUsername];;
     
     UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 56, label.frame.size.width, 1)];
@@ -56,9 +64,12 @@
     UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(0, 57, label.frame.size.width, 1)];
     gray.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1.0];
     
-    [label addSubview:black];
-    [label addSubview:gray];
-    self.tableHeaderView = label;
+    [headerView addSubview:imageView];
+    [headerView addSubview:label];
+    
+    [headerView addSubview:black];
+    [headerView addSubview:gray];
+    self.tableHeaderView = headerView;
     
 }
 
@@ -113,6 +124,8 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
         cell.itemName.font = GOTHAM_FONT(17);
+        cell.itemName.shadowColor = [UIColor blackColor];
+        cell.itemName.shadowOffset = CGSizeMake(0,1);
 
         UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
         myBackView.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];

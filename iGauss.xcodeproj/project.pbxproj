@@ -172,6 +172,8 @@
 		9FC2412A164825FA00DE6862 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC24129164825FA00DE6862 /* ProjectSession.m */; };
 		9FC2412D164826BB00DE6862 /* BillingPoint+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2412C164826BB00DE6862 /* BillingPoint+Create.m */; };
 		9FC24130164826D200DE6862 /* BillingPoint+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2412F164826D100DE6862 /* BillingPoint+Manipulation.m */; };
+		9FC241331648350400DE6862 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FC241311648350400DE6862 /* avatar-placeholder.png */; };
+		9FC241341648350400DE6862 /* avatar-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FC241321648350400DE6862 /* avatar-placeholder@2x.png */; };
 		9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */; };
 		9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */; };
 		9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD58163D7B220084C478 /* Project+Manipulation.m */; };
@@ -406,6 +408,8 @@
 		9FC2412C164826BB00DE6862 /* BillingPoint+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BillingPoint+Create.m"; sourceTree = "<group>"; };
 		9FC2412E164826D100DE6862 /* BillingPoint+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BillingPoint+Manipulation.h"; sourceTree = "<group>"; };
 		9FC2412F164826D100DE6862 /* BillingPoint+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BillingPoint+Manipulation.m"; sourceTree = "<group>"; };
+		9FC241311648350400DE6862 /* avatar-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder.png"; sourceTree = "<group>"; };
+		9FC241321648350400DE6862 /* avatar-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder@2x.png"; sourceTree = "<group>"; };
 		9FD5DD48163D62C20084C478 /* ProjectSessionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSessionsViewController.h; sourceTree = "<group>"; };
 		9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSessionsViewController.m; sourceTree = "<group>"; };
 		9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProjectSession+Create.h"; sourceTree = "<group>"; };
@@ -921,6 +925,8 @@
 		9FB5FC751642D5BE007E1B13 /* menu_icons */ = {
 			isa = PBXGroup;
 			children = (
+				9FC241311648350400DE6862 /* avatar-placeholder.png */,
+				9FC241321648350400DE6862 /* avatar-placeholder@2x.png */,
 				9FB5FC861642D633007E1B13 /* logout_normal.png */,
 				9FB5FC871642D633007E1B13 /* logout_normal@2x.png */,
 				9FB5FC881642D633007E1B13 /* logout_pressed.png */,
@@ -1114,6 +1120,8 @@
 				9FB5FCA51642D633007E1B13 /* timetracking_icon_pressed@2x.png in Resources */,
 				9FB5FCA81642DAEC007E1B13 /* menu_button.png in Resources */,
 				9FB5FCA91642DAEC007E1B13 /* menu_button@2x.png in Resources */,
+				9FC241331648350400DE6862 /* avatar-placeholder.png in Resources */,
+				9FC241341648350400DE6862 /* avatar-placeholder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

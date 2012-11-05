@@ -15,6 +15,7 @@
 #import "ProjectSessionParams.h"
 #import "UIImageView+GaussAnimated.h"
 #import "CustomAlertView.h"
+#import "App.h"
 
 @interface GaussViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *gaussLogo;
@@ -53,9 +54,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-//    self.userNameTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
-//    self.passwordTextField.font = [UIFont fontWithName:@"GothamMediumHR" size:16];
     
     if (!self.bindingManager) {
         self.bindingManager = [[SKBindingManager alloc] init];
@@ -193,8 +191,6 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
     
-    NSLog(@"Username: %@, Password: %@", self.loginParams.username, self.loginParams.password);
-    
     if (self.userNameTextField.isFirstResponder)
         [self.userNameTextField resignFirstResponder];
     
@@ -205,6 +201,13 @@
         CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Error" subtitle:@"Molimo popunite oba polja." discard:@"" confirm:@"Ok"];
         [alertView show];
         return;
+    }
+    
+    if ([self.loginParams.username isEqualToString:@"demo"] &&
+        [self.loginParams.password isEqualToString:@"demo"]) {
+        [App instance].buildVersion = BuildVersionDevelopment;
+    } else {
+        [App instance].buildVersion = BuildVersionProduction;
     }
 
     [self.gaussLogo animateLogo];

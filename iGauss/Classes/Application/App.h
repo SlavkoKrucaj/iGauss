@@ -13,7 +13,14 @@ extern NSString *const GaussUsername;
 extern NSString *const GaussEmail;
 extern NSString *const GaussAvatar;
 
+typedef enum {
+    BuildVersionDevelopment,
+    BuildVersionProduction
+} BuildVersion;
+
 @interface App  : NSObject
+
+@property (nonatomic, assign) BuildVersion buildVersion;
 
 + (App*) instance;
 

@@ -12,13 +12,18 @@
 #import "LoginDeserializer.h"
 #import "ProjectsDeserializer.h"
 #import "ProjectSessionsDeserializer.h"
+#import "App.h"
 
 @implementation Sources
 
 + (Source *)createLoginSource {
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/login?email=:email&password=:password"];
+    if ([App instance].buildVersion == BuildVersionProduction) {
+        source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/login?email=:email&password=:password"];
+    } else {
+        source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/gauss_login_demo.json"];
+    }
     source.errorHandler = [[iGaussErrorHandler alloc] init];
     source.deserializer = [[LoginDeserializer alloc] init];
     
@@ -29,7 +34,11 @@
     
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/projects?auth_token=:auth_token"];
+    if ([App instance].buildVersion == BuildVersionProduction) {
+        source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/projects?auth_token=:auth_token"];
+    } else {
+        source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/gauss_projects_demo.json"];
+    }
     source.errorHandler = [[iGaussErrorHandler alloc] init];
     source.deserializer = [[ProjectsDeserializer alloc] init];
     
@@ -41,7 +50,11 @@
     
     Source *source = [[Source alloc] initSourceInMode:SourceTypeGet];
     
-    source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/project_sessions?auth_token=:auth_token"];
+    if ([App instance].buildVersion == BuildVersionProduction) {
+        source.url = [NSURL URLWithString:@"http://gauss.infinum.hr/api/project_sessions?auth_token=:auth_token"];
+    } else {
+        source.url = [NSURL URLWithString:@"http://dl.dropbox.com/u/12771232/gauss_project_sessions_demo.json"];
+    }
     source.errorHandler = [[iGaussErrorHandler alloc] init];
     source.deserializer = [[ProjectSessionsDeserializer alloc] init];
     

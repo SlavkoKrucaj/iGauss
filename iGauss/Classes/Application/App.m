@@ -34,16 +34,9 @@ static App* _instance = nil;
 {
     if(self == [super init])
     {
-        
+        self.buildVersion = BuildVersionProduction;
     }
     return self;
-}
-
-
-- (void)loadApplicationData
-{
-    
-    
 }
 
 

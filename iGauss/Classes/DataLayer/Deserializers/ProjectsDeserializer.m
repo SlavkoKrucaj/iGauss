@@ -10,6 +10,7 @@
 #import "Store.h"
 #import "Project+Create.h"
 #import "DocumentHandler.h"
+#import "BillingPoint+Create.h"
 
 @implementation ProjectsDeserializer
 
@@ -24,7 +25,14 @@
         
         for (NSDictionary *dictionary in json) {
             
-            [Project createProjectWithData:dictionary inContext:document.managedObjectContext];
+            Project *project = [Project createProjectWithData:dictionary inContext:document.managedObjectContext];
+            for (NSDictionary *billingPoint in [dictionary objectForKey:@"billing_points"]) {
+                NSMutableDictionary *mutableBillingPoint = [billingPoint mutableCopy];
+                [mutableBillingPoint setObject:project forKey:@"project"];
+                
+                [BillingPoint createBillingPointWithData:mutableBillingPoint inContext:document.managedObjectContext];
+                
+            }
             
         }
         

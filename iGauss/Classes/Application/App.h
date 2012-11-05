@@ -10,6 +10,8 @@
 
 extern NSString *const GaussAuthToken;
 extern NSString *const GaussUsername;
+extern NSString *const GaussEmail;
+extern NSString *const GaussAvatar;
 
 @interface App  : NSObject
 

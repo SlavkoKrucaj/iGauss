@@ -8,6 +8,7 @@
 
 #import "ProjectSession+Create.h"
 #import "Project+Manipulation.h"
+#import "BillingPoint+Manipulation.h"
 
 @implementation ProjectSession (Create)
 
@@ -46,7 +47,7 @@
     session.sessionDate = [dateFormatter dateFromString:[data objectForKey:@"date"]];
     session.sessionTime = [NSString stringWithFormat:@"- %.02d:%02d", time/60, time%60];
     session.projectName = [data objectForKey:@"name"];
-    session.project = [Project projectForId:[data objectForKey:@"project_id"] inContext:context];
+    session.billingPoint = [BillingPoint billingPointForId:[data objectForKey:@"project_id"] inContext:context];
 
     [self updateHeights:session];
     
@@ -62,8 +63,8 @@
     session.sessionDate = [data objectForKey:@"sessionDate"];
     session.sessionTime = [data objectForKey:@"sessionTime"];
     
-    session.project = [Project projectForId:((Project *)[data objectForKey:@"project"]).projectId inContext:context];
-    session.projectName = session.project.projectFullName;
+    session.billingPoint = [BillingPoint billingPointForId:((BillingPoint *)[data objectForKey:@"billingPoint"]).billingPointId inContext:context];
+    session.projectName = session.billingPoint.billingPointFullName;
     
     [self updateHeights:session];
     

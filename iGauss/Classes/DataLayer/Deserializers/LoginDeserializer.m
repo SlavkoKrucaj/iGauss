@@ -15,6 +15,10 @@
     
     LoginModel *model = [[LoginModel alloc] init];
     model.token = [json valueForKeyPath:@"auth_token"];
+    model.email = [json valueForKeyPath:@"email"];
+    model.firstName = [json valueForKeyPath:@"first_name"];
+    model.lastName = [json valueForKeyPath:@"last_name"];
+    model.avatarUrl = [json valueForKeyPath:@"avatar_url"];
     
     completion(model);
 }

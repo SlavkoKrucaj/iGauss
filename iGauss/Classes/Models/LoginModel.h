@@ -11,5 +11,9 @@
 @interface LoginModel : Model
 
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, strong) NSString *avatarUrl;
 
 @end

@@ -28,18 +28,13 @@
         project = [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:context];
         project.projectId = [data objectForKey:@"id"];
         project.projectName = [data objectForKey:@"name"];
-        project.projectFullName = [data valueForKeyPath:@"full_name"];
+        
     } else {
         project = [matches lastObject];
         
         NSString *projectName = [data objectForKey:@"name"];
         if (![projectName isEqualToString:project.projectName]) {
             project.projectName = projectName;
-        }
-        
-        NSString *projectFullName = [data valueForKeyPath:@"full_name"];
-        if (![projectFullName isEqualToString:project.projectFullName]) {
-            project.projectFullName = projectFullName;
         }
     }
     

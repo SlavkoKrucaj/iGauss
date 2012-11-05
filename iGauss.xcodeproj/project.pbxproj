@@ -118,9 +118,6 @@
 		9F70BC08163D19DE00C24A63 /* iGauss.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */; };
 		9F78EF9C16405D7F009857D8 /* note_holder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9A16405D7F009857D8 /* note_holder.png */; };
 		9F78EF9D16405D7F009857D8 /* note_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F78EF9B16405D7F009857D8 /* note_holder@2x.png */; };
-		9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE3164109D2007E1B13 /* WorkDay.m */; };
-		9FB5FBEA164109D2007E1B13 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FBE9164109D2007E1B13 /* Project.m */; };
-		9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2716417C56007E1B13 /* ProjectSession.m */; };
 		9FB5FC2D164288D5007E1B13 /* UIColor+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2C164288D4007E1B13 /* UIColor+Create.m */; };
 		9FB5FC3016429371007E1B13 /* GaussNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5FC2F16429371007E1B13 /* GaussNavigationBar.m */; };
 		9FB5FC391642B695007E1B13 /* logout_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5FC311642B695007E1B13 /* logout_button@2x.png */; };
@@ -170,6 +167,11 @@
 		9FBB98D0163D4AFC00B34FF8 /* Deserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98CF163D4AFC00B34FF8 /* Deserializer.m */; };
 		9FBB98D4163D4C4C00B34FF8 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB98D3163D4C4C00B34FF8 /* ProjectsViewController.m */; };
 		9FBB9908163D560C00B34FF8 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB9907163D560C00B34FF8 /* ODRefreshControl.m */; };
+		9FC24124164825FA00DE6862 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC24123164825FA00DE6862 /* Project.m */; };
+		9FC24127164825FA00DE6862 /* BillingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC24126164825FA00DE6862 /* BillingPoint.m */; };
+		9FC2412A164825FA00DE6862 /* ProjectSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC24129164825FA00DE6862 /* ProjectSession.m */; };
+		9FC2412D164826BB00DE6862 /* BillingPoint+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2412C164826BB00DE6862 /* BillingPoint+Create.m */; };
+		9FC24130164826D200DE6862 /* BillingPoint+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2412F164826D100DE6862 /* BillingPoint+Manipulation.m */; };
 		9FD5DD4A163D62C20084C478 /* ProjectSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */; };
 		9FD5DD4D163D75610084C478 /* ProjectSession+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */; };
 		9FD5DD59163D7B220084C478 /* Project+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5DD58163D7B220084C478 /* Project+Manipulation.m */; };
@@ -325,12 +327,6 @@
 		9F70BC07163D19DE00C24A63 /* iGauss.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGauss.xcdatamodel; sourceTree = "<group>"; };
 		9F78EF9A16405D7F009857D8 /* note_holder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_holder.png; sourceTree = "<group>"; };
 		9F78EF9B16405D7F009857D8 /* note_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "note_holder@2x.png"; sourceTree = "<group>"; };
-		9FB5FBE2164109D2007E1B13 /* WorkDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkDay.h; sourceTree = "<group>"; };
-		9FB5FBE3164109D2007E1B13 /* WorkDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkDay.m; sourceTree = "<group>"; };
-		9FB5FBE8164109D2007E1B13 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		9FB5FBE9164109D2007E1B13 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		9FB5FC2616417C56007E1B13 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
-		9FB5FC2716417C56007E1B13 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
 		9FB5FC2B164288D4007E1B13 /* UIColor+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Create.h"; sourceTree = "<group>"; };
 		9FB5FC2C164288D4007E1B13 /* UIColor+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Create.m"; sourceTree = "<group>"; };
 		9FB5FC2E16429371007E1B13 /* GaussNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaussNavigationBar.h; sourceTree = "<group>"; };
@@ -400,6 +396,16 @@
 		9FBB98D3163D4C4C00B34FF8 /* ProjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsViewController.m; sourceTree = "<group>"; };
 		9FBB9906163D560C00B34FF8 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		9FBB9907163D560C00B34FF8 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		9FC24122164825FA00DE6862 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		9FC24123164825FA00DE6862 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		9FC24125164825FA00DE6862 /* BillingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillingPoint.h; sourceTree = "<group>"; };
+		9FC24126164825FA00DE6862 /* BillingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillingPoint.m; sourceTree = "<group>"; };
+		9FC24128164825FA00DE6862 /* ProjectSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSession.h; sourceTree = "<group>"; };
+		9FC24129164825FA00DE6862 /* ProjectSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSession.m; sourceTree = "<group>"; };
+		9FC2412B164826BB00DE6862 /* BillingPoint+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BillingPoint+Create.h"; sourceTree = "<group>"; };
+		9FC2412C164826BB00DE6862 /* BillingPoint+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BillingPoint+Create.m"; sourceTree = "<group>"; };
+		9FC2412E164826D100DE6862 /* BillingPoint+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BillingPoint+Manipulation.h"; sourceTree = "<group>"; };
+		9FC2412F164826D100DE6862 /* BillingPoint+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BillingPoint+Manipulation.m"; sourceTree = "<group>"; };
 		9FD5DD48163D62C20084C478 /* ProjectSessionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSessionsViewController.h; sourceTree = "<group>"; };
 		9FD5DD49163D62C20084C478 /* ProjectSessionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSessionsViewController.m; sourceTree = "<group>"; };
 		9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProjectSession+Create.h"; sourceTree = "<group>"; };
@@ -598,18 +604,22 @@
 				9F17B689163B2E6300EE61DC /* LoginModel.h */,
 				9F17B68A163B2E6300EE61DC /* LoginModel.m */,
 				9F70BC06163D19DE00C24A63 /* iGauss.xcdatamodeld */,
-				9FB5FC2616417C56007E1B13 /* ProjectSession.h */,
-				9FB5FC2716417C56007E1B13 /* ProjectSession.m */,
-				9FB5FBE8164109D2007E1B13 /* Project.h */,
-				9FB5FBE9164109D2007E1B13 /* Project.m */,
-				9FB5FBE2164109D2007E1B13 /* WorkDay.h */,
-				9FB5FBE3164109D2007E1B13 /* WorkDay.m */,
+				9FC24128164825FA00DE6862 /* ProjectSession.h */,
+				9FC24129164825FA00DE6862 /* ProjectSession.m */,
+				9FC24125164825FA00DE6862 /* BillingPoint.h */,
+				9FC24126164825FA00DE6862 /* BillingPoint.m */,
+				9FC24122164825FA00DE6862 /* Project.h */,
+				9FC24123164825FA00DE6862 /* Project.m */,
 				9FBB98C8163D3E4D00B34FF8 /* Project+Create.h */,
 				9FBB98C9163D3E4D00B34FF8 /* Project+Create.m */,
 				9FD5DD4B163D75610084C478 /* ProjectSession+Create.h */,
 				9FD5DD4C163D75610084C478 /* ProjectSession+Create.m */,
 				9FD5DD57163D7B220084C478 /* Project+Manipulation.h */,
 				9FD5DD58163D7B220084C478 /* Project+Manipulation.m */,
+				9FC2412B164826BB00DE6862 /* BillingPoint+Create.h */,
+				9FC2412C164826BB00DE6862 /* BillingPoint+Create.m */,
+				9FC2412E164826D100DE6862 /* BillingPoint+Manipulation.h */,
+				9FC2412F164826D100DE6862 /* BillingPoint+Manipulation.m */,
 			);
 			name = Models;
 			path = iGauss/Classes/Models;
@@ -1156,9 +1166,6 @@
 				9F577BE3163DBF1100DFD6F9 /* UIView+Frame.m in Sources */,
 				9F209E72163F05AF00DEF36D /* SKBindingManager.m in Sources */,
 				9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */,
-				9FB5FBE4164109D2007E1B13 /* WorkDay.m in Sources */,
-				9FB5FBEA164109D2007E1B13 /* Project.m in Sources */,
-				9FB5FC2816417C56007E1B13 /* ProjectSession.m in Sources */,
 				9FB5FC2D164288D5007E1B13 /* UIColor+Create.m in Sources */,
 				9FB5FC3016429371007E1B13 /* GaussNavigationBar.m in Sources */,
 				9FB5FC5E1642C4FE007E1B13 /* FacingView.m in Sources */,
@@ -1173,6 +1180,11 @@
 				9FB5FC6C1642C9FD007E1B13 /* CoreDataTableView.m in Sources */,
 				9FB5FC6F1642CA45007E1B13 /* MenuTableView.m in Sources */,
 				9FB5FC721642CDA7007E1B13 /* MenuCell.m in Sources */,
+				9FC24124164825FA00DE6862 /* Project.m in Sources */,
+				9FC24127164825FA00DE6862 /* BillingPoint.m in Sources */,
+				9FC2412A164825FA00DE6862 /* ProjectSession.m in Sources */,
+				9FC2412D164826BB00DE6862 /* BillingPoint+Create.m in Sources */,
+				9FC24130164826D200DE6862 /* BillingPoint+Manipulation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

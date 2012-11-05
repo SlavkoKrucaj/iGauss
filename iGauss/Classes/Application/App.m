@@ -10,6 +10,8 @@
 
 NSString *const GaussAuthToken = @"auth_token";
 NSString *const GaussUsername = @"username";
+NSString *const GaussEmail = @"user_email";
+NSString *const GaussAvatar = @"avatar";
 
 @implementation App
 

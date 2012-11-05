@@ -13,6 +13,7 @@
 #import "ProjectSessionParams.h"
 #import "Project.h"
 #import "ProjectCell.h"
+#import "BillingPoint.h"
 
 @interface ProjectsViewController ()
 
@@ -51,8 +52,8 @@
 
 - (void)setupFetchedResultsController {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"projectId" ascending:YES]];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BillingPoint"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"billingPointId" ascending:YES]];
     
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document){
         self.tableView.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
@@ -108,17 +109,19 @@
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_normal_background.png"]];
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"project_selected_background.png"]];
     
-    Project *project = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
-    cell.projectName.text = project.projectFullName;
+    BillingPoint *billingPoint = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:indexPath];
+    cell.projectName.text = billingPoint.billingPointFullName;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.session isKindOfClass:[ProjectSession class]]) {
-        ((ProjectSession *)self.session).project = [((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath];
+     
+        ((ProjectSession *)self.session).billingPoint = [((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath];
+    
     } else if ([self.session isKindOfClass:[NSMutableDictionary class]]) {
-        [self.session setObject:[((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath] forKey:@"project"];
+        [self.session setObject:[((CoreDataTableView *)self.tableView).fetchedResultsController objectAtIndexPath:indexPath] forKey:@"billingPoint"];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

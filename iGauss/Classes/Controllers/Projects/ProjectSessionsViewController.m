@@ -22,6 +22,7 @@
 #import "PaperFoldView.h"
 #import "UIView+Shadow.h"
 #import "MenuTableView.h"
+#import "BillingPoint.h"
 
 #define ALERT_LOGOUT 11
 #define ALERT_DELETE 12
@@ -46,7 +47,7 @@
     
     [self setupFoldView];
     
-    [self.navigation setTitle:@"Gauss"];
+    [self.navigation setTitle:@"Timetracking"];
     [self.navigation setLeftButtonImage:@"menu_button"];
     [self.navigation setLeftButtonTarget:self action:@selector(openMenu:)];
 
@@ -101,6 +102,7 @@
 }
 
 - (IBAction)addNewProjectSession:(UIButton *)sender {
+            NSLog(@"Window je %@", self.view.window);
     [self performSegueWithIdentifier:@"addNewProjectSession" sender:self];
 }
 
@@ -247,6 +249,13 @@
             for (ProjectSession *session in allSessions) {
                 [document.managedObjectContext deleteObject:session];
             }
+        
+            NSFetchRequest *allBillingPointsFetch = [[NSFetchRequest alloc] initWithEntityName:@"BillingPoint"];
+            NSArray *allBillingPoints = [document.managedObjectContext executeFetchRequest:allBillingPointsFetch error:nil];
+            
+            for (BillingPoint *billingPoint in allBillingPoints) {
+                [document.managedObjectContext deleteObject:billingPoint];
+            }
         } else if (alertView.tag = ALERT_DELETE) {
             
             [document.managedObjectContext deleteObject:alertView.userDataObject];
@@ -302,6 +311,8 @@
     if ([selectionName isEqualToString:@"logout"]) {
         [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
         [self logout];
+    } else if ([selectionName isEqualToString:@"timetracking"]) {
+        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
     } else {
         CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Not implemented!" subtitle:@"Action is not yet implemented." discard:@"" confirm:@"Ok"];        
         [alertView show];

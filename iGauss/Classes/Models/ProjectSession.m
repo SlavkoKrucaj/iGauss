@@ -2,12 +2,12 @@
 //  ProjectSession.m
 //  iGauss
 //
-//  Created by Slavko Krucaj on 31.10.2012..
+//  Created by Slavko Krucaj on 5.11.2012..
 //  Copyright (c) 2012. slavko.krucaj. All rights reserved.
 //
 
 #import "ProjectSession.h"
-#import "Project.h"
+#import "BillingPoint.h"
 
 
 @implementation ProjectSession
@@ -16,13 +16,13 @@
 @dynamic contentHeight;
 @dynamic holderFrame;
 @dynamic noteFrame;
+@dynamic projectName;
 @dynamic sessionDate;
 @dynamic sessionId;
 @dynamic sessionNote;
 @dynamic sessionTime;
 @dynamic timeFrame;
 @dynamic titleFrame;
-@dynamic projectName;
-@dynamic project;
+@dynamic billingPoint;
 
 @end

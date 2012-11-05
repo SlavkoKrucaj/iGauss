@@ -17,6 +17,7 @@
 #import "Project.h"
 #import "UIView+Frame.h"
 #import "UIColor+Create.h"
+#import "BillingPoint.h"
 
 #define ALERT_DISCARD 11
 #define ALERT_SAVE 12
@@ -57,6 +58,7 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.bindingManager = [[SKBindingManager alloc] init];
     self.changeOccured = NO;
     
@@ -143,7 +145,7 @@ typedef enum {
 }
 
 - (void)openProjectDescription:(CGFloat)duration {
-    
+        NSLog(@"Window je %@", self.view.window);
     [UIView animateWithDuration:duration animations:^{
         self.projectNameHolder.alpha = 0;
         self.sessionTimeHolder.alpha = 0;
@@ -327,13 +329,13 @@ typedef enum {
     
     [bindingOptions setObject:@"projectNameBinding"     forKey:BindingId];
     [bindingOptions setObject:self.projectSession       forKey:BindingFrom];
-    [bindingOptions setObject:@"project"                forKey:BindingFromKeyPath];
+    [bindingOptions setObject:@"billingPoint"                forKey:BindingFromKeyPath];
     [bindingOptions setObject:self.projectNameLabel     forKey:BindingTo];
     [bindingOptions setObject:BindingPropertyTextField  forKey:BindingToKeyPath];
     [bindingOptions setObject:@NO                       forKey:BindingTwoWayBinding];
     
     SKTransformationBlock transformationProject = ^(id value, id toObject) {
-        return ((Project *)value).projectFullName;
+        return ((BillingPoint *)value).billingPointFullName;
     };
     [bindingOptions setObject:transformationProject     forKey:BindingForwardTransformation];
     

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BillingPoint" representedClassName="BillingPoint" syncable="YES">
+        <attribute name="billingPointFullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingPointId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="billingPointName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="billingPoints" inverseEntity="Project" syncable="YES"/>
+        <relationship name="projectSession" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectSession" inverseName="billingPoint" inverseEntity="ProjectSession" syncable="YES"/>
+    </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
-        <attribute name="projectFullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="projectSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectSession" inverseName="project" inverseEntity="ProjectSession" syncable="YES"/>
+        <relationship name="billingPoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BillingPoint" inverseName="project" inverseEntity="BillingPoint" syncable="YES"/>
     </entity>
     <entity name="ProjectSession" representedClassName="ProjectSession" syncable="YES">
         <attribute name="buttonFrame" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,14 +24,11 @@
         <attribute name="sessionTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeFrame" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleFrame" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectSessions" inverseEntity="Project" syncable="YES"/>
-    </entity>
-    <entity name="WorkDay" representedClassName="WorkDay" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="billingPoint" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="BillingPoint" inverseName="projectSession" inverseEntity="BillingPoint" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Project" positionX="-2" positionY="288" width="128" height="90"/>
         <element name="ProjectSession" positionX="405" positionY="177" width="128" height="225"/>
-        <element name="WorkDay" positionX="601" positionY="192" width="128" height="60"/>
+        <element name="BillingPoint" positionX="207" positionY="72" width="128" height="120"/>
     </elements>
 </model>

@@ -112,7 +112,7 @@
     MenuCell *cell = (MenuCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
-        cell.itemName.font = GOTHAM_FONT(20);
+        cell.itemName.font = GOTHAM_FONT(17);
 
         UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
         myBackView.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];

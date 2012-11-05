@@ -243,8 +243,11 @@
 
 - (void)intermediateSource:(Source *)source didLoadObject:(DataContainer *)dataContainer {
     LoginModel *model = (LoginModel *)dataContainer;
+    NSString *username = [model.firstName stringByAppendingFormat:@" %@", model.lastName];
     [[NSUserDefaults standardUserDefaults] setObject:model.token forKey:GaussAuthToken];
-    [[NSUserDefaults standardUserDefaults] setObject:self.loginParams.username forKey:GaussUsername];
+    [[NSUserDefaults standardUserDefaults] setObject:username forKey:GaussUsername];
+    [[NSUserDefaults standardUserDefaults] setObject:model.email forKey:GaussEmail];
+    [[NSUserDefaults standardUserDefaults] setObject:model.avatarUrl forKey:GaussAvatar];
     
     ProjectSessionParams *params = [[ProjectSessionParams alloc] init];
     params.authToken = model.token;

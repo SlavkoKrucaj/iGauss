@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100,100, 40, 40)];
+    view.backgroundColor = [UIColor blackColor];
+
+//    [self.window.rootViewController.view addSubview:view];
     return YES;
 }
 							

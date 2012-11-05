@@ -69,13 +69,16 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
 - (void)setCenterContentView:(UIView*)view
 {
     [view setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    
+    [[self.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     [self.contentView addSubview:view];
 }
 
 - (void)setLeftFoldContentView:(UIView*)view
 {
     if (self.leftFoldView) [self.leftFoldView removeFromSuperview];
-
+    
     self.leftFoldView = [[FoldView alloc] initWithFrame:CGRectMake(0,0,view.frame.size.width,self.frame.size.height)];
     [self.leftFoldView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [self insertSubview:self.leftFoldView belowSubview:self.contentView];
@@ -109,7 +112,7 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
 {
     // cancel gesture if another animation has not finished yet
     if ([self.animationTimer isValid]) return;
-
+    
     CGPoint point = [gesture translationInView:self];
     
     if ([gesture state]==UIGestureRecognizerStateChanged)
@@ -117,8 +120,7 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
         if (_state==PaperFoldStateDefault)
         {
             // animate folding when panned
-#warning changed so it doesn't conflict with table animations left-right animation
-//            [self animateWithContentOffset:point panned:YES];
+            [self animateWithContentOffset:point panned:YES];
         }
         else if (_state==PaperFoldStateLeftUnfolded)
         {
@@ -134,7 +136,6 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
     }
     else if ([gesture state]==UIGestureRecognizerStateEnded || [gesture state]==UIGestureRecognizerStateCancelled)
     {
-        if (self.state == PaperFoldStateDefault) return;
         float x = point.x;
         if (x>=0.0) // offset to the right
         {
@@ -164,7 +165,9 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
         // after panning completes
         // if offset does not exceed threshold
         // use NSTimer to create manual animation to restore view
-        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(restoreView:) userInfo:nil repeats:YES];
+        if (self.enableLeftFoldDragging || self.enableRightFoldDragging) {
+            self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(restoreView:) userInfo:nil repeats:YES];
+        }
         
     }
 }
@@ -174,9 +177,11 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
     float x = point.x;
     // if offset to the right, show the left view
     // if offset to the left, show the right multi-fold view
-
-    if (self.state!=self.lastState) self.lastState = self.state;
-
+    
+    if (self.state != self.lastState) {
+        self.lastState = self.state;
+    }
+    
     if (x>0.0)
     {
         if (self.enableLeftFoldDragging || !panned)
@@ -219,7 +224,7 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
             }
         }
     }
-    else 
+    else
     {
         [self.contentView setTransform:CGAffineTransformMakeTranslation(0, 0)];
         [self.leftFoldView unfoldWithParentOffset:x];
@@ -264,7 +269,7 @@ CGFloat const kRightViewUnfoldThreshold = 0.3;
     float x = transform.tx - (transform.tx+self.rightFoldView.frame.size.width)/8;
     transform = CGAffineTransformMakeTranslation(x, 0);
     [self.contentView setTransform:transform];
-
+    
     if (x<=-self.rightFoldView.frame.size.width+5)
     {
         [timer invalidate];

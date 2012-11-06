@@ -10,6 +10,13 @@
 #import "UIColor+Create.h"
 #import "MenuCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "App.h"
+#import "DocumentHandler.h"
+#import "ProjectSessionParams.h"
+#import "Sources.h"
+#import "UIColor+Create.h"
+#import "MenuProjectCell.h"
+#import "Project.h"
 
 @interface MenuItem : NSObject
 @property (nonatomic, strong) NSString *itemName;
@@ -22,6 +29,7 @@
 @end
 
 @interface MenuTableView()
+@property (nonatomic, strong) Source *projectsSource;
 @property (nonatomic, strong) NSMutableArray *data;
 @end
 
@@ -105,46 +113,98 @@
     item.itemImagePressed = [UIImage imageNamed:@"logout_pressed"];
     item.controllerRestorationId = @"Logout";
     [self.data addObject:item];
+    
+        
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"projectId" ascending:YES]];
+    
+    NSManagedObjectContext *context = [DocumentHandler sharedDocumentHandler].document.managedObjectContext;
+                       
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:context
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    
 }
 
 #pragma mark delegates and data sources
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 1 + self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.data count];
+    return (section == 0)? [self.data count]:[[self.fetchedResultsController.sections objectAtIndex:0] numberOfObjects];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return (indexPath.section == 0)? 50:40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return (section == 0)? 0:25;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) return nil;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 25)];
+    header.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width - 50, 25)];
+    headerLabel.text = @"My projects";
+    headerLabel.font = AGORA_FONT(15);
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    
+    [header addSubview:headerLabel];
+    return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *reuseIdentifier = @"MenuCell";
     
-    MenuCell *cell = (MenuCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
-        cell.itemName.font = GOTHAM_FONT(17);
-        cell.itemName.shadowColor = [UIColor blackColor];
-        cell.itemName.shadowOffset = CGSizeMake(0,1);
+    if (indexPath.section == 0) {
+        NSString *reuseIdentifier = @"MenuCell";
+        MenuCell *cell = (MenuCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
+            cell.itemName.font = GOTHAM_FONT(17);
+            cell.itemName.shadowColor = [UIColor blackColor];
+            cell.itemName.shadowOffset = CGSizeMake(0,1);
 
-        UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
-        myBackView.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];
-        cell.selectedBackgroundView = myBackView;
+            UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
+            myBackView.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];
+            cell.selectedBackgroundView = myBackView;
 
+        }
+        
+        MenuItem *item = [self.data objectAtIndex:indexPath.row];
+
+        cell.imageView.image = item.itemImageNormal;
+        cell.imageView.highlightedImage = item.itemImagePressed;
+        
+        cell.itemName.text = item.itemName;
+        
+        return cell;
+    } else {
+        NSString *reuseIdentifier = @"MenuProjectCell";
+        MenuProjectCell *cell = (MenuProjectCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil] objectAtIndex:0];
+            cell.projectName.font = GOTHAM_FONT(15);
+            cell.projectName.shadowColor = [UIColor blackColor];
+            cell.projectName.shadowOffset = CGSizeMake(0,1);
+            
+            UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
+            myBackView.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];
+            cell.selectedBackgroundView = myBackView;
+            
+        }
+        
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
+        Project *project = [((CoreDataTableView *)tableView).fetchedResultsController objectAtIndexPath:newIndexPath];
+        cell.projectName.text = project.projectName;
+        return cell;
     }
-    
-    MenuItem *item = [self.data objectAtIndex:indexPath.row];
-
-    cell.imageView.image = item.itemImageNormal;
-    cell.imageView.highlightedImage = item.itemImagePressed;
-    
-    cell.itemName.text = item.itemName;
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

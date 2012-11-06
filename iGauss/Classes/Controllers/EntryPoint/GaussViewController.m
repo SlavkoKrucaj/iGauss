@@ -16,6 +16,7 @@
 #import "UIImageView+GaussAnimated.h"
 #import "CustomAlertView.h"
 #import "App.h"
+#import "DocumentHandler.h"
 
 @interface GaussViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *gaussLogo;
@@ -26,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIButton    *loginButton;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (strong, nonatomic) NSConditionLock *lock;
 
 @property (nonatomic, strong) SKBindingManager *bindingManager;
 @property (nonatomic, strong) LoginParams *loginParams;
@@ -39,16 +42,20 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
-        [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
-    } else {
-    
-        self.bindingManager = [[SKBindingManager alloc] init];
-        self.loginParams = [[LoginParams alloc] init];
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        [super viewDidLoad];
         
-        [self bind];
-    }
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
+            [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
+        } else {
+            
+            self.bindingManager = [[SKBindingManager alloc] init];
+            self.loginParams = [[LoginParams alloc] init];
+            
+            [self bind];
+        }
+    }];
+    
     
 }
 
@@ -240,7 +247,7 @@
     self.view.userInteractionEnabled = YES;
     [self.gaussLogo stopAnimatingLogo];
     
-    [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
+    [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
 
 }
 

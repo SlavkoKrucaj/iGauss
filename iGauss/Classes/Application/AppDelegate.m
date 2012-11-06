@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DocumentHandler.h"
 
 @implementation AppDelegate
 
@@ -16,7 +17,6 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100,100, 40, 40)];
     view.backgroundColor = [UIColor blackColor];
 
-//    [self.window.rootViewController.view addSubview:view];
     return YES;
 }
 							

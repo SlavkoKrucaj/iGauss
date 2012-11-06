@@ -145,7 +145,6 @@ typedef enum {
 }
 
 - (void)openProjectDescription:(CGFloat)duration {
-        NSLog(@"Window je %@", self.view.window);
     [UIView animateWithDuration:duration animations:^{
         self.projectNameHolder.alpha = 0;
         self.sessionTimeHolder.alpha = 0;

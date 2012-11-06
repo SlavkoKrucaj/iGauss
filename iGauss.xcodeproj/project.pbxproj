@@ -48,6 +48,8 @@
 		9F3363F016497A07003FAF06 /* MenuContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3363EF16497A07003FAF06 /* MenuContainerController.m */; };
 		9F3365A21649A03C003FAF06 /* MyTicketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3365A11649A03C003FAF06 /* MyTicketsViewController.m */; };
 		9F3365AA1649B004003FAF06 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3365A91649B004003FAF06 /* SettingsViewController.m */; };
+		9F3365AD1649BFE4003FAF06 /* MenuProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3365AC1649BFE3003FAF06 /* MenuProjectCell.m */; };
+		9F3365AF1649BFFD003FAF06 /* MenuProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3365AE1649BFFD003FAF06 /* MenuProjectCell.xib */; };
 		9F542EE21636F46D005C002F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE11636F46D005C002F /* UIKit.framework */; };
 		9F542EE41636F46D005C002F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE31636F46D005C002F /* Foundation.framework */; };
 		9F542EE61636F46D005C002F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE51636F46D005C002F /* CoreGraphics.framework */; };
@@ -259,6 +261,9 @@
 		9F3365A11649A03C003FAF06 /* MyTicketsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTicketsViewController.m; sourceTree = "<group>"; };
 		9F3365A81649B004003FAF06 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		9F3365A91649B004003FAF06 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		9F3365AB1649BFE3003FAF06 /* MenuProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuProjectCell.h; sourceTree = "<group>"; };
+		9F3365AC1649BFE3003FAF06 /* MenuProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuProjectCell.m; sourceTree = "<group>"; };
+		9F3365AE1649BFFD003FAF06 /* MenuProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuProjectCell.xib; sourceTree = "<group>"; };
 		9F542EDD1636F46D005C002F /* iGauss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGauss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F542EE11636F46D005C002F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F542EE31636F46D005C002F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -951,6 +956,9 @@
 				9FB5FC731642CDBD007E1B13 /* MenuCell.xib */,
 				9F3363EE16497A07003FAF06 /* MenuContainerController.h */,
 				9F3363EF16497A07003FAF06 /* MenuContainerController.m */,
+				9F3365AB1649BFE3003FAF06 /* MenuProjectCell.h */,
+				9F3365AC1649BFE3003FAF06 /* MenuProjectCell.m */,
+				9F3365AE1649BFFD003FAF06 /* MenuProjectCell.xib */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1155,6 +1163,7 @@
 				9FB5FCA91642DAEC007E1B13 /* menu_button@2x.png in Resources */,
 				9FC241331648350400DE6862 /* avatar-placeholder.png in Resources */,
 				9FC241341648350400DE6862 /* avatar-placeholder@2x.png in Resources */,
+				9F3365AF1649BFFD003FAF06 /* MenuProjectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1238,7 @@
 				9F3363F016497A07003FAF06 /* MenuContainerController.m in Sources */,
 				9F3365A21649A03C003FAF06 /* MyTicketsViewController.m in Sources */,
 				9F3365AA1649B004003FAF06 /* SettingsViewController.m in Sources */,
+				9F3365AD1649BFE4003FAF06 /* MenuProjectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "Project.h"
 #import "ProjectCell.h"
 #import "BillingPoint.h"
+#import "App.h"
 
 @interface ProjectsViewController ()
 

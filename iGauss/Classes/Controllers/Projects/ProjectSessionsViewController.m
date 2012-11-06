@@ -46,16 +46,10 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"View did Load prssvc");
-    
     self.refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [self.refreshControl addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventValueChanged];
     
     [self setupFetchedResultsController];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"View will appear prssvc");
 }
 
 - (IBAction)addNewProjectSession:(UIButton *)sender {

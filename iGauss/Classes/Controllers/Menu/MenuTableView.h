@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableView.h"
 
 @protocol SlideOutMenuDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface MenuTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface MenuTableView : CoreDataTableView <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<SlideOutMenuDelegate> menuDelegate;
 

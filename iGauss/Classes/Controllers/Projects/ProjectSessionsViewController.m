@@ -23,6 +23,7 @@
 #import "UIView+Shadow.h"
 #import "MenuTableView.h"
 #import "BillingPoint.h"
+#import "App.h"
 
 #define ALERT_LOGOUT 11
 #define ALERT_DELETE 12
@@ -45,14 +46,7 @@
 {
     [super viewDidLoad];
     
-    [self setupFoldView];
-    
-    [self.navigation setTitle:@"Timetracking"];
-    [self.navigation setLeftButtonImage:@"menu_button"];
-    [self.navigation setLeftButtonTarget:self action:@selector(openMenu:)];
-
-    [self.navigation setRightButtonImage:@"add_work_button"];
-    [self.navigation setRightButtonTarget:self action:@selector(addNewProjectSession:)];
+    NSLog(@"View did Load prssvc");
     
     self.refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [self.refreshControl addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventValueChanged];
@@ -60,49 +54,11 @@
     [self setupFetchedResultsController];
 }
 
-#pragma mark - Setuping fold view 
-
-- (void)setupFoldView {
-
-    self.foldContainer = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 460)];
-
-    MenuTableView *menuView = [[MenuTableView alloc] initWithFrame:CGRectMake(0, 0, 258, 460)];
-    [menuView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-    menuView.menuDelegate = self;
-    
-    [self.view addShadow];
-    [self.view setY:0];
-    
-    [self.foldContainer setLeftFoldContentView:menuView];
-    [self.foldContainer setCenterContentView:self.view];
-    
-    // Add the PaperFold as subview
-    self.view = self.foldContainer;
-
-}
-
-#pragma mark - Button actions
-
-- (IBAction)openMenu:(UIButton *)sender {
-
-    if (self.foldContainer.state == PaperFoldStateLeftUnfolded) {
-        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
-    } else {
-        [self.foldContainer setPaperFoldState:PaperFoldStateLeftUnfolded];
-    }
-
-}
-
-- (void)logout {
-    CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"logout_button" title:@"Log out?" subtitle:@"Are you sure you want to log out?" discard:@"No" confirm:@"Log out"];
-
-    alertView.tag = ALERT_LOGOUT;
-    alertView.delegate = self;
-    [alertView show];
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"View will appear prssvc");
 }
 
 - (IBAction)addNewProjectSession:(UIButton *)sender {
-            NSLog(@"Window je %@", self.view.window);
     [self performSegueWithIdentifier:@"addNewProjectSession" sender:self];
 }
 
@@ -305,17 +261,13 @@
     }
 }
 
-#pragma mark - Menu delegate
+#pragma mark - navigation bar setup
 
-- (void)menuChangedSelectionTo:(NSString *)selectionName {
-    if ([selectionName isEqualToString:@"logout"]) {
-        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
-        [self logout];
-    } else if ([selectionName isEqualToString:@"timetracking"]) {
-        [self.foldContainer setPaperFoldState:PaperFoldStateDefault];
-    } else {
-        CustomAlertView *alertView = [CustomAlertView createInView:self.view withImage:@"cancel_button" title:@"Not implemented!" subtitle:@"Action is not yet implemented." discard:@"" confirm:@"Ok"];        
-        [alertView show];
-    }
+- (void)setupGaussNavigationBar:(GaussNavigationBar *)gaussNavigationBar {
+    gaussNavigationBar.titleLabel.text = @"Timetracking";
+
+    [gaussNavigationBar setRightButtonImage:@"add_work_button"];
+    [gaussNavigationBar setRightButtonTarget:self action:@selector(addNewProjectSession:)];
 }
+
 @end

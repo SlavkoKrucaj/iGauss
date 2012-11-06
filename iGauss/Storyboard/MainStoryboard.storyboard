@@ -73,12 +73,12 @@
                         <outlet property="passwordTextField" destination="UMD-m0-V5Y" id="sH2-9A-sQ4"/>
                         <outlet property="textFieldContainer" destination="UXU-6h-daE" id="AeP-h6-17e"/>
                         <outlet property="userNameTextField" destination="NA4-5W-9do" id="tws-XN-sJV"/>
-                        <segue destination="14x-I8-caN" kind="push" identifier="openProjectSessions" id="Pim-oe-qBX"/>
+                        <segue destination="hp3-fu-ViH" kind="push" identifier="openMenuContainer" id="mBg-9T-zpO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeT-nb-Q3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511" y="-80"/>
+            <point key="canvasLocation" x="1366" y="-69"/>
         </scene>
         <!--Projects View Controller-->
         <scene sceneID="bnc-7k-MaN">
@@ -136,18 +136,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LET-Va-GvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3074" y="-80"/>
+            <point key="canvasLocation" x="3342" y="-744"/>
         </scene>
         <!--Project Sessions View Controller-->
         <scene sceneID="Ed5-Im-07c">
             <objects>
-                <viewController id="14x-I8-caN" customClass="ProjectSessionsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectSessionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="14x-I8-caN" customClass="ProjectSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rTn-It-mUR">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="126" sectionHeaderHeight="22" sectionFooterHeight="22" id="dcs-0t-O4k" customClass="CoreDataTableView">
-                                <rect key="frame" x="0.0" y="45" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProjectSessionCell" rowHeight="180" id="goh-UI-cbY" customClass="ProjectSessionCell">
@@ -250,17 +250,11 @@
                                     <outlet property="delegate" destination="14x-I8-caN" id="JJo-Cv-3F1"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" id="Tx9-oP-QiO" customClass="GaussNavigationBar">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4TX-sW-qlc"/>
                     <connections>
-                        <outlet property="navigation" destination="Tx9-oP-QiO" id="LLl-S1-Fnp"/>
                         <outlet property="tableView" destination="dcs-0t-O4k" id="DS3-Gz-GWs"/>
                         <segue destination="xhY-fc-RsV" kind="push" identifier="addNewProjectSession" id="wpm-nM-4SR"/>
                         <segue destination="xhY-fc-RsV" kind="push" identifier="editProject" id="IXT-Ae-v2T"/>
@@ -268,7 +262,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyn-JI-fet" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="-80"/>
+            <point key="canvasLocation" x="2348" y="-752"/>
+        </scene>
+        <!--Menu Container Controller-->
+        <scene sceneID="d3U-NG-2Dr">
+            <objects>
+                <viewController id="hp3-fu-ViH" customClass="MenuContainerController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJU-7v-QdJ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="5yq-Ur-kmG" customClass="GaussNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="w1b-eN-FhZ">
+                                <rect key="frame" x="0.0" y="45" width="320" height="415"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wA2-qH-03y"/>
+                    <connections>
+                        <outlet property="contentView" destination="w1b-eN-FhZ" id="Zht-82-6Uf"/>
+                        <outlet property="navigation" destination="5yq-Ur-kmG" id="zc5-Y7-KQD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNE-KE-i8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828" y="-69"/>
+        </scene>
+        <!--My Tickets View Controller-->
+        <scene sceneID="Ckp-41-wje">
+            <objects>
+                <viewController storyboardIdentifier="MyTicketsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fMh-YP-G9p" customClass="MyTicketsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YQ2-hx-97v">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gauss_face.png" id="lH0-XC-y6a">
+                                <rect key="frame" x="109" y="119" width="102" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This screen has not yet been implemented" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mfd-oG-Z8m">
+                                <rect key="frame" x="50" y="243" width="220" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.69803921570000005" green="0.34901960780000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="notImplementedLabel" destination="mfd-oG-Z8m" id="xAc-47-BQp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEL-hF-fX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344" y="-72"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="wUg-lJ-SlF">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CJh-xa-ZBq" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P2Y-cL-BjO">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gauss_face.png" id="vGi-4G-y7P">
+                                <rect key="frame" x="109" y="119" width="102" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This screen has not yet been implemented" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ceg-8Q-yUn">
+                                <rect key="frame" x="50" y="243" width="220" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.69803921568627447" green="0.34901960784313724" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="notImplementedLabel" destination="Ceg-8Q-yUn" id="cQ7-L4-3Rr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvJ-KN-ayz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2336" y="580"/>
         </scene>
         <!--Project Editor View Controller-->
         <scene sceneID="3Ik-wh-j2S">
@@ -439,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELc-Lu-tUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2555" y="-80"/>
+            <point key="canvasLocation" x="2883" y="-752"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iBj-qi-dQm">
@@ -458,7 +545,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tde-nq-NAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="-80"/>
+            <point key="canvasLocation" x="861" y="-69"/>
         </scene>
     </scenes>
     <resources>
@@ -492,6 +579,19 @@
                 <relationship kind="outlet" name="userNameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
+        <class className="MenuContainerController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuContainerController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
+            </relationships>
+        </class>
+        <class className="MyTicketsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyTicketsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="notImplementedLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="ProjectCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectCell.h"/>
             <relationships>
@@ -502,6 +602,11 @@
         <class className="ProjectEditorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectEditorViewController.h"/>
             <relationships>
+                <relationship kind="action" name="chooseDate:" candidateClass="UIButton"/>
+                <relationship kind="action" name="chooseProject:" candidateClass="UIButton"/>
+                <relationship kind="action" name="chooseTime:" candidateClass="UIButton"/>
+                <relationship kind="action" name="discard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="saveChanges:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="accpetButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
@@ -530,16 +635,20 @@
         <class className="ProjectSessionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionsViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
             </relationships>
         </class>
         <class className="ProjectsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="close:"/>
                 <relationship kind="outlet" name="navigation" candidateClass="GaussNavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="CoreDataTableView"/>
+            </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="notImplementedLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
     </classes>

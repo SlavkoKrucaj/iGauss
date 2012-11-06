@@ -45,6 +45,9 @@
 		9F209E75163F080F00DEF36D /* ProjectEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */; };
 		9F209E9F163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */; };
 		9F209EA2163F215800DEF36D /* GothamMediumHR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */; };
+		9F3363F016497A07003FAF06 /* MenuContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3363EF16497A07003FAF06 /* MenuContainerController.m */; };
+		9F3365A21649A03C003FAF06 /* MyTicketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3365A11649A03C003FAF06 /* MyTicketsViewController.m */; };
+		9F3365AA1649B004003FAF06 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3365A91649B004003FAF06 /* SettingsViewController.m */; };
 		9F542EE21636F46D005C002F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE11636F46D005C002F /* UIKit.framework */; };
 		9F542EE41636F46D005C002F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE31636F46D005C002F /* Foundation.framework */; };
 		9F542EE61636F46D005C002F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F542EE51636F46D005C002F /* CoreGraphics.framework */; };
@@ -249,6 +252,13 @@
 		9F209E74163F080F00DEF36D /* ProjectEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectEditorViewController.m; sourceTree = "<group>"; };
 		9F209E9D163F1AAF00DEF36D /* PFAgoraSerifPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFAgoraSerifPro-Bold.ttf"; sourceTree = "<group>"; };
 		9F209EA1163F215800DEF36D /* GothamMediumHR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamMediumHR.ttf; sourceTree = "<group>"; };
+		9F3363EE16497A07003FAF06 /* MenuContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuContainerController.h; sourceTree = "<group>"; };
+		9F3363EF16497A07003FAF06 /* MenuContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuContainerController.m; sourceTree = "<group>"; };
+		9F3363F2164989A2003FAF06 /* GaussNavigationCreationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaussNavigationCreationProtocol.h; sourceTree = "<group>"; };
+		9F3365A01649A03C003FAF06 /* MyTicketsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTicketsViewController.h; sourceTree = "<group>"; };
+		9F3365A11649A03C003FAF06 /* MyTicketsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTicketsViewController.m; sourceTree = "<group>"; };
+		9F3365A81649B004003FAF06 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		9F3365A91649B004003FAF06 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9F542EDD1636F46D005C002F /* iGauss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGauss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F542EE11636F46D005C002F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F542EE31636F46D005C002F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -716,6 +726,24 @@
 			path = customFonts;
 			sourceTree = "<group>";
 		};
+		9F33659F1649A028003FAF06 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				9F3365A01649A03C003FAF06 /* MyTicketsViewController.h */,
+				9F3365A11649A03C003FAF06 /* MyTicketsViewController.m */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		9F3365A71649AFE9003FAF06 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9F3365A81649B004003FAF06 /* SettingsViewController.h */,
+				9F3365A91649B004003FAF06 /* SettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		9F542ED21636F46D005C002F = {
 			isa = PBXGroup;
 			children = (
@@ -862,6 +890,8 @@
 		9F70BB92163C2A8200C24A63 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9F3365A71649AFE9003FAF06 /* Settings */,
+				9F33659F1649A028003FAF06 /* Tickets */,
 				9FB5FC691642C9A3007E1B13 /* Menu */,
 				9FBB98D1163D4C0000B34FF8 /* Projects */,
 				9F70BB93163C2A8200C24A63 /* EntryPoint */,
@@ -883,6 +913,7 @@
 			children = (
 				9FB5FC2E16429371007E1B13 /* GaussNavigationBar.h */,
 				9FB5FC2F16429371007E1B13 /* GaussNavigationBar.m */,
+				9F3363F2164989A2003FAF06 /* GaussNavigationCreationProtocol.h */,
 			);
 			path = CustomNavigationBar;
 			sourceTree = "<group>";
@@ -918,6 +949,8 @@
 				9FB5FC701642CDA7007E1B13 /* MenuCell.h */,
 				9FB5FC711642CDA7007E1B13 /* MenuCell.m */,
 				9FB5FC731642CDBD007E1B13 /* MenuCell.xib */,
+				9F3363EE16497A07003FAF06 /* MenuContainerController.h */,
+				9F3363EF16497A07003FAF06 /* MenuContainerController.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1193,6 +1226,9 @@
 				9FC2412A164825FA00DE6862 /* ProjectSession.m in Sources */,
 				9FC2412D164826BB00DE6862 /* BillingPoint+Create.m in Sources */,
 				9FC24130164826D200DE6862 /* BillingPoint+Manipulation.m in Sources */,
+				9F3363F016497A07003FAF06 /* MenuContainerController.m in Sources */,
+				9F3365A21649A03C003FAF06 /* MyTicketsViewController.m in Sources */,
+				9F3365AA1649B004003FAF06 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,6 +1305,14 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUGG=1";
 				INFOPLIST_FILE = "$(SRCROOT)/iGauss/SupportingFiles/iGauss-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(FRANK_LDFLAGS)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

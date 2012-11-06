@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *itemName;
 @property (nonatomic, strong) UIImage *itemImageNormal;
 @property (nonatomic, strong) UIImage *itemImagePressed;
+@property (nonatomic, strong) NSString *controllerRestorationId;
 @end
 
 @implementation MenuItem
@@ -46,7 +47,7 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 58)];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 8, 40, 40)];
     NSURL *avatarUrl = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:GaussAvatar]];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [imageView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar-placeholder"]];
@@ -81,25 +82,28 @@
     item.itemName = @"TIMETRACKING";
     item.itemImageNormal = [UIImage imageNamed:@"timetracking_icon_normal"];
     item.itemImagePressed = [UIImage imageNamed:@"timetracking_icon_pressed"];
+    item.controllerRestorationId = @"ProjectSessionsViewController";
     [self.data addObject:item];
     
     item = [[MenuItem alloc] init];
     item.itemName = @"TICKETS";
     item.itemImageNormal = [UIImage imageNamed:@"tickets_normal"];
     item.itemImagePressed = [UIImage imageNamed:@"tickets_pressed"];
+    item.controllerRestorationId = @"MyTicketsViewController";
     [self.data addObject:item];
     
     item = [[MenuItem alloc] init];
     item.itemName = @"SETTINGS";
     item.itemImageNormal = [UIImage imageNamed:@"settings_normal"];
     item.itemImagePressed = [UIImage imageNamed:@"settings_pressed"];
+    item.controllerRestorationId = @"SettingsViewController";
     [self.data addObject:item];
     
     item = [[MenuItem alloc] init];
     item.itemName = @"LOGOUT";
     item.itemImageNormal = [UIImage imageNamed:@"logout_normal"];
     item.itemImagePressed = [UIImage imageNamed:@"logout_pressed"];
-    
+    item.controllerRestorationId = @"Logout";
     [self.data addObject:item];
 }
 
@@ -145,6 +149,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuItem *item = [self.data objectAtIndex:indexPath.row];
-    [self.menuDelegate menuChangedSelectionTo:[item.itemName lowercaseString]];
+    [self.menuDelegate menuChangedSelectionTo:item.controllerRestorationId];
 }
 @end

@@ -41,7 +41,7 @@
 {
     [super viewDidLoad];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
-        [self performSegueWithIdentifier:@"openProjectSessions" sender:self];
+        [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
     } else {
     
         self.bindingManager = [[SKBindingManager alloc] init];

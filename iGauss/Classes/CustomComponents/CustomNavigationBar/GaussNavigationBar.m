@@ -78,11 +78,17 @@
 
 - (void)setLeftButtonTarget:(id)target action:(SEL)action {
     self.leftButton.userInteractionEnabled = YES;
+    //due to reason that one navigation is for multiple views, every time we reset all events
+    //so we don't have BAD ACCESS exceptions
+    [self.rightButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];    
     [self.leftButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setRightButtonTarget:(id)target action:(SEL)action {
     self.rightButton.userInteractionEnabled = YES;
+    //due to reason that one navigation is for multiple views, every time we reset all events
+    //so we don't have BAD ACCESS exceptions
+    [self.rightButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
     [self.rightButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 @end

@@ -180,33 +180,7 @@
 
 - (void)customAlertViewConfirmed:(CustomAlertView *)alertView {
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-        if (alertView.tag == ALERT_LOGOUT) {
-            self.tableView.fetchedResultsController = nil;
-            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
-            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussUsername];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
-            NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];
-
-            for (Project *project in allProjects) {
-                [document.managedObjectContext deleteObject:project];
-            }
-            
-            NSFetchRequest *allProjectSessionsFetch = [[NSFetchRequest alloc] initWithEntityName:@"ProjectSession"];
-            NSArray *allSessions = [document.managedObjectContext executeFetchRequest:allProjectSessionsFetch error:nil];
-
-            for (ProjectSession *session in allSessions) {
-                [document.managedObjectContext deleteObject:session];
-            }
-        
-            NSFetchRequest *allBillingPointsFetch = [[NSFetchRequest alloc] initWithEntityName:@"BillingPoint"];
-            NSArray *allBillingPoints = [document.managedObjectContext executeFetchRequest:allBillingPointsFetch error:nil];
-            
-            for (BillingPoint *billingPoint in allBillingPoints) {
-                [document.managedObjectContext deleteObject:billingPoint];
-            }
-        } else if (alertView.tag = ALERT_DELETE) {
+        if (alertView.tag = ALERT_DELETE) {
             
             [document.managedObjectContext deleteObject:alertView.userDataObject];
             
@@ -214,9 +188,6 @@
         }
         
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-            if (alertView.tag == ALERT_LOGOUT) {
-                [self.navigationController popViewControllerAnimated:YES];
-            }
         }];
     }];
 }

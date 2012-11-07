@@ -19,6 +19,7 @@
 
 - (void)setupGaussNavigationBar:(GaussNavigationBar *)gaussNavigationBar {
     gaussNavigationBar.titleLabel.text = @"My tickets";
+    
 }
 
 - (void)viewDidLoad {

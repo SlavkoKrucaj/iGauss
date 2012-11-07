@@ -18,6 +18,10 @@
 #import "App.h"
 #import "DocumentHandler.h"
 
+#import "Project.h"
+#import "BillingPoint.h"
+#import "ProjectSession.h"
+
 @interface GaussViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *gaussLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *gaussTitle;
@@ -224,14 +228,47 @@
 
 - (void)login {
     
-    Source *projectsSource = [Sources createProjectsSource];
-    projectsSource.delegate = self;
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussAuthToken];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:GaussUsername];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSFetchRequest *allProjectsFetch = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
+        NSArray *allProjects = [document.managedObjectContext executeFetchRequest:allProjectsFetch error:nil];
+        
+        for (Project *project in allProjects) {
+            [document.managedObjectContext deleteObject:project];
+        }
+        
+        NSFetchRequest *allProjectSessionsFetch = [[NSFetchRequest alloc] initWithEntityName:@"ProjectSession"];
+        NSArray *allSessions = [document.managedObjectContext executeFetchRequest:allProjectSessionsFetch error:nil];
+        
+        for (ProjectSession *session in allSessions) {
+            [document.managedObjectContext deleteObject:session];
+        }
+        
+        NSFetchRequest *allBillingPointsFetch = [[NSFetchRequest alloc] initWithEntityName:@"BillingPoint"];
+        NSArray *allBillingPoints = [document.managedObjectContext executeFetchRequest:allBillingPointsFetch error:nil];
+        
+        for (BillingPoint *billingPoint in allBillingPoints) {
+            [document.managedObjectContext deleteObject:billingPoint];
+        }
+        
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
 
-    self.loginSource = [Sources createLoginSource];
-    self.loginSource.params = self.loginParams;
-    self.loginSource.delegate = self;
-    self.loginSource.nextSource = projectsSource;
-    [self.loginSource loadAsync];
+            Source *projectsSource = [Sources createProjectsSource];
+            projectsSource.delegate = self;
+            
+            self.loginSource = [Sources createLoginSource];
+            self.loginSource.params = self.loginParams;
+            self.loginSource.delegate = self;
+            self.loginSource.nextSource = projectsSource;
+            [self.loginSource loadAsync];
+
+        }];
+    }];
+    
     
     
 }

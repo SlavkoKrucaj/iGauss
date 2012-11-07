@@ -68,7 +68,7 @@ static DocumentHandler *_sharedInstance;
             for (OnDocumentReady documentReady in self.completionQueue) {
                 documentReady(self.document);
             }
-            self.completionQueue = [NSMutableArray array];
+            [self.completionQueue removeAllObjects];
         }
     }
 }
@@ -96,19 +96,4 @@ static DocumentHandler *_sharedInstance;
     }
 
 }
-
-- (void)objectsDidChange:(NSNotification *)notification
-{
-#ifdef DEBUG
-    NSLog(@"NSManagedObjects did change.");
-#endif
-}
-
-- (void)contextDidSave:(NSNotification *)notification
-{
-#ifdef DEBUG
-    NSLog(@"NSManagedContext did save.");
-#endif
-}
-
 @end

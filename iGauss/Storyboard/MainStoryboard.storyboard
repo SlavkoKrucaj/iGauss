@@ -602,11 +602,6 @@
         <class className="ProjectEditorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectEditorViewController.h"/>
             <relationships>
-                <relationship kind="action" name="chooseDate:" candidateClass="UIButton"/>
-                <relationship kind="action" name="chooseProject:" candidateClass="UIButton"/>
-                <relationship kind="action" name="chooseTime:" candidateClass="UIButton"/>
-                <relationship kind="action" name="discard:" candidateClass="UIButton"/>
-                <relationship kind="action" name="saveChanges:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="accpetButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
@@ -625,6 +620,7 @@
         <class className="ProjectSessionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSessionCell.h"/>
             <relationships>
+                <relationship kind="action" name="doEdit:"/>
                 <relationship kind="outlet" name="buttonHolder" candidateClass="UIView"/>
                 <relationship kind="outlet" name="cellBackground" candidateClass="UIView"/>
                 <relationship kind="outlet" name="noteText" candidateClass="UILabel"/>

@@ -13,6 +13,11 @@
 #import "UIView+Shadow.h"
 #import "GaussNavigationBar.h"
 #import "GaussNavigationCreationProtocol.h"
+#import "DocumentHandler.h"
+#import "App.h"
+#import "BillingPoint.h"
+#import "Project.h"
+#import "ProjectSession.h"
 
 #define CHANGE_VIEW_ANIMATION_DURATION 0.2
 
@@ -141,6 +146,9 @@
     [self addChildViewController:newViewController];
     
     if ([newViewController conformsToProtocol:@protocol(GaussNavigationCreationDelegate) ]) {
+
+        [self.navigation setRightButtonImage:@""];
+        [self.navigation setRightButtonTarget:nil action:nil];
         [newViewController performSelector:@selector(setupGaussNavigationBar:) withObject:self.navigation];
     } else {
         [self setupMenu];

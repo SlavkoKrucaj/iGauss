@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UILabel *itemName;
+
+@property (weak, nonatomic) IBOutlet UIView *separator;
 @end

@@ -18,6 +18,7 @@
 #import "MenuProjectCell.h"
 #import "Project.h"
 #import "UIView+Frame.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MenuItem : NSObject
 @property (nonatomic, strong) NSString *itemName;
@@ -53,33 +54,6 @@
     self.dataSource = self;
     
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 58)];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 8, 40, 40)];
-    NSURL *avatarUrl = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:GaussAvatar]];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar-placeholder"]];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width, 58)];
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor whiteColor];
-    label.font = GOTHAM_FONT(20);
-    label.textAlignment = NSTextAlignmentLeft;
-    label.text = [[NSUserDefaults standardUserDefaults] objectForKey:GaussUsername];;
-    
-    UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 56, label.frame.size.width, 1)];
-    black.backgroundColor = [UIColor blackColor];
-    
-    UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(0, 57, label.frame.size.width, 1)];
-    gray.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1.0];
-    
-    [headerView addSubview:imageView];
-    [headerView addSubview:label];
-    
-    [headerView addSubview:black];
-    [headerView addSubview:gray];
-    self.tableHeaderView = headerView;
     
 }
 
@@ -128,6 +102,43 @@
     }];
 }
 
+#pragma mark - first section header view creation
+
+- (UIView *)headerForFirstSection {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 58)];
+    headerView.backgroundColor = [UIColor withRed:40 green:40 blue:40 alpha:1.0];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 8, 40, 40)];
+    NSURL *avatarUrl = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:GaussAvatar]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar-placeholder"]];
+    imageView.layer.cornerRadius = imageView.frame.size.width/2;
+    imageView.layer.masksToBounds = YES;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width, 58)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = GOTHAM_FONT(20);
+    label.textAlignment = NSTextAlignmentLeft;
+    label.text = [[NSUserDefaults standardUserDefaults] objectForKey:GaussUsername];
+    label.shadowColor = [UIColor blackColor];
+    label.shadowOffset = CGSizeMake(0, 1);
+    
+    UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 56, label.frame.size.width, 1)];
+    black.backgroundColor = [UIColor blackColor];
+    
+    UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(0, 57, label.frame.size.width, 1)];
+    gray.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1.0];
+    
+    [headerView addSubview:imageView];
+    [headerView addSubview:label];
+    
+    [headerView addSubview:black];
+    [headerView addSubview:gray];
+    
+    return headerView;
+}
+
 #pragma mark delegates and data sources
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -143,19 +154,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return (section == 0)? 0:25;
+    return (section == 0)? 58:25;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 0) return nil;
+    if (section == 0) return [self headerForFirstSection];
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 25)];
     header.backgroundColor = [UIColor withRed:51 green:51 blue:51 alpha:1];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width - 50, 25)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 3, self.frame.size.width - 50, 25)];
     headerLabel.text = @"My projects";
     headerLabel.font = AGORA_FONT(15);
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.shadowColor = [UIColor blackColor];
+    headerLabel.shadowOffset = CGSizeMake(0, 1);
     
     [header addSubview:headerLabel];
     return header;
@@ -182,6 +195,7 @@
 
         cell.imageView.image = item.itemImageNormal;
         cell.imageView.highlightedImage = item.itemImagePressed;
+        cell.separator.hidden = (indexPath.row == self.data.count -1);
         
         cell.itemName.text = item.itemName;
         

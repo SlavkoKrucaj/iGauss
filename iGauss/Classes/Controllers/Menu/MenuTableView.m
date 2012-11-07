@@ -118,13 +118,13 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"projectId" ascending:YES]];
     
-    NSManagedObjectContext *context = [DocumentHandler sharedDocumentHandler].document.managedObjectContext;
-                       
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:context
-                                                                          sectionNameKeyPath:nil
-                                                                                   cacheName:nil];
-    
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                            managedObjectContext:document.managedObjectContext
+                                                                              sectionNameKeyPath:nil
+                                                                                       cacheName:nil];
+
+    }];
 }
 
 #pragma mark delegates and data sources

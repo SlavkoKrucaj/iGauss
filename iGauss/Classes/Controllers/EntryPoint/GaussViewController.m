@@ -42,21 +42,17 @@
 
 - (void)viewDidLoad
 {
-    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-        [super viewDidLoad];
+    [super viewDidLoad];
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
+        [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
+    } else {
         
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:GaussAuthToken] length] > 0) {
-            [self performSegueWithIdentifier:@"openMenuContainer" sender:self];
-        } else {
-            
-            self.bindingManager = [[SKBindingManager alloc] init];
-            self.loginParams = [[LoginParams alloc] init];
-            
-            [self bind];
-        }
-    }];
-    
-    
+        self.bindingManager = [[SKBindingManager alloc] init];
+        self.loginParams = [[LoginParams alloc] init];
+        
+        [self bind];
+    }    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -10,8 +10,9 @@
 #import <CoreData/CoreData.h>
 
 @interface DocumentHandler ()
-- (void)objectsDidChange:(NSNotification *)notification;
-- (void)contextDidSave:(NSNotification *)notification;
+
+@property (atomic, assign) BOOL isOpening;
+@property (nonatomic, retain) NSMutableArray *completionQueue;
 @end;
 
 @implementation DocumentHandler
@@ -22,18 +23,22 @@ static DocumentHandler *_sharedInstance;
 
 + (DocumentHandler *)sharedDocumentHandler
 {
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        _sharedInstance = [[self alloc] init];
-    });
-    
-    return _sharedInstance;
+    @synchronized([DocumentHandler class])
+	{
+        static dispatch_once_t once;
+        dispatch_once(&once, ^{
+            _sharedInstance = [[self alloc] init];
+        });
+        
+        return _sharedInstance;
+    }
 }
 
 - (id)init
 {
     self = [super init];
     if (self) {
+
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"GaussDb.db"];
         
@@ -45,18 +50,27 @@ static DocumentHandler *_sharedInstance;
                                  [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
         self.document.persistentStoreOptions = options;
         
-//        // Register for notifications
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(objectsDidChange:)
-//                                                     name:NSManagedObjectContextObjectsDidChangeNotification
-//                                                   object:self.document.managedObjectContext];
-//        
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(contextDidSave:)
-//                                                     name:NSManagedObjectContextDidSaveNotification
-//                                                   object:self.document.managedObjectContext];
+        self.completionQueue = [NSMutableArray array];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(documentStateDidChange:)
+                                                     name:UIDocumentStateChangedNotification
+                                                   object:self.document];
     }
     return self;
+}
+
+- (void)documentStateDidChange:(NSNotification *)notification {
+    if (self.document.documentState == UIDocumentStateNormal) {
+        NSLog(@"Document did change state");
+        @synchronized (self.document) {
+            self.isOpening = NO;
+            for (OnDocumentReady documentReady in self.completionQueue) {
+                documentReady(self.document);
+            }
+            self.completionQueue = [NSMutableArray array];
+        }
+    }
 }
 
 - (void)performWithDocument:(OnDocumentReady)onDocumentReady
@@ -64,16 +78,23 @@ static DocumentHandler *_sharedInstance;
     void (^OnDocumentDidLoad)(BOOL) = ^(BOOL success) {
         onDocumentReady(self.document);
     };
-    
+
+
     if (![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
         [self.document saveToURL:self.document.fileURL
                 forSaveOperation:UIDocumentSaveForCreating
                completionHandler:OnDocumentDidLoad];
     } else if (self.document.documentState == UIDocumentStateClosed) {
-        [self.document openWithCompletionHandler:OnDocumentDidLoad];
+        if (!self.isOpening) {
+            self.isOpening = YES;
+            [self.document openWithCompletionHandler:OnDocumentDidLoad];
+        } else {
+            [self.completionQueue addObject:onDocumentReady];
+        }
     } else if (self.document.documentState == UIDocumentStateNormal) {
         OnDocumentDidLoad(YES);
     }
+
 }
 
 - (void)objectsDidChange:(NSNotification *)notification

@@ -147,7 +147,9 @@
             [self setContentViewController:noDataVC];
             
         } else {
+            
             [self setContentViewController:initial];
+        
         }
         
     }];

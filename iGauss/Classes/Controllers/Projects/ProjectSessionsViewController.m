@@ -60,11 +60,13 @@
 
 - (void)setupFetchedResultsController {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"ProjectSession"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"sessionDate" ascending:NO]];
+    if (!self.fetchRequest) {
+        self.fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ProjectSession"];
+        self.fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"sessionDate" ascending:NO]];
+    }
     
     [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document){
-        self.tableView.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+        self.tableView.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest
                                                                                       managedObjectContext:document.managedObjectContext
                                                                                         sectionNameKeyPath:@"sessionDate"
                                                                                                  cacheName:nil];
@@ -229,10 +231,13 @@
 #pragma mark - navigation bar setup
 
 - (void)setupGaussNavigationBar:(GaussNavigationBar *)gaussNavigationBar {
-    gaussNavigationBar.titleLabel.text = @"Timetracking";
-
-    [gaussNavigationBar setRightButtonImage:@"add_work_button"];
-    [gaussNavigationBar setRightButtonTarget:self action:@selector(addNewProjectSession:)];
+    if (self.project) {
+        gaussNavigationBar.titleLabel.text = self.project.projectName;
+    } else {
+        gaussNavigationBar.titleLabel.text = @"Timetracking";
+        [gaussNavigationBar setRightButtonImage:@"add_work_button"];
+        [gaussNavigationBar setRightButtonTarget:self action:@selector(addNewProjectSession:)];
+    }
 }
 
 @end

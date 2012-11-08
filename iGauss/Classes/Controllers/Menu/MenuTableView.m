@@ -55,6 +55,8 @@
     
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    [self setupSearchBar];
+    
 }
 
 - (void)initializeData {
@@ -100,6 +102,21 @@
                                                                                        cacheName:nil];
 
     }];
+}
+
+#pragma mark - Search bar
+
+- (void)setupSearchBar {
+    
+//    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"search_bar"]];
+//    backgroundImageView.userInteractionEnabled = YES;
+//    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(44, 13, 250, 25)];
+//    searchField.font = AGORA_FONT(16);
+//    searchField.textColor = [UIColor whiteColor];
+//    [backgroundImageView addSubview:searchField];
+//    
+//    self.tableHeaderView = backgroundImageView;
+    
 }
 
 #pragma mark - first section header view creation
@@ -284,6 +301,10 @@
     if (indexPath.section == 0) {
         MenuItem *item = [self.data objectAtIndex:indexPath.row];
         [self.menuDelegate menuChangedSelectionTo:item.controllerRestorationId];
+    } else {
+        indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
+        Project *project = (Project *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.menuDelegate openProjectWithId:project];
     }
 }
 @end

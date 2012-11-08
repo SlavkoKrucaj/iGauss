@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataTableView.h"
+#import "Project.h"
 
 @protocol SlideOutMenuDelegate <NSObject>
 
 @required
 - (void)menuChangedSelectionTo:(NSString *)selectionName;
+- (void)openProjectWithId:(Project *)projectId;
 
 @end
 

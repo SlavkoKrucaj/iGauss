@@ -14,7 +14,11 @@
 #import "GaussNavigationBar.h"
 #import "MenuTableView.h"
 #import "GaussNavigationCreationProtocol.h"
+#import "Project.h"
 
 @interface ProjectSessionsViewController : UIViewController <CustomAlertViewDelegate, SourceDelegate, UITableViewDataSource, UITableViewDelegate, ProjectSessionCellDelegate, GaussNavigationCreationDelegate>
+
+@property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) Project *project;
 
 @end

@@ -18,6 +18,8 @@
 #import "BillingPoint.h"
 #import "Project.h"
 #import "ProjectSession.h"
+#import "ProjectSessionsViewController.h"
+#import "NoDataViewController.h"
 
 #define CHANGE_VIEW_ANIMATION_DURATION 0.2
 
@@ -124,6 +126,38 @@
     }
 }
 
+- (void)openProjectWithId:(Project *)project {
+    
+    self.currentChildViewControllerIdentifier = @"ProjectSessionsViewController";
+    
+    //we are opening time sessions for only one project
+    ProjectSessionsViewController *initial = [self.storyboard instantiateViewControllerWithIdentifier:self.currentChildViewControllerIdentifier];
+    initial.fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ProjectSession"];
+    initial.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"billingPoint.project == %@", project];
+    initial.fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"sessionDate" ascending:NO]];
+    initial.project = project;
+    
+    [[DocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+        self.currentChildViewControllerIdentifier = @"SpecificProject";
+        
+        NSArray *array = [document.managedObjectContext executeFetchRequest:initial.fetchRequest error:nil];
+        if (array.count == 0 || !array) {
+            NoDataViewController *noDataVC = [NoDataViewController noDataWithDescription:@"There are no project sessions entered for this project."];
+
+            [self setContentViewController:noDataVC];
+            
+        } else {
+            [self setContentViewController:initial];
+        }
+        
+    }];
+    
+
+    
+    
+    
+}
+
 #pragma mark - logout logic
 
 - (void)logout {
@@ -165,7 +199,7 @@
 
     [self transitionFromViewController:oldViewController
                       toViewController:newViewController
-                              duration:0.2
+                              duration:CHANGE_VIEW_ANIMATION_DURATION
                                options:UIViewAnimationCurveEaseInOut
                             animations:^{
                                 newView.alpha = 1.;

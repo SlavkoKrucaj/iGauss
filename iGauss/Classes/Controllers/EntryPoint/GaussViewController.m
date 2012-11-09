@@ -110,7 +110,7 @@
     [bindingOptions setObject:self.loginParams          forKey:BindingTo];
     [bindingOptions setObject:@"username"               forKey:BindingToKeyPath];
     [bindingOptions setObject:@YES                      forKey:BindingTwoWayBinding];
-    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValueTo];
+    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValue];
     
     [self.bindingManager bind:bindingOptions];
     
@@ -122,7 +122,7 @@
     [bindingOptions setObject:self.loginParams          forKey:BindingTo];
     [bindingOptions setObject:@"password"               forKey:BindingToKeyPath];
     [bindingOptions setObject:@YES                      forKey:BindingTwoWayBinding];
-    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValueTo];
+    [bindingOptions setObject:BindingInitialValueTo     forKey:BindingInitialValue];
     
     [self.bindingManager bind:bindingOptions];
 }

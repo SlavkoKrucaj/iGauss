@@ -497,15 +497,8 @@ typedef enum {
     [buttonStar setTitle:@"*" forState:UIControlStateNormal];
     [buttonStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
     
-//    UIButton *buttonDoubleStar = [[UIButton alloc] initWithFrame:CGRectMake(276, 0, 44, 60)];
-//    buttonDoubleStar.titleLabel.font = GOTHAM_FONT(20);
-//    [buttonDoubleStar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [buttonDoubleStar setTitle:@"**" forState:UIControlStateNormal];
-//    [buttonDoubleStar addTarget:self action:@selector(starTouched:) forControlEvents:UIControlEventTouchUpInside];
-//    
     [inputView addSubview:separator];
     [inputView addSubview:buttonStar];
-//    [inputView addSubview:buttonDoubleStar];
     
     return inputView;
     

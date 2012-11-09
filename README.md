@@ -1,4 +1,4 @@
-#Template project
+#Gauss project managment
 
-This is a template project.
+Showoff ios application
 
